@@ -1,13 +1,6 @@
-//
-//  main.cpp
-//  testingGit
-//
-//  Created by Ibrahim Saeed on 10/8/14.
-//  Copyright (c) 2014 Ibrahim Saeed. All rights reserved.
-//
-
 #include <iostream>
 #include <vector>
+#include <string>
 #include "Piece.h"
 #include "GameState.h"
 
@@ -15,6 +8,19 @@ using namespace std;
 
 int main()
 {
+    
+    GameState initialGame;
+    vector< vector <string> > initialBoard;
+    vector< Piece > whitePieces;
+    vector< Piece > blackPieces;
+    
+    
+    ///Resizing the 2D vector
+    
+    initialBoard.resize(8);
+    for(int i = 0; i<8; i++){
+        initialBoard[i].resize(7);
+    }
     
     ////
     ////Initial configuration
@@ -131,15 +137,195 @@ int main()
     cin >> rowWP1;
     cin >> letterWP1;
     columnWP1 = letterWP1 - 96;
+    cout << columnWP1 << endl;
     whitePawn1.setPieceCoordinates(rowWP1, columnWP1);
+    whitePieces.push_back(whitePawn1);
+    initialBoard[rowWP1][columnWP1] = "whitePawn";
+    
+    cout << initialBoard[2][1] << endl;
     
     cout << "Input the position of white pawn (2). First enter the row (1-6). Then the column(a-e):" << endl;
     cin >> rowWP2;
     cin >> letterWP2;
     columnWP2 = letterWP2 - 96;
     whitePawn2.setPieceCoordinates(rowWP2, columnWP2);
+    whitePieces.push_back(whitePawn2);
+    initialBoard[rowWP2][columnWP2] = "whitePawn";
     
-	cout << " SUP DAWG";
+    cout << "Input the position of white pawn (3). First enter the row (1-6). Then the column(a-e):" << endl;
+    cin >> rowWP3;
+    cin >> letterWP3;
+    columnWP3 = letterWP3 - 96;
+    whitePawn3.setPieceCoordinates(rowWP3, columnWP3);
+    whitePieces.push_back(whitePawn3);
+    initialBoard[rowWP3][columnWP3] = "whitePawn";
+    
+    cout << "Input the position of white pawn (4). First enter the row (1-6). Then the column(a-e):" << endl;
+    cin >> rowWP4;
+    cin >> letterWP4;
+    columnWP4 = letterWP4 - 96;
+    whitePawn4.setPieceCoordinates(rowWP4, columnWP4);
+    whitePieces.push_back(whitePawn4);
+    initialBoard[rowWP4][columnWP4] = "whitePawn";
+    
+    cout << "Input the position of white pawn (5). First enter the row (1-6). Then the column(a-e):" << endl;
+    cin >> rowWP5;
+    cin >> letterWP5;
+    columnWP5 = letterWP5 - 96;
+    whitePawn5.setPieceCoordinates(rowWP5, columnWP5);
+    whitePieces.push_back(whitePawn5);
+    initialBoard[rowWP5][columnWP5] = "whitePawn";
+    
+    cout << "Input the position of white rook. First enter the row (1-6). Then the column(a-e):" << endl;
+    cin >> rowWR;
+    cin >> letterWR;
+    columnWR = letterWR - 96;
+    whiteRook.setPieceCoordinates(rowWR, columnWR);
+    whitePieces.push_back(whiteRook);
+    initialBoard[rowWR][columnWR] = "whiteRook";
+    
+    cout << "Input the position of white knight. First enter the row (1-6). Then the column(a-e):" << endl;
+    cin >> rowWN;
+    cin >> letterWN;
+    columnWN = letterWN - 96;
+    whiteKnight.setPieceCoordinates(rowWN, columnWN);
+    whitePieces.push_back(whiteKnight);
+    initialBoard[rowWN][columnWN] = "whiteKnight";
+    
+    cout << "Input the position of white bishop. First enter the row (1-6). Then the column(a-e):" << endl;
+    cin >> rowWB;
+    cin >> letterWB;
+    columnWB = letterWB - 96;
+    whiteBishop.setPieceCoordinates(rowWB, columnWB);
+    whitePieces.push_back(whiteBishop);
+    initialBoard[rowWB][columnWB] = "whiteBishop";
+    
+    cout << "Input the position of white queen. First enter the row (1-6). Then the column(a-e):" << endl;
+    cin >> rowWQ;
+    cin >> letterWQ;
+    columnWQ = letterWQ - 96;
+    whiteQueen.setPieceCoordinates(rowWQ, columnWQ);
+    whitePieces.push_back(whiteQueen);
+    initialBoard[rowWQ][columnWQ] = "whiteQueen";
+    
+    cout << "Input the position of white king. First enter the row (1-6). Then the column(a-e):" << endl;
+    cin >> rowWK;
+    cin >> letterWK;
+    columnWK = letterWK - 96;
+    whiteKing.setPieceCoordinates(rowWK, columnWK);
+    whitePieces.push_back(whiteKing);
+    initialBoard[rowWK][columnWK] = "whiteKing";
+    
+    ////
+    ////Black Pieces
+    ////
+    cout << "Input the position of black pawn (1). First enter the row (1-6). Then the column(a-e):" << endl;
+    cin >> rowBP1;
+    cin >> letterBP1;
+    columnBP1 = letterBP1 - 96;
+    blackPawn1.setPieceCoordinates(rowBP1, columnBP1);
+    blackPieces.push_back(blackPawn1);
+    initialBoard[rowBP1][columnBP1] = "blackPawn";
+    
+    cout << "Input the position of black pawn (2). First enter the row (1-6). Then the column(a-e):" << endl;
+    cin >> rowBP2;
+    cin >> letterBP2;
+    columnBP2 = letterBP2 - 96;
+    blackPawn2.setPieceCoordinates(rowBP2, columnBP2);
+    blackPieces.push_back(blackPawn2);
+    initialBoard[rowBP2][columnBP2] = "blackPawn";
+    
+    cout << "Input the position of black pawn (3). First enter the row (1-6). Then the column(a-e):" << endl;
+    cin >> rowBP3;
+    cin >> letterBP3;
+    columnBP3 = letterBP3 - 96;
+    blackPawn3.setPieceCoordinates(rowBP3, columnBP3);
+    blackPieces.push_back(blackPawn3);
+    initialBoard[rowBP3][columnBP3] = "blackPawn";
+    
+    cout << "Input the position of black pawn (4). First enter the row (1-6). Then the column(a-e):" << endl;
+    cin >> rowBP4;
+    cin >> letterBP4;
+    columnBP4 = letterBP4 - 96;
+    blackPawn4.setPieceCoordinates(rowBP4, columnBP4);
+    blackPieces.push_back(blackPawn4);
+    initialBoard[rowBP4][columnBP4] = "blackPawn";
+    
+    cout << "Input the position of black pawn (5). First enter the row (1-6). Then the column(a-e):" << endl;
+    cin >> rowBP5;
+    cin >> letterBP5;
+    columnBP5 = letterBP5 - 96;
+    blackPawn5.setPieceCoordinates(rowBP5, columnBP5);
+    blackPieces.push_back(blackPawn5);
+    initialBoard[rowBP5][columnBP5] = "blackPawn";
+    
+    cout << "Input the position of black rook. First enter the row (1-6). Then the column(a-e):" << endl;
+    cin >> rowBR;
+    cin >> letterBR;
+    columnBR = letterBR - 96;
+    blackRook.setPieceCoordinates(rowBR, columnBR);
+    blackPieces.push_back(blackRook);
+    initialBoard[rowBR][columnBR] = "blackRook";
+    
+    cout << "Input the position of black knight. First enter the row (1-6). Then the column(a-e):" << endl;
+    cin >> rowBN;
+    cin >> letterBN;
+    columnBN = letterBN - 96;
+    blackKnight.setPieceCoordinates(rowBN, columnBN);
+    blackPieces.push_back(blackKnight);
+    initialBoard[rowBN][columnBN] = "blackKnight";
+    
+    cout << "Input the position of black bishop. First enter the row (1-6). Then the column(a-e):" << endl;
+    cin >> rowBB;
+    cin >> letterBB;
+    columnBB = letterBB - 96;
+    blackBishop.setPieceCoordinates(rowBB, columnBB);
+    blackPieces.push_back(blackBishop);
+    initialBoard[rowBB][columnBB] = "blackBishop";
+    
+    cout << "Input the position of black queen. First enter the row (1-6). Then the column(a-e):" << endl;
+    cin >> rowBQ;
+    cin >> letterBQ;
+    columnBQ = letterBQ - 96;
+    blackQueen.setPieceCoordinates(rowBQ, columnBQ);
+    blackPieces.push_back(blackQueen);
+    initialBoard[rowBQ][columnBQ] = "blackQueen";
+    
+    cout << "Input the position of black king. First enter the row (1-6). Then the column(a-e):" << endl;
+    cin >> rowBK;
+    cin >> letterBK;
+    columnBK = letterBK - 96;
+    blackKing.setPieceCoordinates(rowBK, columnBK);
+    blackPieces.push_back(blackKing);
+    initialBoard[rowBK][columnBK]="blackKing";
+    
+    
+    
+    
+    //setting all relevant areas empty. Essentially all the
+    //working spaces in the board.
+    for (int i = 1; i < 7; i++) {
+        for (int j = 1; j < 6; j++) {
+            initialBoard[i][j] = "empty";
+        }
+    }
+    
+    //settings for out of bounds.
+        for(int i = 0; i < 8; i++){
+            for (int j = 0; j< 7; j++) {
+                if (i == 0 || i ==7) {
+                    initialBoard[i][j] = "outOfBounds";
+                }
+                if (j == 0 || j == 6) {
+                    initialBoard[i][j] = "outOfBounds";
+                }
+            }
+        }
+
+    
+    
     
     return 0;
 }
+
+
