@@ -13,6 +13,10 @@
 using namespace std;
 
 
+
+
+
+
 //constructors
 Piece::Piece(){};
 
@@ -58,6 +62,10 @@ pair<int, int> Piece::getPieceCoordinates(){
     return pieceCoordinates;
 }
 
+//MemberFunction isSameColor
+//Pre Conditions: Parameters are a GameState and a pair of coordinates
+//Post Conditions: Returns a boolean true or false depending on if the piece in the coordinates
+//                 being evaluated is the same color as the member piece.
 
 bool Piece::isSameColor(GameState instance, pair<int, int> coordinates){
 	
@@ -69,6 +77,12 @@ bool Piece::isSameColor(GameState instance, pair<int, int> coordinates){
 	}
 }
 
+
+
+//Function diagonalMoves
+//Pre Conditions: Parameters are a GameState, a Piece, and a direction integer 1 through 4
+//Post Conditions: Returns an integer that tells how many spaces are valid for moves of that
+// 					 piece in that certain direction.
 int diagonalMoves(GameState instance, Piece currPiece, int direction){
 	int movesSoFar = 0;
 	pair <int, int> localCoord = currPiece.getPieceCoordinates();
@@ -181,6 +195,10 @@ int diagonalMoves(GameState instance, Piece currPiece, int direction){
 }
 }
 
+//Function straightMoves
+//Pre Conditions: Parameters are a GameState, a Piece, and a direction integer 1 through 4
+//Post Conditions: Returns an integer that tells how many spaces are valid for moves of that
+// 					 piece in that certain direction.
 int straightMoves(GameState instance, Piece currPiece, int direction){
 	pair<int, int> localCoord = currPiece.getPieceCoordinates();
 	int movesSoFar = 0;
@@ -300,6 +318,11 @@ int straightMoves(GameState instance, Piece currPiece, int direction){
 
 ////////////////////////////////////////////
 //SUBCLASSES
+//
+//	Each subclass contains a function called generate possible moves
+// Pre Conditions: It takes gamestate and also takes member pieceCoordinates internally
+// Post Conditions: Returns a vector of pairs of ints that is coordinates for possible (valid) moves
+//                  for the piece in question                
 
 //Pawn
 
