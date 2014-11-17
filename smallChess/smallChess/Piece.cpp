@@ -98,7 +98,8 @@ int diagonalMoves(GameState instance, Piece currPiece, int direction){
 		
 		return movesSoFar;
 	}
-
+    
+    else {
 	if(direction == 2){
 		localCoord.first = localCoord.first - 1;
 		localCoord.second = localCoord.second - 1;
@@ -123,6 +124,7 @@ int diagonalMoves(GameState instance, Piece currPiece, int direction){
 		
 		return movesSoFar;
 	}
+    else{
 
 	if(direction == 3){
 		localCoord.first = localCoord.first+1;
@@ -148,8 +150,9 @@ int diagonalMoves(GameState instance, Piece currPiece, int direction){
 		
 		return movesSoFar;
 	}
-
-	if(direction == 4){
+    
+    else {
+	//if(direction == 4){
 		localCoord.first = localCoord.first+1;
 		localCoord.second = localCoord.second+1;
 		
@@ -174,8 +177,9 @@ int diagonalMoves(GameState instance, Piece currPiece, int direction){
 		
 		return movesSoFar;
 	}
+    }
 }
-
+}
 
 int straightMoves(GameState instance, Piece currPiece, int direction){
 	pair<int, int> localCoord = currPiece.getPieceCoordinates();
@@ -204,6 +208,8 @@ int straightMoves(GameState instance, Piece currPiece, int direction){
 		
 		return movesSoFar;
 	}
+    
+    else {
 
 	if(direction == 2){
 		localCoord.first = localCoord.first+1;
@@ -230,6 +236,8 @@ int straightMoves(GameState instance, Piece currPiece, int direction){
 		return movesSoFar;
 	}
 
+    else {
+
 	if(direction == 3){
 		
 		localCoord.second = localCoord.second-1;
@@ -254,8 +262,8 @@ int straightMoves(GameState instance, Piece currPiece, int direction){
 		
 		return movesSoFar;
 	}
-
-	if(direction == 4){
+    else {
+	//if(direction == 4){
 		localCoord.second = localCoord.second+1;
 		
 		if(instance.getBoardConfig()[localCoord.first][ localCoord.second] != "empty"){
@@ -278,6 +286,8 @@ int straightMoves(GameState instance, Piece currPiece, int direction){
 		
 		return movesSoFar;
 	}
+    }
+    }
 }
 
 
