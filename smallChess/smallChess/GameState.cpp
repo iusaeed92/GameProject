@@ -33,7 +33,23 @@ vector < vector < string > > GameState::getBoardConfig(){
 }
 
 void GameState::print(){
-	for(int i=0; i<boardConfig.size(); i++){
-		//to be implemented
-	}
+    cout << "    a    b    c    d    e " << endl;
+    cout << " --------------------------" << endl;
+
+    for (int i = 1; i < 7; i++) {
+        cout << " | ";
+        for (int j = 1; j < 6; j++) {
+			if(boardConfig[i][j] == "empty"){
+				cout << "--" << " | ";
+			}
+			else{
+				cout << boardConfig[i][j] << " | ";
+			}
+        }
+
+        cout << " Row " << i; 
+        cout << endl;
+        cout << " --------------------------";
+        cout << endl;
+    }
 }

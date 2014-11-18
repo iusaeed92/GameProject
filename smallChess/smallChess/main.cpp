@@ -21,6 +21,27 @@ int main()
     for(int i = 0; i<8; i++){
         initialBoard[i].resize(7);
     }
+	
+	
+    //setting all relevant areas empty. Essentially all the
+    //working spaces in the board.
+    for (int i = 1; i < 7; i++) {
+        for (int j = 1; j < 6; j++) {
+            initialBoard[i][j] = "empty";
+        }
+    }
+    
+    //settings for out of bounds.
+        for(int i = 0; i < 8; i++){
+            for (int j = 0; j< 7; j++) {
+                if (i == 0 || i ==7) {
+                    initialBoard[i][j] = "outOfBounds";
+                }
+                if (j == 0 || j == 6) {
+                    initialBoard[i][j] = "outOfBounds";
+                }
+            }
+        }
     
     ////
     ////Initial configuration
@@ -129,20 +150,129 @@ int main()
     char letterBK;
     int columnBK;
     King blackKing;
-    
+	
+	
+	////
+	////Automatic Standard Configuration Setup
+    ////
+	char answer;
+	cout << "Would you like to have the customary starting configuration? (y/n)" << endl;
+	cin >> answer;
+	
+	if(answer == 'y'){
+		rowWP1 = 2;
+		columnWP1 = 1;
+		whitePawn1.setPieceCoordinates(rowWP1, columnWP1);
+		initialBoard[rowWP1][columnWP1] = "wp";
+		
+		rowWP2 = 2;
+		columnWP2 = 2;
+		whitePawn2.setPieceCoordinates(rowWP2, columnWP2);
+		initialBoard[rowWP2][columnWP2] = "wp";
+		
+		rowWP3 = 2;
+		columnWP3 = 3;
+		whitePawn3.setPieceCoordinates(rowWP3, columnWP3);
+		initialBoard[rowWP3][columnWP3] = "wp";
+		
+		rowWP4 = 2;
+		columnWP4 = 4;
+		whitePawn4.setPieceCoordinates(rowWP4, columnWP4);
+		initialBoard[rowWP4][columnWP4] = "wp";
+		
+		rowWP5 = 2;
+		columnWP5 = 5;
+		whitePawn5.setPieceCoordinates(rowWP5, columnWP5);
+		initialBoard[rowWP5][columnWP5] = "wp";
+		
+		rowWR = 1;
+		columnWR = 1;
+		whiteRook.setPieceCoordinates(rowWR, columnWR);
+		initialBoard[rowWR][columnWR] = "wr";
+		
+		rowWB = 1;
+		columnWB = 2;
+		whiteBishop.setPieceCoordinates(rowWB, columnWB);
+		initialBoard[rowWB][columnWB] = "wb";
+		
+		rowWK = 1;
+		columnWK = 3;
+		whiteKing.setPieceCoordinates(rowWK, columnWK);
+		initialBoard[rowWK][columnWK] = "wk";
+		
+		rowWQ = 1;
+		columnWQ = 4;
+		whiteQueen.setPieceCoordinates(rowWQ, columnWQ);
+		initialBoard[rowWQ][columnWQ] = "wq";
+		
+		rowWN = 1;
+		columnWN = 5;
+		whiteKnight.setPieceCoordinates(rowWN, columnWN);
+		initialBoard[rowWN][columnWN] = "wn";
+		
+		rowBP1 = 5;
+		columnBP1 = 1;
+		blackPawn1.setPieceCoordinates(rowBP1, columnBP1);
+		initialBoard[rowBP1][columnBP1] = "Bp";
+		
+		rowBP2 = 5;
+		columnBP2 = 2;
+		blackPawn2.setPieceCoordinates(rowBP2, columnBP2);
+		initialBoard[rowBP2][columnBP2] = "Bp";
+		
+		rowBP3 = 5;
+		columnBP3 = 3;
+		blackPawn3.setPieceCoordinates(rowBP3, columnBP3);
+		initialBoard[rowBP3][columnBP3] = "Bp";
+		
+		rowBP4 = 5;
+		columnBP4 = 4;
+		blackPawn4.setPieceCoordinates(rowBP4, columnBP4);
+		initialBoard[rowBP4][columnBP4] = "Bp";
+		
+		rowBP5 = 5;
+		columnBP5 = 5;
+		blackPawn5.setPieceCoordinates(rowBP5, columnBP5);
+		initialBoard[rowBP5][columnBP5] = "Bp";
+		
+		rowBR = 6;
+		columnBR = 1;
+		blackRook.setPieceCoordinates(rowBR, columnBR);
+		initialBoard[rowBR][columnBR] = "Br";
+		
+		rowBB = 6;
+		columnBB = 2;
+		blackBishop.setPieceCoordinates(rowBB, columnBB);
+		initialBoard[rowBB][columnBB] = "Bb";
+		
+		rowBK = 6;
+		columnBK = 3;
+		blackKing.setPieceCoordinates(rowBK, columnBK);
+		initialBoard[rowBK][columnBK] = "Bk";
+		
+		rowBQ = 6;
+		columnBQ = 4;
+		blackQueen.setPieceCoordinates(rowBQ, columnBQ);
+		initialBoard[rowBQ][columnBQ] = "Bq";
+		
+		rowBN = 6;
+		columnBN = 5;
+		blackKnight.setPieceCoordinates(rowBN, columnBN);
+		initialBoard[rowBN][columnBN] = "Bn";
+	}
+	
+	
     ////
     ////Input of coordinates for all pieces
     ////
+	else{
     cout << "Input the position of white pawn (1). First enter the row (1-6). Then the column(a-e):" << endl;
     cin >> rowWP1;
     cin >> letterWP1;
     columnWP1 = letterWP1 - 96;
-    cout << columnWP1 << endl;
     whitePawn1.setPieceCoordinates(rowWP1, columnWP1);
     whitePieces.push_back(whitePawn1);
     initialBoard[rowWP1][columnWP1] = "whitePawn";
-    
-    cout << initialBoard[2][1] << endl;
     
     cout << "Input the position of white pawn (2). First enter the row (1-6). Then the column(a-e):" << endl;
     cin >> rowWP2;
@@ -298,32 +428,16 @@ int main()
     blackKing.setPieceCoordinates(rowBK, columnBK);
     blackPieces.push_back(blackKing);
     initialBoard[rowBK][columnBK]="blackKing";
+	}
     
-    
-    
-    
-    //setting all relevant areas empty. Essentially all the
-    //working spaces in the board.
-    for (int i = 1; i < 7; i++) {
-        for (int j = 1; j < 6; j++) {
-            initialBoard[i][j] = "empty";
-        }
-    }
-    
-    //settings for out of bounds.
-        for(int i = 0; i < 8; i++){
-            for (int j = 0; j< 7; j++) {
-                if (i == 0 || i ==7) {
-                    initialBoard[i][j] = "outOfBounds";
-                }
-                if (j == 0 || j == 6) {
-                    initialBoard[i][j] = "outOfBounds";
-                }
-            }
-        }
-
-    
-    
+	
+	
+//// setting the members of initialGame
+	initialGame.setBoardConfig(initialBoard);
+	initialGame.setBlack(blackPieces);
+	initialGame.setWhite(whitePieces);
+	
+	initialGame.print();
     
     return 0;
 }
