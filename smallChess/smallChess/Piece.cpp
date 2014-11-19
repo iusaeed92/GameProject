@@ -72,9 +72,14 @@ bool Piece::isSameColor(GameState instance, pair<int, int> coordinates){
 	if(instance.getBoardConfig()[coordinates.first][coordinates.second][0] == color[0]){
 		return true;
 	}
-	else{
+	else if(instance.getBoardConfig()[coordinates.first][coordinates.second] == "empty")
+			return true;
+			
+	else if(instance.getBoardConfig()[coordinates.first][coordinates.second] == "outOfBounds")
+			return true;
+			
+	else
 		return false;
-	}
 }
 
 
@@ -330,6 +335,7 @@ vector<pair<unsigned,unsigned> >  Pawn::generatePossibleMoves (GameState current
 	
 	vector<pair<unsigned, unsigned> > possiblePawnMoves;
 	pair<int, int> localCoord = pieceCoordinates;
+	Piece thisPawn(name, color, weight, pieceCoordinates);
 	
 		//check if space ahead is empty if it is then place that spaces coordinate on vector
 	if(currentGameState.getBoardConfig()[localCoord.first-1][localCoord.second] == "empty"){
@@ -340,23 +346,22 @@ vector<pair<unsigned,unsigned> >  Pawn::generatePossibleMoves (GameState current
 		}
 	
 		//check the diagonal one space ahead, if it is opposing piece push on the vector
-	if(color[0] != currentGameState.getBoardConfig()[localCoord.first-1][localCoord.second+1][0]){
-// old style:  if(.isSameColor(currentGameState, pair<localCoord.first-1,localCoord.second+1>) == false){
-		pair <int, int> test;
-		test = make_pair(localCoord.first-1, localCoord.second+1);
-		possiblePawnMoves.push_back(test);
+	if(currentGameState.getBoardConfig()[localCoord.first-1][localCoord.second+1] != "empty"
+		&& currentGameState.getBoardConfig()[localCoord.first-1][localCoord.second+1] != "outOfBounds"){
+		if(thisPawn.isSameColor(currentGameState, make_pair(localCoord.first-1,localCoord.second+1)) == false){
+			possiblePawnMoves.push_back(make_pair(localCoord.first-1, localCoord.second+1));
 	
 		}
+	}
 		
 		//check other diagonal
-	if(color[0] != currentGameState.getBoardConfig()[localCoord.first-1][localCoord.second-1][0]){
-//old style:	if(.isSameColor(currentGameState, pair<localCoord.first-1,localCoord.second-1>) == false){
-	
-		pair <int, int> test;
-		test = make_pair(localCoord.first-1, localCoord.second-1);
-		possiblePawnMoves.push_back(test);
+	if(currentGameState.getBoardConfig()[localCoord.first-1][localCoord.second-1] != "empty"
+		&& currentGameState.getBoardConfig()[localCoord.first-1][localCoord.second-1] != "outOfBounds"){
+		if(thisPawn.isSameColor(currentGameState, make_pair(localCoord.first-1,localCoord.second-1)) == false){
+			possiblePawnMoves.push_back(make_pair(localCoord.first-1, localCoord.second-1));
 	
 		}
+	}
 		
 	return possiblePawnMoves;
 	}

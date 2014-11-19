@@ -161,104 +161,124 @@ int main()
 	cin >> answer;
 	
 	if(answer == 'y'){
-		rowWP1 = 2;
+		rowWP1 = 5;
 		columnWP1 = 1;
 		whitePawn1.setPieceCoordinates(rowWP1, columnWP1);
+		whitePawn1.setPieceColor("White");
 		initialBoard[rowWP1][columnWP1] = "WP";
 		
-		rowWP2 = 2;
+		rowWP2 = 5;
 		columnWP2 = 2;
 		whitePawn2.setPieceCoordinates(rowWP2, columnWP2);
+		whitePawn2.setPieceColor("White");
 		initialBoard[rowWP2][columnWP2] = "WP";
 		
-		rowWP3 = 2;
+		rowWP3 = 5;
 		columnWP3 = 3;
 		whitePawn3.setPieceCoordinates(rowWP3, columnWP3);
+		whitePawn3.setPieceColor("White");
 		initialBoard[rowWP3][columnWP3] = "WP";
 		
-		rowWP4 = 2;
+		rowWP4 = 5;
 		columnWP4 = 4;
 		whitePawn4.setPieceCoordinates(rowWP4, columnWP4);
+		whitePawn4.setPieceColor("White");
 		initialBoard[rowWP4][columnWP4] = "WP";
 		
-		rowWP5 = 2;
+		rowWP5 = 5;
 		columnWP5 = 5;
 		whitePawn5.setPieceCoordinates(rowWP5, columnWP5);
+		whitePawn5.setPieceColor("White");
 		initialBoard[rowWP5][columnWP5] = "WP";
 		
-		rowWR = 1;
+		rowWR = 6;
 		columnWR = 1;
 		whiteRook.setPieceCoordinates(rowWR, columnWR);
+		whiteRook.setPieceColor("White");
 		initialBoard[rowWR][columnWR] = "WR";
 		
-		rowWB = 1;
+		rowWB = 6;
 		columnWB = 2;
 		whiteBishop.setPieceCoordinates(rowWB, columnWB);
+		whiteBishop.setPieceColor("White");
 		initialBoard[rowWB][columnWB] = "WB";
 		
-		rowWK = 1;
+		rowWK = 6;
 		columnWK = 3;
 		whiteKing.setPieceCoordinates(rowWK, columnWK);
+		whiteKing.setPieceColor("White");
 		initialBoard[rowWK][columnWK] = "WK";
 		
-		rowWQ = 1;
+		rowWQ = 6;
 		columnWQ = 4;
 		whiteQueen.setPieceCoordinates(rowWQ, columnWQ);
+		whiteQueen.setPieceColor("White");
 		initialBoard[rowWQ][columnWQ] = "WQ";
 		
-		rowWN = 1;
+		rowWN = 6;
 		columnWN = 5;
 		whiteKnight.setPieceCoordinates(rowWN, columnWN);
+		whiteKnight.setPieceColor("White");
 		initialBoard[rowWN][columnWN] = "WN";
 		
-		rowBP1 = 5;
+		rowBP1 = 2;
 		columnBP1 = 1;
 		blackPawn1.setPieceCoordinates(rowBP1, columnBP1);
+		blackPawn1.setPieceColor("Black");
 		initialBoard[rowBP1][columnBP1] = "BP";
 		
-		rowBP2 = 5;
+		rowBP2 = 2;
 		columnBP2 = 2;
 		blackPawn2.setPieceCoordinates(rowBP2, columnBP2);
+		blackPawn2.setPieceColor("Black");
 		initialBoard[rowBP2][columnBP2] = "BP";
 		
-		rowBP3 = 5;
+		rowBP3 = 2;
 		columnBP3 = 3;
 		blackPawn3.setPieceCoordinates(rowBP3, columnBP3);
+		blackPawn3.setPieceColor("Black");
 		initialBoard[rowBP3][columnBP3] = "BP";
 		
-		rowBP4 = 5;
+		rowBP4 = 2;
 		columnBP4 = 4;
 		blackPawn4.setPieceCoordinates(rowBP4, columnBP4);
+		blackPawn4.setPieceColor("Black");
 		initialBoard[rowBP4][columnBP4] = "BP";
 		
-		rowBP5 = 5;
+		rowBP5 = 2;
 		columnBP5 = 5;
 		blackPawn5.setPieceCoordinates(rowBP5, columnBP5);
+		blackPawn5.setPieceColor("Black");
 		initialBoard[rowBP5][columnBP5] = "BP";
 		
-		rowBR = 6;
+		rowBR = 1;
 		columnBR = 1;
 		blackRook.setPieceCoordinates(rowBR, columnBR);
+		blackRook.setPieceColor("Black");
 		initialBoard[rowBR][columnBR] = "BR";
 		
-		rowBB = 6;
+		rowBB = 1;
 		columnBB = 2;
 		blackBishop.setPieceCoordinates(rowBB, columnBB);
+		blackBishop.setPieceColor("Black");
 		initialBoard[rowBB][columnBB] = "BB";
 		
-		rowBK = 6;
+		rowBK = 1;
 		columnBK = 3;
 		blackKing.setPieceCoordinates(rowBK, columnBK);
+		blackKing.setPieceColor("Black");
 		initialBoard[rowBK][columnBK] = "BK";
 		
-		rowBQ = 6;
+		rowBQ = 1;
 		columnBQ = 4;
 		blackQueen.setPieceCoordinates(rowBQ, columnBQ);
+		blackQueen.setPieceColor("Black");
 		initialBoard[rowBQ][columnBQ] = "BQ";
 		
-		rowBN = 6;
+		rowBN = 1;
 		columnBN = 5;
 		blackKnight.setPieceCoordinates(rowBN, columnBN);
+		blackKnight.setPieceColor("Black");
 		initialBoard[rowBN][columnBN] = "BN";
 	}
 	
@@ -452,6 +472,21 @@ int main()
 	cout << "How much time is allowed for a program move? (0.0 < t <= 240.0)" << endl;
 	cin >> moveTime;
 
+////
+//// setting the members of initialGame
+////
+	initialGame.setBoardConfig(initialBoard);
+	initialGame.setBlack(blackPieces);
+	initialGame.setWhite(whitePieces);
+
+vector<pair<unsigned,unsigned> > availableMoves;
+availableMoves = whiteBishop.generatePossibleMoves(initialGame);
+
+for(unsigned i=0; i<availableMoves.size(); i++){
+	cout << "Row: " << availableMoves[i].first << "Column: " << availableMoves[i].second << endl;
+}
+
+cout << availableMoves.size() << endl;
 
 ////
 ////Negamax Search
@@ -459,13 +494,7 @@ int main()
 
 // priority queue for worklist/closed node list
 
-
-
 	
-//// setting the members of initialGame
-	initialGame.setBoardConfig(initialBoard);
-	initialGame.setBlack(blackPieces);
-	initialGame.setWhite(whitePieces);
 	
 	initialGame.print();
 	
