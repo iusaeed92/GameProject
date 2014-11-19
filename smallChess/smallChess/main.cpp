@@ -203,7 +203,7 @@ int main()
 		whiteBishop.setPieceColor("White");
 		initialBoard[rowWB][columnWB] = "WB";
 		
-		rowWK = 6;
+		rowWK = 4;
 		columnWK = 3;
 		whiteKing.setPieceCoordinates(rowWK, columnWK);
 		whiteKing.setPieceColor("White");
@@ -215,8 +215,8 @@ int main()
 		whiteQueen.setPieceColor("White");
 		initialBoard[rowWQ][columnWQ] = "WQ";
 		
-		rowWN = 3;
-		columnWN = 4;
+		rowWN = 6;
+		columnWN = 5;
 		whiteKnight.setPieceCoordinates(rowWN, columnWN);
 		whiteKnight.setPieceColor("White");
 		initialBoard[rowWN][columnWN] = "WN";
@@ -490,10 +490,10 @@ int main()
 	initialGame.setWhite(whitePieces);
 
 vector<pair<unsigned,unsigned> > availableMoves;
-availableMoves = whiteKnight.generatePossibleMoves(initialGame);
+availableMoves = whiteKing.generatePossibleMoves(initialGame);
 
 for(unsigned i=0; i<availableMoves.size(); i++){
-	cout << "Row: " << availableMoves[i].first << "Column: " << availableMoves[i].second << endl;
+	cout << "Row: " << availableMoves[i].first << " Column: " << availableMoves[i].second << endl;
 }
 
 cout << availableMoves.size() << endl;

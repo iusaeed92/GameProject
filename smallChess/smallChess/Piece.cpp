@@ -97,9 +97,6 @@ int diagonalMoves(GameState instance, Piece currPiece, int direction){
 		localCoord.first = localCoord.first - 1;
 		localCoord.second = localCoord.second + 1;
 		
-	if(instance.getBoardConfig()[localCoord.first][localCoord.second] != "empty"){
-			return movesSoFar;
-		}
 	while(instance.getBoardConfig()[localCoord.first][localCoord.second] == "empty"){
 	
 			movesSoFar = movesSoFar+1;
@@ -118,14 +115,10 @@ int diagonalMoves(GameState instance, Piece currPiece, int direction){
 		return movesSoFar;
 	}
     
-    else {
-	if(direction == 2){
+    else if(direction == 2){
 		localCoord.first = localCoord.first - 1;
 		localCoord.second = localCoord.second - 1;
 		
-		if(instance.getBoardConfig()[localCoord.first][localCoord.second] != "empty"){
-			return movesSoFar;
-		}
 		while(instance.getBoardConfig()[localCoord.first][localCoord.second] == "empty"){
 	
 			movesSoFar = movesSoFar+1;
@@ -143,15 +136,10 @@ int diagonalMoves(GameState instance, Piece currPiece, int direction){
 		
 		return movesSoFar;
 	}
-    else{
-
-	if(direction == 3){
+    else if(direction == 3){
 		localCoord.first = localCoord.first+1;
 		localCoord.second = localCoord.second-1;
 		
-		if(instance.getBoardConfig()[localCoord.first][localCoord.second] != "empty"){
-			return movesSoFar;
-		}
 		while(instance.getBoardConfig()[localCoord.first][localCoord.second] == "empty"){
 	
 			movesSoFar = movesSoFar+1;
@@ -170,14 +158,10 @@ int diagonalMoves(GameState instance, Piece currPiece, int direction){
 		return movesSoFar;
 	}
     
-    else {
-	//if(direction == 4){
+    else if(direction == 4){
 		localCoord.first = localCoord.first+1;
 		localCoord.second = localCoord.second+1;
 		
-		if(instance.getBoardConfig()[localCoord.first][ localCoord.second] != "empty"){
-			return movesSoFar;
-		}
 		while(instance.getBoardConfig()[localCoord.first][ localCoord.second] == "empty"){
 	
 			movesSoFar = movesSoFar+1;
@@ -196,8 +180,6 @@ int diagonalMoves(GameState instance, Piece currPiece, int direction){
 		
 		return movesSoFar;
 	}
-    }
-}
 }
 
 //Function straightMoves
@@ -211,106 +193,72 @@ int straightMoves(GameState instance, Piece currPiece, int direction){
 	if(direction == 1){
 		localCoord.first = localCoord.first-1;
 		
-		if(instance.getBoardConfig()[localCoord.first][ localCoord.second] != "empty"){
-			return movesSoFar;
-		}
-		while(instance.getBoardConfig()[localCoord.first][ localCoord.second] == "empty"){
-	
+		while(instance.getBoardConfig()[localCoord.first][localCoord.second] == "empty"){
 			movesSoFar = movesSoFar+1;
 			localCoord.first = localCoord.first-1;
-			
 			}
-		if(instance.getBoardConfig()[localCoord.first][localCoord.second] != "outOfBounds"){
-			pair<int,int> test;
-			test = make_pair(localCoord.first, localCoord.second);
-		
-			if(currPiece.isSameColor(instance, test) == false)
-				movesSoFar =  movesSoFar+1;
 			
-		}
+		if(instance.getBoardConfig()[localCoord.first][localCoord.second] == "outOfBounds")
+			return movesSoFar;
+		
+		if(currPiece.isSameColor(instance, make_pair(localCoord.first, localCoord.second)) == false)
+			movesSoFar =  movesSoFar+1;
 		
 		return movesSoFar;
 	}
     
-    else {
-
-	if(direction == 2){
+    else if(direction == 2){
 		localCoord.first = localCoord.first+1;
 		
-		
-		if(instance.getBoardConfig()[localCoord.first][ localCoord.second] != "empty"){
-			return movesSoFar;
-		}
 		while(instance.getBoardConfig()[localCoord.first][ localCoord.second] == "empty"){
 			movesSoFar = movesSoFar+1;
 			localCoord.first = localCoord.first+1;
-			
 			}
-		if(instance.getBoardConfig()[localCoord.first][localCoord.second] != "outOfBounds"){
-			pair<int,int> test;
-			test = make_pair(localCoord.first, localCoord.second);
-		
-			if(currPiece.isSameColor(instance, test) == false)
-				movesSoFar =  movesSoFar+1;
 			
-		}
+		if(instance.getBoardConfig()[localCoord.first][localCoord.second] == "outOfBounds")
+			return movesSoFar;
 		
+		if(currPiece.isSameColor(instance, make_pair(localCoord.first, localCoord.second)) == false)
+			movesSoFar =  movesSoFar+1;
 		
 		return movesSoFar;
 	}
 
-    else {
-
-	if(direction == 3){
+    else if(direction == 3){
 		
 		localCoord.second = localCoord.second-1;
-		
-		if(instance.getBoardConfig()[localCoord.first][ localCoord.second] != "empty"){
-			return movesSoFar;
-		}
+
 		while(instance.getBoardConfig()[localCoord.first][ localCoord.second] == "empty"){
-	
 			movesSoFar = movesSoFar+1;
 			localCoord.second = localCoord.second-1;
 			}
-		if(instance.getBoardConfig()[localCoord.first][localCoord.second] != "outOfBounds"){
-			pair<int,int> test;
-			test = make_pair(localCoord.first, localCoord.second);
-		
-			if(currPiece.isSameColor(instance, test) == false)
-				movesSoFar =  movesSoFar+1;
 			
-		}
+		if(instance.getBoardConfig()[localCoord.first][localCoord.second] == "outOfBounds")
+			return movesSoFar;
 		
-		
+		if(currPiece.isSameColor(instance, make_pair(localCoord.first, localCoord.second)) == false)
+			movesSoFar =  movesSoFar+1;
+			
 		return movesSoFar;
 	}
-    else {
-	//if(direction == 4){
+
+    else if(direction == 4){
 		localCoord.second = localCoord.second+1;
 		
-		if(instance.getBoardConfig()[localCoord.first][ localCoord.second] != "empty"){
-			return movesSoFar;
-		}
 		while(instance.getBoardConfig()[localCoord.first][ localCoord.second] == "empty"){
 	
 			movesSoFar = movesSoFar+1;
-			
 			localCoord.second = localCoord.second+1;
 			}
-		if(instance.getBoardConfig()[localCoord.first][localCoord.second] != "outOfBounds"){
-			pair<int,int> test;
-			test = make_pair(localCoord.first, localCoord.second);
-		
-			if(currPiece.isSameColor(instance, test) == false)
-				movesSoFar =  movesSoFar+1;
 			
-		}
+		if(instance.getBoardConfig()[localCoord.first][localCoord.second] == "outOfBounds")
+			return movesSoFar;
 		
+		if(currPiece.isSameColor(instance, make_pair(localCoord.first, localCoord.second)) == false)
+			movesSoFar =  movesSoFar+1;
+
 		return movesSoFar;
 	}
-    }
-    }
 }
 
 
@@ -509,20 +457,20 @@ vector<pair<unsigned,unsigned> >  Rook::generatePossibleMoves (GameState current
 	int movesLeft = straightMoves(currentGameState, thisRook, 3);
 	int movesRight = straightMoves(currentGameState, thisRook, 4);
 	
-	for(int i = 0; movesUp; i++){
+	for(int i = 0; i<movesUp; i++){
 		localCoord.first = localCoord.first-1;
 		possibleRookMoves.push_back(make_pair(localCoord.first, localCoord.second));
 	}
 	
 	localCoord = pieceCoordinates;
-	for(int i = 0; movesDown; i++){
+	for(int i = 0; i<movesDown; i++){
 		
 		localCoord.first = localCoord.first+1;
 		possibleRookMoves.push_back(make_pair(localCoord.first, localCoord.second));
 	}
 	
 	localCoord = pieceCoordinates;
-	for(int i = 0; movesLeft; i++){
+	for(int i = 0; i<movesLeft; i++){
 		
 	
 		localCoord.second = localCoord.second-1;
@@ -530,7 +478,7 @@ vector<pair<unsigned,unsigned> >  Rook::generatePossibleMoves (GameState current
 	}
 	
 	localCoord = pieceCoordinates;
-	for(int i = 0; movesRight; i++){
+	for(int i = 0; i<movesRight; i++){
 		
 		
 		localCoord.second = localCoord.second+1;
@@ -564,14 +512,14 @@ vector<pair<unsigned,unsigned> >  Queen::generatePossibleMoves (GameState curren
 
 	
 	
-	for(int i = 0; movesDiagUpRight; i++){
+	for(int i = 0; i<movesDiagUpRight; i++){
 		localCoord.first = localCoord.first-1;
 		localCoord.second = localCoord.second+1;
 		possibleQueenMoves.push_back(make_pair(localCoord.first, localCoord.second));
 	}
 	
 	localCoord = pieceCoordinates;
-	for(int i = 0; movesDiagUpLeft; i++){
+	for(int i = 0; i<movesDiagUpLeft; i++){
 		
 		localCoord.first = localCoord.first-1;
 		localCoord.second = localCoord.second-1;
@@ -579,7 +527,7 @@ vector<pair<unsigned,unsigned> >  Queen::generatePossibleMoves (GameState curren
 	}
 	
 	localCoord = pieceCoordinates;
-	for(int i = 0; movesDiagDownLeft; i++){
+	for(int i = 0; i<movesDiagDownLeft; i++){
 		
 		localCoord.first = localCoord.first+1;
 		localCoord.second = localCoord.second-1;
@@ -587,28 +535,28 @@ vector<pair<unsigned,unsigned> >  Queen::generatePossibleMoves (GameState curren
 	}
 	
 	localCoord = pieceCoordinates;
-	for(int i = 0; movesDiagDownRight; i++){
+	for(int i = 0; i<movesDiagDownRight; i++){
 		
 		localCoord.first = localCoord.first+1;
 		localCoord.second = localCoord.second+1;
 		possibleQueenMoves.push_back(make_pair(localCoord.first, localCoord.second));
 	}
 	
-	
-	for(int i = 0; movesUp; i++){
+	localCoord = pieceCoordinates;
+	for(int i = 0; i<movesUp; i++){
 		localCoord.first = localCoord.first-1;
 		possibleQueenMoves.push_back(make_pair(localCoord.first, localCoord.second));
 	}
 	
 	localCoord = pieceCoordinates;
-	for(int i = 0; movesDown; i++){
+	for(int i = 0; i<movesDown; i++){
 		
 		localCoord.first = localCoord.first+1;
 		possibleQueenMoves.push_back(make_pair(localCoord.first, localCoord.second));
 	}
 	
 	localCoord = pieceCoordinates;
-	for(int i = 0; movesLeft; i++){
+	for(int i = 0; i<movesLeft; i++){
 		
 	
 		localCoord.second = localCoord.second-1;
@@ -616,7 +564,7 @@ vector<pair<unsigned,unsigned> >  Queen::generatePossibleMoves (GameState curren
 	}
 	
 	localCoord = pieceCoordinates;
-	for(int i = 0; movesRight; i++){
+	for(int i = 0; i<movesRight; i++){
 		
 		
 		localCoord.second = localCoord.second+1;
@@ -650,30 +598,44 @@ vector<pair<unsigned,unsigned> >  King::generatePossibleMoves (GameState current
 		possibleKingMoves.push_back(make_pair(localCoord.first+1, localCoord.second));
 		}
 		
-		//check left diagonal(forward) 
-	if(currentGameState.getBoardConfig()[localCoord.first-1][localCoord.second+1] != "empty" 
-		&& thisKing.isSameColor(currentGameState, make_pair(localCoord.first-1,localCoord.second+1)) == false){
+		//check if space left is empty
+	if(currentGameState.getBoardConfig()[localCoord.first][localCoord.second-1] == "empty" 
+		|| thisKing.isSameColor(currentGameState, make_pair(localCoord.first,localCoord.second-1)) == false){
+		
+		possibleKingMoves.push_back(make_pair(localCoord.first, localCoord.second-1));
+		}
+		
+		//check if space right is empty
+	if(currentGameState.getBoardConfig()[localCoord.first][localCoord.second+1] == "empty" 
+		|| thisKing.isSameColor(currentGameState, make_pair(localCoord.first,localCoord.second+1)) == false){
+		
+		possibleKingMoves.push_back(make_pair(localCoord.first, localCoord.second+1));
+		}
+		
+		//check right diagonal(forward) 
+	if(currentGameState.getBoardConfig()[localCoord.first-1][localCoord.second+1] == "empty" 
+		|| thisKing.isSameColor(currentGameState, make_pair(localCoord.first-1,localCoord.second+1)) == false){
 	
 		possibleKingMoves.push_back(make_pair(localCoord.first-1, localCoord.second+1));
 		}
 		
 		//check left diagonal(foward)
-	if(currentGameState.getBoardConfig()[localCoord.first-1][localCoord.second-1] != "empty"
-		&& thisKing.isSameColor(currentGameState, make_pair(localCoord.first-1,localCoord.second+1)) == false){
+	if(currentGameState.getBoardConfig()[localCoord.first-1][localCoord.second-1] == "empty"
+		|| thisKing.isSameColor(currentGameState, make_pair(localCoord.first-1,localCoord.second-1)) == false){
 	
 		possibleKingMoves.push_back(make_pair(localCoord.first-1, localCoord.second-1));
 		}
 		
 		//check back left diagonal
-	if(currentGameState.getBoardConfig()[localCoord.first+1][localCoord.second-1] != "empty"
-		&& thisKing.isSameColor(currentGameState, make_pair(localCoord.first+1,localCoord.second-1)) == false){
+	if(currentGameState.getBoardConfig()[localCoord.first+1][localCoord.second-1] == "empty"
+		|| thisKing.isSameColor(currentGameState, make_pair(localCoord.first+1,localCoord.second-1)) == false){
 	
 		possibleKingMoves.push_back(make_pair(localCoord.first+1, localCoord.second-1));
 		}
 	
 		//check back right diagonal
-	if(currentGameState.getBoardConfig()[localCoord.first+1][localCoord.second+1] != "empty"
-		&& thisKing.isSameColor(currentGameState, make_pair(localCoord.first+1,localCoord.second+1)) == false){
+	if(currentGameState.getBoardConfig()[localCoord.first+1][localCoord.second+1] == "empty"
+		|| thisKing.isSameColor(currentGameState, make_pair(localCoord.first+1,localCoord.second+1)) == false){
 	
 		possibleKingMoves.push_back(make_pair(localCoord.first+1, localCoord.second+1));
 		}
