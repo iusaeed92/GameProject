@@ -14,8 +14,9 @@ int main()
     vector< Piece > whitePieces;
     vector< Piece > blackPieces;
     
-    
-    ///Resizing the 2D vector
+    ////
+    ////Initialization and sizing of the 2D vector
+	////
     
     initialBoard.resize(8);
     for(int i = 0; i<8; i++){
@@ -163,102 +164,102 @@ int main()
 		rowWP1 = 2;
 		columnWP1 = 1;
 		whitePawn1.setPieceCoordinates(rowWP1, columnWP1);
-		initialBoard[rowWP1][columnWP1] = "wp";
+		initialBoard[rowWP1][columnWP1] = "WP";
 		
 		rowWP2 = 2;
 		columnWP2 = 2;
 		whitePawn2.setPieceCoordinates(rowWP2, columnWP2);
-		initialBoard[rowWP2][columnWP2] = "wp";
+		initialBoard[rowWP2][columnWP2] = "WP";
 		
 		rowWP3 = 2;
 		columnWP3 = 3;
 		whitePawn3.setPieceCoordinates(rowWP3, columnWP3);
-		initialBoard[rowWP3][columnWP3] = "wp";
+		initialBoard[rowWP3][columnWP3] = "WP";
 		
 		rowWP4 = 2;
 		columnWP4 = 4;
 		whitePawn4.setPieceCoordinates(rowWP4, columnWP4);
-		initialBoard[rowWP4][columnWP4] = "wp";
+		initialBoard[rowWP4][columnWP4] = "WP";
 		
 		rowWP5 = 2;
 		columnWP5 = 5;
 		whitePawn5.setPieceCoordinates(rowWP5, columnWP5);
-		initialBoard[rowWP5][columnWP5] = "wp";
+		initialBoard[rowWP5][columnWP5] = "WP";
 		
 		rowWR = 1;
 		columnWR = 1;
 		whiteRook.setPieceCoordinates(rowWR, columnWR);
-		initialBoard[rowWR][columnWR] = "wr";
+		initialBoard[rowWR][columnWR] = "WR";
 		
 		rowWB = 1;
 		columnWB = 2;
 		whiteBishop.setPieceCoordinates(rowWB, columnWB);
-		initialBoard[rowWB][columnWB] = "wb";
+		initialBoard[rowWB][columnWB] = "WB";
 		
 		rowWK = 1;
 		columnWK = 3;
 		whiteKing.setPieceCoordinates(rowWK, columnWK);
-		initialBoard[rowWK][columnWK] = "wk";
+		initialBoard[rowWK][columnWK] = "WK";
 		
 		rowWQ = 1;
 		columnWQ = 4;
 		whiteQueen.setPieceCoordinates(rowWQ, columnWQ);
-		initialBoard[rowWQ][columnWQ] = "wq";
+		initialBoard[rowWQ][columnWQ] = "WQ";
 		
 		rowWN = 1;
 		columnWN = 5;
 		whiteKnight.setPieceCoordinates(rowWN, columnWN);
-		initialBoard[rowWN][columnWN] = "wn";
+		initialBoard[rowWN][columnWN] = "WN";
 		
 		rowBP1 = 5;
 		columnBP1 = 1;
 		blackPawn1.setPieceCoordinates(rowBP1, columnBP1);
-		initialBoard[rowBP1][columnBP1] = "Bp";
+		initialBoard[rowBP1][columnBP1] = "BP";
 		
 		rowBP2 = 5;
 		columnBP2 = 2;
 		blackPawn2.setPieceCoordinates(rowBP2, columnBP2);
-		initialBoard[rowBP2][columnBP2] = "Bp";
+		initialBoard[rowBP2][columnBP2] = "BP";
 		
 		rowBP3 = 5;
 		columnBP3 = 3;
 		blackPawn3.setPieceCoordinates(rowBP3, columnBP3);
-		initialBoard[rowBP3][columnBP3] = "Bp";
+		initialBoard[rowBP3][columnBP3] = "BP";
 		
 		rowBP4 = 5;
 		columnBP4 = 4;
 		blackPawn4.setPieceCoordinates(rowBP4, columnBP4);
-		initialBoard[rowBP4][columnBP4] = "Bp";
+		initialBoard[rowBP4][columnBP4] = "BP";
 		
 		rowBP5 = 5;
 		columnBP5 = 5;
 		blackPawn5.setPieceCoordinates(rowBP5, columnBP5);
-		initialBoard[rowBP5][columnBP5] = "Bp";
+		initialBoard[rowBP5][columnBP5] = "BP";
 		
 		rowBR = 6;
 		columnBR = 1;
 		blackRook.setPieceCoordinates(rowBR, columnBR);
-		initialBoard[rowBR][columnBR] = "Br";
+		initialBoard[rowBR][columnBR] = "BR";
 		
 		rowBB = 6;
 		columnBB = 2;
 		blackBishop.setPieceCoordinates(rowBB, columnBB);
-		initialBoard[rowBB][columnBB] = "Bb";
+		initialBoard[rowBB][columnBB] = "BB";
 		
 		rowBK = 6;
 		columnBK = 3;
 		blackKing.setPieceCoordinates(rowBK, columnBK);
-		initialBoard[rowBK][columnBK] = "Bk";
+		initialBoard[rowBK][columnBK] = "BK";
 		
 		rowBQ = 6;
 		columnBQ = 4;
 		blackQueen.setPieceCoordinates(rowBQ, columnBQ);
-		initialBoard[rowBQ][columnBQ] = "Bq";
+		initialBoard[rowBQ][columnBQ] = "BQ";
 		
 		rowBN = 6;
 		columnBN = 5;
 		blackKnight.setPieceCoordinates(rowBN, columnBN);
-		initialBoard[rowBN][columnBN] = "Bn";
+		initialBoard[rowBN][columnBN] = "BN";
 	}
 	
 	
@@ -432,12 +433,43 @@ int main()
     
 	
 	
+////
+////Initial Questions
+////
+	string programColor;
+	cout << "Which color will the program be playing? (white/black)" << endl;
+	cin >> programColor;
+	
+	string firstMoveColor;
+	cout << "Which color has the first move? (white/black)" << endl;
+	cin >> firstMoveColor;
+	
+	int stalemateMoves;
+	cout << "How many previous moves have been made without there being either a capture, a rescue, or a promotion?" << endl;
+	cin >> stalemateMoves;
+	
+	double moveTime;
+	cout << "How much time is allowed for a program move? (0.0 < t <= 240.0)" << endl;
+	cin >> moveTime;
+
+
+////
+////Negamax Search
+////
+
+// priority queue for worklist/closed node list
+
+
+
+	
 //// setting the members of initialGame
 	initialGame.setBoardConfig(initialBoard);
 	initialGame.setBlack(blackPieces);
 	initialGame.setWhite(whitePieces);
 	
 	initialGame.print();
+	
+	
     
     return 0;
 }

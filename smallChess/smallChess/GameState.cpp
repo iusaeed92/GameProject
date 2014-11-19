@@ -40,7 +40,7 @@ void GameState::print(){
         cout << " | ";
         for (int j = 1; j < 6; j++) {
 			if(boardConfig[i][j] == "empty"){
-				cout << "--" << " | ";
+				cout << "  " << " | ";
 			}
 			else{
 				cout << boardConfig[i][j] << " | ";
