@@ -215,8 +215,8 @@ int main()
 		whiteQueen.setPieceColor("White");
 		initialBoard[rowWQ][columnWQ] = "WQ";
 		
-		rowWN = 6;
-		columnWN = 5;
+		rowWN = 3;
+		columnWN = 4;
 		whiteKnight.setPieceCoordinates(rowWN, columnWN);
 		whiteKnight.setPieceColor("White");
 		initialBoard[rowWN][columnWN] = "WN";
@@ -293,7 +293,7 @@ int main()
     columnWP1 = letterWP1 - 96;
     whitePawn1.setPieceCoordinates(rowWP1, columnWP1);
     whitePieces.push_back(whitePawn1);
-    initialBoard[rowWP1][columnWP1] = "whitePawn";
+    initialBoard[rowWP1][columnWP1] = "WP";
     
     cout << "Input the position of white pawn (2). First enter the row (1-6). Then the column(a-e):" << endl;
     cin >> rowWP2;
@@ -301,7 +301,7 @@ int main()
     columnWP2 = letterWP2 - 96;
     whitePawn2.setPieceCoordinates(rowWP2, columnWP2);
     whitePieces.push_back(whitePawn2);
-    initialBoard[rowWP2][columnWP2] = "whitePawn";
+    initialBoard[rowWP2][columnWP2] = "WP";
     
     cout << "Input the position of white pawn (3). First enter the row (1-6). Then the column(a-e):" << endl;
     cin >> rowWP3;
@@ -309,7 +309,7 @@ int main()
     columnWP3 = letterWP3 - 96;
     whitePawn3.setPieceCoordinates(rowWP3, columnWP3);
     whitePieces.push_back(whitePawn3);
-    initialBoard[rowWP3][columnWP3] = "whitePawn";
+    initialBoard[rowWP3][columnWP3] = "WP";
     
     cout << "Input the position of white pawn (4). First enter the row (1-6). Then the column(a-e):" << endl;
     cin >> rowWP4;
@@ -317,7 +317,7 @@ int main()
     columnWP4 = letterWP4 - 96;
     whitePawn4.setPieceCoordinates(rowWP4, columnWP4);
     whitePieces.push_back(whitePawn4);
-    initialBoard[rowWP4][columnWP4] = "whitePawn";
+    initialBoard[rowWP4][columnWP4] = "WP";
     
     cout << "Input the position of white pawn (5). First enter the row (1-6). Then the column(a-e):" << endl;
     cin >> rowWP5;
@@ -325,7 +325,7 @@ int main()
     columnWP5 = letterWP5 - 96;
     whitePawn5.setPieceCoordinates(rowWP5, columnWP5);
     whitePieces.push_back(whitePawn5);
-    initialBoard[rowWP5][columnWP5] = "whitePawn";
+    initialBoard[rowWP5][columnWP5] = "WP";
     
     cout << "Input the position of white rook. First enter the row (1-6). Then the column(a-e):" << endl;
     cin >> rowWR;
@@ -333,7 +333,7 @@ int main()
     columnWR = letterWR - 96;
     whiteRook.setPieceCoordinates(rowWR, columnWR);
     whitePieces.push_back(whiteRook);
-    initialBoard[rowWR][columnWR] = "whiteRook";
+    initialBoard[rowWR][columnWR] = "WR";
     
     cout << "Input the position of white knight. First enter the row (1-6). Then the column(a-e):" << endl;
     cin >> rowWN;
@@ -341,7 +341,7 @@ int main()
     columnWN = letterWN - 96;
     whiteKnight.setPieceCoordinates(rowWN, columnWN);
     whitePieces.push_back(whiteKnight);
-    initialBoard[rowWN][columnWN] = "whiteKnight";
+    initialBoard[rowWN][columnWN] = "WN";
     
     cout << "Input the position of white bishop. First enter the row (1-6). Then the column(a-e):" << endl;
     cin >> rowWB;
@@ -349,7 +349,7 @@ int main()
     columnWB = letterWB - 96;
     whiteBishop.setPieceCoordinates(rowWB, columnWB);
     whitePieces.push_back(whiteBishop);
-    initialBoard[rowWB][columnWB] = "whiteBishop";
+    initialBoard[rowWB][columnWB] = "WB";
     
     cout << "Input the position of white queen. First enter the row (1-6). Then the column(a-e):" << endl;
     cin >> rowWQ;
@@ -357,7 +357,7 @@ int main()
     columnWQ = letterWQ - 96;
     whiteQueen.setPieceCoordinates(rowWQ, columnWQ);
     whitePieces.push_back(whiteQueen);
-    initialBoard[rowWQ][columnWQ] = "whiteQueen";
+    initialBoard[rowWQ][columnWQ] = "WQ";
     
     cout << "Input the position of white king. First enter the row (1-6). Then the column(a-e):" << endl;
     cin >> rowWK;
@@ -365,7 +365,7 @@ int main()
     columnWK = letterWK - 96;
     whiteKing.setPieceCoordinates(rowWK, columnWK);
     whitePieces.push_back(whiteKing);
-    initialBoard[rowWK][columnWK] = "whiteKing";
+    initialBoard[rowWK][columnWK] = "WK";
     
     ////
     ////Black Pieces
@@ -375,80 +375,90 @@ int main()
     cin >> letterBP1;
     columnBP1 = letterBP1 - 96;
     blackPawn1.setPieceCoordinates(rowBP1, columnBP1);
+	blackPawn1.setPieceColor("Black");
     blackPieces.push_back(blackPawn1);
-    initialBoard[rowBP1][columnBP1] = "blackPawn";
+    initialBoard[rowBP1][columnBP1] = "BP";
     
     cout << "Input the position of black pawn (2). First enter the row (1-6). Then the column(a-e):" << endl;
     cin >> rowBP2;
     cin >> letterBP2;
     columnBP2 = letterBP2 - 96;
     blackPawn2.setPieceCoordinates(rowBP2, columnBP2);
+	blackPawn2.setPieceColor("Black");
     blackPieces.push_back(blackPawn2);
-    initialBoard[rowBP2][columnBP2] = "blackPawn";
+    initialBoard[rowBP2][columnBP2] = "BP";
     
     cout << "Input the position of black pawn (3). First enter the row (1-6). Then the column(a-e):" << endl;
     cin >> rowBP3;
     cin >> letterBP3;
     columnBP3 = letterBP3 - 96;
     blackPawn3.setPieceCoordinates(rowBP3, columnBP3);
+	blackPawn3.setPieceColor("Black");
     blackPieces.push_back(blackPawn3);
-    initialBoard[rowBP3][columnBP3] = "blackPawn";
+    initialBoard[rowBP3][columnBP3] = "BP";
     
     cout << "Input the position of black pawn (4). First enter the row (1-6). Then the column(a-e):" << endl;
     cin >> rowBP4;
     cin >> letterBP4;
     columnBP4 = letterBP4 - 96;
     blackPawn4.setPieceCoordinates(rowBP4, columnBP4);
+	blackPawn4.setPieceColor("Black");
     blackPieces.push_back(blackPawn4);
-    initialBoard[rowBP4][columnBP4] = "blackPawn";
+    initialBoard[rowBP4][columnBP4] = "BP";
     
     cout << "Input the position of black pawn (5). First enter the row (1-6). Then the column(a-e):" << endl;
     cin >> rowBP5;
     cin >> letterBP5;
     columnBP5 = letterBP5 - 96;
     blackPawn5.setPieceCoordinates(rowBP5, columnBP5);
+	blackPawn5.setPieceColor("Black");
     blackPieces.push_back(blackPawn5);
-    initialBoard[rowBP5][columnBP5] = "blackPawn";
+    initialBoard[rowBP5][columnBP5] = "BP";
     
     cout << "Input the position of black rook. First enter the row (1-6). Then the column(a-e):" << endl;
     cin >> rowBR;
     cin >> letterBR;
     columnBR = letterBR - 96;
     blackRook.setPieceCoordinates(rowBR, columnBR);
+	blackRook.setPieceColor("Black");
     blackPieces.push_back(blackRook);
-    initialBoard[rowBR][columnBR] = "blackRook";
+    initialBoard[rowBR][columnBR] = "BR";
     
     cout << "Input the position of black knight. First enter the row (1-6). Then the column(a-e):" << endl;
     cin >> rowBN;
     cin >> letterBN;
     columnBN = letterBN - 96;
     blackKnight.setPieceCoordinates(rowBN, columnBN);
+	blackKnight.setPieceColor("Black");
     blackPieces.push_back(blackKnight);
-    initialBoard[rowBN][columnBN] = "blackKnight";
+    initialBoard[rowBN][columnBN] = "BN";
     
     cout << "Input the position of black bishop. First enter the row (1-6). Then the column(a-e):" << endl;
     cin >> rowBB;
     cin >> letterBB;
     columnBB = letterBB - 96;
     blackBishop.setPieceCoordinates(rowBB, columnBB);
+	blackBishop.setPieceColor("Black");
     blackPieces.push_back(blackBishop);
-    initialBoard[rowBB][columnBB] = "blackBishop";
+    initialBoard[rowBB][columnBB] = "BB";
     
     cout << "Input the position of black queen. First enter the row (1-6). Then the column(a-e):" << endl;
     cin >> rowBQ;
     cin >> letterBQ;
     columnBQ = letterBQ - 96;
     blackQueen.setPieceCoordinates(rowBQ, columnBQ);
+	blackQueen.setPieceColor("Black");
     blackPieces.push_back(blackQueen);
-    initialBoard[rowBQ][columnBQ] = "blackQueen";
+    initialBoard[rowBQ][columnBQ] = "BQ";
     
-    cout << "Input the position of black king. First enter the row (1-6). Then the column(a-e):" << endl;
-    cin >> rowBK;
-    cin >> letterBK;
-    columnBK = letterBK - 96;
-    blackKing.setPieceCoordinates(rowBK, columnBK);
+	cout << "Input the position of black king. First enter the row (1-6). Then the column(a-e):" << endl;
+	cin >> rowBK;
+	cin >> letterBK;
+	columnBK = letterBK - 96;
+	blackKing.setPieceCoordinates(rowBK, columnBK);
+	blackKing.setPieceColor("Black");
     blackPieces.push_back(blackKing);
-    initialBoard[rowBK][columnBK]="blackKing";
+    initialBoard[rowBK][columnBK]="BK";
 	}
     
 	
@@ -480,7 +490,7 @@ int main()
 	initialGame.setWhite(whitePieces);
 
 vector<pair<unsigned,unsigned> > availableMoves;
-availableMoves = whiteBishop.generatePossibleMoves(initialGame);
+availableMoves = whiteKnight.generatePossibleMoves(initialGame);
 
 for(unsigned i=0; i<availableMoves.size(); i++){
 	cout << "Row: " << availableMoves[i].first << "Column: " << availableMoves[i].second << endl;
@@ -493,6 +503,8 @@ cout << availableMoves.size() << endl;
 ////
 
 // priority queue for worklist/closed node list
+
+
 
 	
 	

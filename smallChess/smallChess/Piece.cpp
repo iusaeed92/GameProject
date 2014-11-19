@@ -385,7 +385,7 @@ vector<pair<unsigned,unsigned> >  Bishop::generatePossibleMoves (GameState curre
 	int movesDiagDownLeft = diagonalMoves(currentGameState, thisBishop, 3);
 	int movesDiagDownRight = diagonalMoves(currentGameState, thisBishop, 4);
 	
-	for(int i = 0; movesDiagUpRight; i++){
+	for(int i = 0; i<movesDiagUpRight; i++){
 		localCoord.first = localCoord.first-1;
 		localCoord.second = localCoord.second+1;
 		pair<int, int> temp;
@@ -394,7 +394,7 @@ vector<pair<unsigned,unsigned> >  Bishop::generatePossibleMoves (GameState curre
 	}
 	
 	localCoord = pieceCoordinates;
-	for(int i = 0; movesDiagUpLeft; i++){
+	for(int i = 0; i<movesDiagUpLeft; i++){
 		
 		localCoord.first = localCoord.first-1;
 		localCoord.second = localCoord.second-1;
@@ -404,7 +404,7 @@ vector<pair<unsigned,unsigned> >  Bishop::generatePossibleMoves (GameState curre
 	}
 	
 	localCoord = pieceCoordinates;
-	for(int i = 0; movesDiagDownLeft; i++){
+	for(int i = 0; i<movesDiagDownLeft; i++){
 		
 		localCoord.first = localCoord.first+1;
 		localCoord.second = localCoord.second-1;
@@ -414,7 +414,7 @@ vector<pair<unsigned,unsigned> >  Bishop::generatePossibleMoves (GameState curre
 	}
 	
 	localCoord = pieceCoordinates;
-	for(int i = 0; movesDiagDownRight; i++){
+	for(int i = 0; i<movesDiagDownRight; i++){
 		
 		localCoord.first = localCoord.first+1;
 		localCoord.second = localCoord.second+1;
@@ -459,11 +459,11 @@ vector<pair<unsigned,unsigned> >  Knight::generatePossibleMoves (GameState curre
 		possibleKnightMoves.push_back(make_pair(localCoord.first-1, localCoord.second-2));
 		}
 	
-	//-1, -2
-	if(currentGameState.getBoardConfig()[localCoord.first-1][localCoord.second-2] == "empty"
-		|| thisKnight.isSameColor(currentGameState, make_pair(localCoord.first-1,localCoord.second-2)) == false){
+	//+1, -2
+	if(currentGameState.getBoardConfig()[localCoord.first+1][localCoord.second-2] == "empty"
+		|| thisKnight.isSameColor(currentGameState, make_pair(localCoord.first+1,localCoord.second-2)) == false){
 		
-		possibleKnightMoves.push_back(make_pair(localCoord.first-1, localCoord.second-2));
+		possibleKnightMoves.push_back(make_pair(localCoord.first+1, localCoord.second-2));
 		}
 	
 	//+2, +1
