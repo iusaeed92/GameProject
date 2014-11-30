@@ -53,3 +53,24 @@ void GameState::print(){
         cout << endl;
     }
 }
+
+int GameState::whiteHeuristicValue(){
+	int heuristicValue = 0;
+	
+	for(int i = 0; i < white.size(); i++){
+		heuristicValue = white[i].getPieceWeight() + heuristicValue;
+	}
+	
+	return heuristicValue;
+}
+
+int GameState::blackHeuristicValue(){
+	int heuristicValue = 0;
+	
+	for(int i = 0; i < black.size(); i++){
+		heuristicValue = black[i].getPieceWeight() + heuristicValue;
+	}
+	
+	return heuristicValue;
+}
+

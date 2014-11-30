@@ -42,6 +42,8 @@ public:
 	vector <Piece> getBlack();
 	vector<vector<string> > getBoardConfig();
 	void print();
+	int whiteHeuristicValue();
+	int blackHeuristicValue();
 };
 
 #endif

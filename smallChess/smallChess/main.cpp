@@ -1,10 +1,31 @@
 #include <iostream>
 #include <vector>
 #include <string>
+#include <queue>
+#include <utility>
 #include "Piece.h"
 #include "GameState.h"
 
 using namespace std;
+
+
+void movePiece(GameState &currState, string programColor, pair <int, int> starting, pair<int, int> ending){
+	for(unsigned i = 0; i < currState.getWhite().size(); i++){
+		if(currState.getWhite()[i].getPieceCoordinates().first == starting.first &&
+		currState.getWhite()[i].getPieceCoordinates().second == starting.second){
+			currState.getWhite()[i].setPieceCoordinates(ending.first, ending.second);
+		}
+	}
+	
+	vector< vector< string > > temp = currState.getBoardConfig();
+	temp[ending.first][ending.second]=currState.getBoardConfig()[starting.first][starting.second];
+	temp[starting.first][starting.second] = "empty";
+	currState.setBoardConfig(temp);
+	
+}
+
+
+
 
 int main()
 {
@@ -165,120 +186,160 @@ int main()
 		columnWP1 = 1;
 		whitePawn1.setPieceCoordinates(rowWP1, columnWP1);
 		whitePawn1.setPieceColor("White");
+		whitePawn1.setPieceWeight(1);
+		whitePieces.push_back(whitePawn1);
 		initialBoard[rowWP1][columnWP1] = "WP";
 		
 		rowWP2 = 5;
 		columnWP2 = 2;
 		whitePawn2.setPieceCoordinates(rowWP2, columnWP2);
 		whitePawn2.setPieceColor("White");
+		whitePawn2.setPieceWeight(1);
+		whitePieces.push_back(whitePawn2);
 		initialBoard[rowWP2][columnWP2] = "WP";
 		
 		rowWP3 = 5;
 		columnWP3 = 3;
 		whitePawn3.setPieceCoordinates(rowWP3, columnWP3);
 		whitePawn3.setPieceColor("White");
+		whitePawn3.setPieceWeight(1);
+		whitePieces.push_back(whitePawn3);
 		initialBoard[rowWP3][columnWP3] = "WP";
 		
 		rowWP4 = 5;
 		columnWP4 = 4;
 		whitePawn4.setPieceCoordinates(rowWP4, columnWP4);
 		whitePawn4.setPieceColor("White");
+		whitePawn4.setPieceWeight(1);
+		whitePieces.push_back(whitePawn4);
 		initialBoard[rowWP4][columnWP4] = "WP";
 		
 		rowWP5 = 5;
 		columnWP5 = 5;
 		whitePawn5.setPieceCoordinates(rowWP5, columnWP5);
 		whitePawn5.setPieceColor("White");
+		whitePawn5.setPieceWeight(1);
+		whitePieces.push_back(whitePawn5);
 		initialBoard[rowWP5][columnWP5] = "WP";
 		
 		rowWR = 6;
 		columnWR = 1;
 		whiteRook.setPieceCoordinates(rowWR, columnWR);
 		whiteRook.setPieceColor("White");
+		whiteRook.setPieceWeight(5);
+		whitePieces.push_back(whiteRook);
 		initialBoard[rowWR][columnWR] = "WR";
 		
 		rowWB = 6;
 		columnWB = 2;
 		whiteBishop.setPieceCoordinates(rowWB, columnWB);
 		whiteBishop.setPieceColor("White");
+		whiteBishop.setPieceWeight(3);
+		whitePieces.push_back(whiteBishop);
 		initialBoard[rowWB][columnWB] = "WB";
 		
-		rowWK = 4;
+		rowWK = 6;
 		columnWK = 3;
 		whiteKing.setPieceCoordinates(rowWK, columnWK);
 		whiteKing.setPieceColor("White");
+		whiteKing.setPieceWeight(10);
+		whitePieces.push_back(whiteKing);
 		initialBoard[rowWK][columnWK] = "WK";
 		
 		rowWQ = 6;
 		columnWQ = 4;
 		whiteQueen.setPieceCoordinates(rowWQ, columnWQ);
 		whiteQueen.setPieceColor("White");
+		whiteQueen.setPieceWeight(9);
+		whitePieces.push_back(whiteQueen);
 		initialBoard[rowWQ][columnWQ] = "WQ";
 		
 		rowWN = 6;
 		columnWN = 5;
 		whiteKnight.setPieceCoordinates(rowWN, columnWN);
 		whiteKnight.setPieceColor("White");
+		whiteKnight.setPieceWeight(3);
+		whitePieces.push_back(whiteKnight);
 		initialBoard[rowWN][columnWN] = "WN";
 		
 		rowBP1 = 2;
 		columnBP1 = 1;
 		blackPawn1.setPieceCoordinates(rowBP1, columnBP1);
 		blackPawn1.setPieceColor("Black");
+		blackPawn1.setPieceWeight(1);
+		blackPieces.push_back(blackPawn1);
 		initialBoard[rowBP1][columnBP1] = "BP";
 		
 		rowBP2 = 2;
 		columnBP2 = 2;
 		blackPawn2.setPieceCoordinates(rowBP2, columnBP2);
 		blackPawn2.setPieceColor("Black");
+		blackPawn2.setPieceWeight(1);
+		blackPieces.push_back(blackPawn2);
 		initialBoard[rowBP2][columnBP2] = "BP";
 		
 		rowBP3 = 2;
 		columnBP3 = 3;
 		blackPawn3.setPieceCoordinates(rowBP3, columnBP3);
 		blackPawn3.setPieceColor("Black");
+		blackPawn3.setPieceWeight(1);
+		blackPieces.push_back(blackPawn3);
 		initialBoard[rowBP3][columnBP3] = "BP";
 		
 		rowBP4 = 2;
 		columnBP4 = 4;
 		blackPawn4.setPieceCoordinates(rowBP4, columnBP4);
 		blackPawn4.setPieceColor("Black");
+		blackPawn4.setPieceWeight(1);
+		blackPieces.push_back(blackPawn4);
 		initialBoard[rowBP4][columnBP4] = "BP";
 		
 		rowBP5 = 2;
 		columnBP5 = 5;
 		blackPawn5.setPieceCoordinates(rowBP5, columnBP5);
 		blackPawn5.setPieceColor("Black");
+		blackPawn5.setPieceWeight(1);
+		blackPieces.push_back(blackPawn5);
 		initialBoard[rowBP5][columnBP5] = "BP";
 		
 		rowBR = 1;
 		columnBR = 1;
 		blackRook.setPieceCoordinates(rowBR, columnBR);
 		blackRook.setPieceColor("Black");
+		blackRook.setPieceWeight(5);
+		blackPieces.push_back(blackRook);
 		initialBoard[rowBR][columnBR] = "BR";
 		
 		rowBB = 1;
 		columnBB = 2;
 		blackBishop.setPieceCoordinates(rowBB, columnBB);
 		blackBishop.setPieceColor("Black");
+		blackBishop.setPieceWeight(3);
+		blackPieces.push_back(blackBishop);
 		initialBoard[rowBB][columnBB] = "BB";
 		
 		rowBK = 1;
 		columnBK = 3;
 		blackKing.setPieceCoordinates(rowBK, columnBK);
 		blackKing.setPieceColor("Black");
+		blackKing.setPieceWeight(10);
+		blackPieces.push_back(blackKing);
 		initialBoard[rowBK][columnBK] = "BK";
 		
 		rowBQ = 1;
 		columnBQ = 4;
 		blackQueen.setPieceCoordinates(rowBQ, columnBQ);
 		blackQueen.setPieceColor("Black");
+		blackQueen.setPieceWeight(9);
+		blackPieces.push_back(blackQueen);
 		initialBoard[rowBQ][columnBQ] = "BQ";
 		
 		rowBN = 1;
 		columnBN = 5;
 		blackKnight.setPieceCoordinates(rowBN, columnBN);
 		blackKnight.setPieceColor("Black");
+		blackKnight.setPieceWeight(3);
+		blackPieces.push_back(blackKnight);
 		initialBoard[rowBN][columnBN] = "BN";
 	}
 	
@@ -464,7 +525,7 @@ int main()
 	
 	
 ////
-////Initial Questions
+////Initial Questions and variable declarations
 ////
 	string programColor;
 	cout << "Which color will the program be playing? (white/black)" << endl;
@@ -488,29 +549,91 @@ int main()
 	initialGame.setBoardConfig(initialBoard);
 	initialGame.setBlack(blackPieces);
 	initialGame.setWhite(whitePieces);
-
-vector<pair<unsigned,unsigned> > availableMoves;
-availableMoves = whiteKing.generatePossibleMoves(initialGame);
-
-for(unsigned i=0; i<availableMoves.size(); i++){
-	cout << "Row: " << availableMoves[i].first << " Column: " << availableMoves[i].second << endl;
-}
-
-cout << availableMoves.size() << endl;
-
-////
-////Negamax Search
-////
-
-// priority queue for worklist/closed node list
-
-
-
 	
+	
+////
+////Testing code for "generatePossibleMoves functions
+////
+	vector<pair<unsigned,unsigned> > availableMoves;
+	availableMoves = whiteKing.generatePossibleMoves(initialGame);
+
+	for(unsigned i=0; i<availableMoves.size(); i++){
+		cout << "Row: " << availableMoves[i].first << " Column: " << availableMoves[i].second << endl;
+	}
+
+	cout << "Number of Moves for x piece: " << availableMoves.size() << endl;
+	
+	
+	cout << "Black weight heuristic: " << initialGame.blackHeuristicValue() << endl;
+	cout << "White weight heuristic: " << initialGame.whiteHeuristicValue() << endl;
 	
 	initialGame.print();
 	
 	
+	
+	
+	
+	
+	
+	
+	
+	
+////
+////Negamax Search and game simulation
+////On the programs turn: the negamax function runs and a move is choosen.
+//// This move is then made and the board is updated.
+////
+////On the programs turn: the operator inputs the move.
+//// If the move is legal, it is made and the board is updated.
+//// Otherwise, the program will ask for a legal move (the illegal move is discarded).
+////
+
+// priority queue for worklist/closed node list
+	priority_queue <int> worklist;
+	
+	
+	string currentMoveColor = firstMoveColor;
+	
+	bool gameOver = false;
+	while(gameOver == false){
+		//Program has the current move
+		if(currentMoveColor==programColor){
+			//search for move and return it
+			cout << "We made it to the program move! You can move again if you want." << endl << endl;
+		}
+		
+		//Human has the current move.
+		else{
+			string humanMoveName;
+			char humanMoveStartColumn;
+			char humanMoveEndColumn;
+			int numHumanMoveStartColumn;
+			int numHumanMoveEndColumn;
+			int humanMoveStartRow;
+			int humanMoveEndRow;
+			string result;
+			cout << "Enter your move in the format and hit enter after each parameter:" << endl << "startColumn(a-e) startRow(1-6) endColumn(a-e) endRow(1-6): " << endl;
+			cin >> humanMoveStartColumn;
+			cin >> humanMoveStartRow;
+			cin >> humanMoveEndColumn;
+			cin >> humanMoveEndRow;
+			numHumanMoveStartColumn = humanMoveStartColumn - 96;
+			numHumanMoveEndColumn = humanMoveEndColumn - 96;
+			pair <int, int> startCoords = make_pair(humanMoveStartRow, numHumanMoveStartColumn);
+			pair <int, int> endCoords = make_pair(humanMoveEndRow, numHumanMoveEndColumn);
+			
+			movePiece(initialGame, programColor, startCoords, endCoords);
+			
+			initialGame.print();
+		}
+		
+		
+		//change the currentMove color
+		if(currentMoveColor == "white")
+			currentMoveColor = "black";
+		else
+			currentMoveColor = "white";
+	}
     
     return 0;
 }
