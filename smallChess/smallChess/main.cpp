@@ -5,22 +5,39 @@
 #include <utility>
 #include "Piece.h"
 #include "GameState.h"
+#include "time.h"
 
 using namespace std;
 
 
-void movePiece(GameState &currState, string programColor, pair <int, int> starting, pair<int, int> ending){
-	for(unsigned i = 0; i < currState.getWhite().size(); i++){
-		if(currState.getWhite()[i].getPieceCoordinates().first == starting.first &&
-		currState.getWhite()[i].getPieceCoordinates().second == starting.second){
-			currState.getWhite()[i].setPieceCoordinates(ending.first, ending.second);
+void movePiece(GameState &currState, string movingColor, pair <int, int> starting, pair<int, int> ending){
+	if(movingColor == "white"){
+		for(unsigned i = 0; i < currState.getWhite().size(); i++){
+			if(currState.getWhite()[i].getPieceCoordinates().first == starting.first &&
+			currState.getWhite()[i].getPieceCoordinates().second == starting.second){
+				currState.getWhite()[i].setPieceCoordinates(ending.first, ending.second);
+			}
 		}
+		
+		vector< vector< string > > temp = currState.getBoardConfig();
+		temp[ending.first][ending.second]=currState.getBoardConfig()[starting.first][starting.second];
+		temp[starting.first][starting.second] = "empty";
+		currState.setBoardConfig(temp);
 	}
 	
-	vector< vector< string > > temp = currState.getBoardConfig();
-	temp[ending.first][ending.second]=currState.getBoardConfig()[starting.first][starting.second];
-	temp[starting.first][starting.second] = "empty";
-	currState.setBoardConfig(temp);
+	else{
+		for(unsigned i = 0; i < currState.getBlack().size(); i++){
+			if(currState.getBlack()[i].getPieceCoordinates().first == starting.first &&
+			currState.getBlack()[i].getPieceCoordinates().second == starting.second){
+				currState.getBlack()[i].setPieceCoordinates(ending.first, ending.second);
+			}
+		}
+		
+		vector< vector< string > > temp = currState.getBoardConfig();
+		temp[ending.first][ending.second]=currState.getBoardConfig()[starting.first][starting.second];
+		temp[starting.first][starting.second] = "empty";
+		currState.setBoardConfig(temp);
+	}
 	
 }
 
@@ -30,6 +47,7 @@ void movePiece(GameState &currState, string programColor, pair <int, int> starti
 int main()
 {
     
+	
     GameState initialGame;
     vector< vector <string> > initialBoard;
     vector< Piece > whitePieces;
@@ -595,14 +613,89 @@ int main()
 	string currentMoveColor = firstMoveColor;
 	
 	bool gameOver = false;
+	int moveNumber = 1;
+	
 	while(gameOver == false){
-		//Program has the current move
-		if(currentMoveColor==programColor){
-			//search for move and return it
-			cout << "We made it to the program move! You can move again if you want." << endl << endl;
+		
+		while(moveNumber <= 4){
+			
+			//Program has the current move
+			if(currentMoveColor==programColor and moveNumber < 3){
+				//Make the appriopriate move.
+				if(programColor=="black"){
+					movePiece(initialGame, currentMoveColor, make_pair(2, 3), make_pair(3, 3));
+					cout << "Program's move: " << endl << endl;
+				}
+				
+				else{
+					movePiece(initialGame, currentMoveColor, make_pair(5, 3), make_pair(4, 3));
+					cout << "Program's move: " << endl;
+				}
+				
+			initialGame.print();
+			}
+			
+			else if(currentMoveColor==programColor and moveNumber > 2){
+				//Make the appriopriate move.
+				if(programColor=="black"){
+					movePiece(initialGame, currentMoveColor, make_pair(3, 3), make_pair(4, 3));
+					cout << "Program's move: " << endl << endl;
+				}
+				
+				else{
+					movePiece(initialGame, currentMoveColor, make_pair(4, 3), make_pair(3, 3));
+					cout << "Program's move: " << endl;
+				}
+				
+			initialGame.print();
+			}
+			
+			//Human has the current move.
+			else{
+				string humanMoveName;
+				char humanMoveStartColumn;
+				char humanMoveEndColumn;
+				int numHumanMoveStartColumn;
+				int numHumanMoveEndColumn;
+				int humanMoveStartRow;
+				int humanMoveEndRow;
+				string result;
+				cout << "Enter your move in the format and hit enter after each parameter:" << endl << "startColumn(a-e) startRow(1-6) endColumn(a-e) endRow(1-6): " << endl;
+				cin >> humanMoveStartColumn;
+				cin >> humanMoveStartRow;
+				cin >> humanMoveEndColumn;
+				cin >> humanMoveEndRow;
+				numHumanMoveStartColumn = humanMoveStartColumn - 96;
+				numHumanMoveEndColumn = humanMoveEndColumn - 96;
+				pair <int, int> startCoords = make_pair(humanMoveStartRow, numHumanMoveStartColumn);
+				pair <int, int> endCoords = make_pair(humanMoveEndRow, numHumanMoveEndColumn);
+				
+				movePiece(initialGame, currentMoveColor, startCoords, endCoords);
+				
+				initialGame.print();
+			}
+			
+			
+			//change the currentMove color
+			if(currentMoveColor == "white")
+				currentMoveColor = "black";
+			else
+				currentMoveColor = "white";
+				
+			//increase moveNumber
+			moveNumber++;
+			cout << "Move number:  " << moveNumber << endl;
 		}
 		
-		//Human has the current move.
+////
+////Negamax search for program moves
+////
+		
+		if(currentMoveColor == programColor){
+			//search for programMove using Negamax
+			cout << "We made it to the program move using negamax!" << endl;
+		}
+		
 		else{
 			string humanMoveName;
 			char humanMoveStartColumn;
@@ -622,18 +715,24 @@ int main()
 			pair <int, int> startCoords = make_pair(humanMoveStartRow, numHumanMoveStartColumn);
 			pair <int, int> endCoords = make_pair(humanMoveEndRow, numHumanMoveEndColumn);
 			
-			movePiece(initialGame, programColor, startCoords, endCoords);
+			movePiece(initialGame, currentMoveColor, startCoords, endCoords);
 			
 			initialGame.print();
 		}
-		
-		
+
+
+
 		//change the currentMove color
 		if(currentMoveColor == "white")
 			currentMoveColor = "black";
 		else
 			currentMoveColor = "white";
+			
+		//increase moveNumber
+		moveNumber++;
+		cout << "Move number:  " << moveNumber << endl;
 	}
+	
     
     return 0;
 }

@@ -43,7 +43,7 @@ public:
 	string getPieceColor();
 	int getPieceWeight();
 	pair<int, int> getPieceCoordinates();
-	Piece generatePossibleMoves();
+	Piece generatePossibleMoves(GameState currState);
     
     
     //move
