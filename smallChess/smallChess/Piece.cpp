@@ -7,6 +7,8 @@
 //
 
 #include<iostream>
+#include<exception>
+
 #include<string>
 #include "Piece.h"
 
@@ -388,61 +390,123 @@ vector<pair<unsigned,unsigned> >  Knight::generatePossibleMoves (GameState curre
 	pair<int, int> localCoord = pieceCoordinates;
 	Piece thisKnight(name, color, weight, pieceCoordinates);
 	//-1,+2
-	if(currentGameState.getBoardConfig()[localCoord.first-1][localCoord.second+2] == "empty"
+	
+	try{
+		currentGameState.getBoardConfig()[localCoord.first-1].at(localCoord.second+2);
+		if(currentGameState.getBoardConfig()[localCoord.first-1][localCoord.second+2] == "empty"
 		|| thisKnight.isSameColor(currentGameState, make_pair(localCoord.first-1,localCoord.second+2)) == false){
 		
 		possibleKnightMoves.push_back(make_pair(localCoord.first-1, localCoord.second+2));
 		}
+	}
+	catch(exception& e){
+		  //catches out of range exception
+	  }
+	
+		
+		 
+	
+	
 	
 	//+1,+2
-	if(currentGameState.getBoardConfig()[localCoord.first+1][localCoord.second+2] == "empty"
+	
+	  try{
+		currentGameState.getBoardConfig()[localCoord.first+1].at(localCoord.second+2);
+		if(currentGameState.getBoardConfig()[localCoord.first+1][localCoord.second+2] == "empty"
 		|| thisKnight.isSameColor(currentGameState, make_pair(localCoord.first+1,localCoord.second+2)) == false){
 		
 		possibleKnightMoves.push_back(make_pair(localCoord.first+1, localCoord.second+2));
 		}
+	  
+	  }
+	 catch(exception& e){
+		  //catches out of range exception
+	  }
+		
+	
+
 	//-1, -2
+	try{
+		currentGameState.getBoardConfig()[localCoord.first-1].at(localCoord.second-2);
 	if(currentGameState.getBoardConfig()[localCoord.first-1][localCoord.second-2] == "empty"
 		|| thisKnight.isSameColor(currentGameState, make_pair(localCoord.first-1,localCoord.second-2)) == false){
 		
 		possibleKnightMoves.push_back(make_pair(localCoord.first-1, localCoord.second-2));
 		}
+	}
+	catch(exception& e){
+		  //catches out of range exception
+	  }
 	
 	//+1, -2
+	try{
+		currentGameState.getBoardConfig()[localCoord.first+1].at(localCoord.second-2);
 	if(currentGameState.getBoardConfig()[localCoord.first+1][localCoord.second-2] == "empty"
 		|| thisKnight.isSameColor(currentGameState, make_pair(localCoord.first+1,localCoord.second-2)) == false){
 		
 		possibleKnightMoves.push_back(make_pair(localCoord.first+1, localCoord.second-2));
 		}
+	}
+	catch(exception& e){
+//catches out of range exception
+	  }
 	
 	//+2, +1
-    if(currentGameState.getBoardConfig()[localCoord.first+2][localCoord.second+1] == "empty"
+   try{
+		currentGameState.getBoardConfig().at(localCoord.first+2).at(localCoord.second+1);
+	if(currentGameState.getBoardConfig()[localCoord.first+2][localCoord.second+1] == "empty"
 		|| thisKnight.isSameColor(currentGameState, make_pair(localCoord.first+2,localCoord.second+1)) == false){
 		
 		possibleKnightMoves.push_back(make_pair(localCoord.first+2, localCoord.second+1));
 		}
+	}
+	
+	catch(exception& e){
+		  //catches out of range exception
+	  }
 	
 	//+2, -1
-	if(currentGameState.getBoardConfig()[localCoord.first+2][localCoord.second-1] == "empty"
+	try{
+		currentGameState.getBoardConfig().at(localCoord.first+2).at(localCoord.second-1);
+		if(currentGameState.getBoardConfig()[localCoord.first+2][localCoord.second-1] == "empty"
 		|| thisKnight.isSameColor(currentGameState, make_pair(localCoord.first+2,localCoord.second-1)) == false){
 		
 		possibleKnightMoves.push_back(make_pair(localCoord.first+2, localCoord.second-1));
 		}
+		
+	}
+	catch(exception& e){
+		  //catches out of range exception
+	  }
+	
 	//-2, +1
+	try{
+		currentGameState.getBoardConfig().at(localCoord.first-2).at(localCoord.second+1);
 	if(currentGameState.getBoardConfig()[localCoord.first-2][localCoord.second+1] == "empty"
 		|| thisKnight.isSameColor(currentGameState, make_pair(localCoord.first-2,localCoord.second+1)) == false){
 		
 		possibleKnightMoves.push_back(make_pair(localCoord.first-2, localCoord.second+1));
 		}
+	}
+	catch(exception& e){
+		  //catches out of range exception
+	  }
+	
 	//-2, -1
+	try{
+		currentGameState.getBoardConfig().at(localCoord.first-2).at(localCoord.second-1);
 	if(currentGameState.getBoardConfig()[localCoord.first-2][localCoord.second-1] == "empty"
 		|| thisKnight.isSameColor(currentGameState, make_pair(localCoord.first-2,localCoord.second-1)) == false){
 		
 		possibleKnightMoves.push_back(make_pair(localCoord.first-2, localCoord.second-1));
 		}
+	}
+	catch(exception& e){
+		  //catches out of range exception
+	  }
 	
 	return possibleKnightMoves;
-	}
-
+}
 ////////////////	
 //Rook
 
