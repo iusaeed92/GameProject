@@ -29,8 +29,8 @@ public:
     
 	bool isSameColor(GameState instance, pair<int, int> coordinates);
 	
-	Piece();
-	Piece(string n, string c, int w, pair<int,int> coords);
+//	Piece();
+//	Piece(string n, string c, int w, pair<int,int> coords);
 
 	//mutators:
     void setPieceName(string s);
@@ -43,9 +43,8 @@ public:
 	string getPieceColor();
 	int getPieceWeight();
 	pair<int, int> getPieceCoordinates();
-	Piece generatePossibleMoves(GameState currState);
-    
-    
+	virtual vector<pair<unsigned, unsigned> > generatePossibleMoves(GameState currentGameState);
+	
     //move
     //virtual void movePiece(
     
@@ -66,7 +65,7 @@ class Pawn: public Piece{
 public:
 	
 	
-	vector<pair<unsigned,unsigned> > generatePossibleMoves (GameState currentBoard);
+	virtual vector<pair<unsigned,unsigned> > generatePossibleMoves (GameState currentGameState);
 	
 	
 	 
@@ -80,7 +79,7 @@ class Bishop: public Piece{
 public:
 	
 	
-	vector<pair<unsigned,unsigned> > generatePossibleMoves (GameState currentBoard);
+	virtual vector<pair<unsigned,unsigned> > generatePossibleMoves (GameState currentGameState);
 	
 	
 	 
@@ -94,7 +93,7 @@ class Knight: public Piece{
 public:
 	
 	
-	vector<pair<unsigned,unsigned> > generatePossibleMoves (GameState currentBoard);
+	virtual vector<pair<unsigned,unsigned> > generatePossibleMoves (GameState currentGameState);
 	
 	
 	 
@@ -110,7 +109,7 @@ class Rook: public Piece{
 public:
 	
 	
-	vector<pair<unsigned,unsigned> > generatePossibleMoves (GameState currentBoard);
+	virtual vector<pair<unsigned,unsigned> > generatePossibleMoves (GameState currentGameState);
 	
 	
 	 
@@ -124,7 +123,7 @@ class Queen: public Piece{
 public:
 	
 	
-	vector<pair<unsigned,unsigned> > generatePossibleMoves (GameState currentBoard);
+	virtual vector<pair<unsigned,unsigned> > generatePossibleMoves (GameState currentGameState);
 	
 	
 	 
@@ -138,7 +137,7 @@ class King: public Piece{
 public:
 	
 	
-	vector<pair<unsigned,unsigned> > generatePossibleMoves (GameState currentBoard);
+	virtual vector<pair<unsigned,unsigned> > generatePossibleMoves (GameState currentGameState);
 	
 	
 	 

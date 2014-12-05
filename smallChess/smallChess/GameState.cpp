@@ -57,7 +57,7 @@ void GameState::print(){
 int GameState::whiteHeuristicValue(){
 	int heuristicValue = 0;
 	
-	for(int i = 0; i < white.size(); i++){
+	for(unsigned i = 0; i < white.size(); i++){
 		heuristicValue = white[i].getPieceWeight() + heuristicValue;
 	}
 	
@@ -67,7 +67,7 @@ int GameState::whiteHeuristicValue(){
 int GameState::blackHeuristicValue(){
 	int heuristicValue = 0;
 	
-	for(int i = 0; i < black.size(); i++){
+	for(unsigned i = 0; i < black.size(); i++){
 		heuristicValue = black[i].getPieceWeight() + heuristicValue;
 	}
 	

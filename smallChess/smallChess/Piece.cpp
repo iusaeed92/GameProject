@@ -12,7 +12,7 @@
 #include<string>
 #include "Piece.h"
 
-using namespace std;
+using namespace std; 
 
 
 
@@ -20,14 +20,20 @@ using namespace std;
 
 
 //constructors
-Piece::Piece(){};
+//Piece::Piece(){};
 
-Piece::Piece(string n, string c, int w, pair<int,int> coords){
+/*Piece::Piece(string n, string c, int w, pair<int,int> coords){
 	name = n;
 	color = c;
 	weight = w;
 	pieceCoordinates = coords;
+}*/
+
+vector<pair<unsigned,unsigned> >  Piece::generatePossibleMoves (GameState currentGameState){
+	vector<pair<unsigned, unsigned> > possiblePawnMoves;
+	possiblePawnMoves.push_back(make_pair(1,1));
 }
+
 
 //mutators:
 void Piece::setPieceName(string s){
@@ -90,9 +96,9 @@ bool Piece::isSameColor(GameState instance, pair<int, int> coordinates){
 //Pre Conditions: Parameters are a GameState, a Piece, and a direction integer 1 through 4
 //Post Conditions: Returns an integer that tells how many spaces are valid for moves of that
 // 					 piece in that certain direction.
-int diagonalMoves(GameState instance, Piece currPiece, int direction){
+int diagonalMoves(GameState instance, Piece* currPiece, int direction){
 	int movesSoFar = 0;
-	pair <int, int> localCoord = currPiece.getPieceCoordinates();
+	pair <int, int> localCoord = currPiece->getPieceCoordinates();
 	
 	
     if(direction == 1){
@@ -109,7 +115,7 @@ int diagonalMoves(GameState instance, Piece currPiece, int direction){
 			pair<int,int> test;
 			test = make_pair(localCoord.first, localCoord.second);
 		
-			if(currPiece.isSameColor(instance, test) == false)
+			if(currPiece->isSameColor(instance, test) == false)
 				movesSoFar =  movesSoFar+1;
 			
 		}
@@ -131,7 +137,7 @@ int diagonalMoves(GameState instance, Piece currPiece, int direction){
 			pair<int,int> test;
 			test = make_pair(localCoord.first, localCoord.second);
 		
-			if(currPiece.isSameColor(instance, test) == false)
+			if(currPiece->isSameColor(instance, test) == false)
 				movesSoFar =  movesSoFar+1;
 			
 		}
@@ -152,7 +158,7 @@ int diagonalMoves(GameState instance, Piece currPiece, int direction){
 			pair<int,int> test;
 			test = make_pair(localCoord.first, localCoord.second);
 		
-			if(currPiece.isSameColor(instance, test) == false)
+			if(currPiece->isSameColor(instance, test) == false)
 				movesSoFar =  movesSoFar+1;
 			
 		}
@@ -175,7 +181,7 @@ int diagonalMoves(GameState instance, Piece currPiece, int direction){
 			pair<int,int> test;
 			test = make_pair(localCoord.first, localCoord.second);
 		
-			if(currPiece.isSameColor(instance, test) == false)
+			if(currPiece->isSameColor(instance, test) == false)
 				movesSoFar =  movesSoFar+1;
 			
 		}
@@ -188,8 +194,8 @@ int diagonalMoves(GameState instance, Piece currPiece, int direction){
 //Pre Conditions: Parameters are a GameState, a Piece, and a direction integer 1 through 4
 //Post Conditions: Returns an integer that tells how many spaces are valid for moves of that
 // 					 piece in that certain direction.
-int straightMoves(GameState instance, Piece currPiece, int direction){
-	pair<int, int> localCoord = currPiece.getPieceCoordinates();
+int straightMoves(GameState instance, Piece* currPiece, int direction){
+	pair<int, int> localCoord = currPiece->getPieceCoordinates();
 	int movesSoFar = 0;
 	
 	if(direction == 1){
@@ -203,7 +209,7 @@ int straightMoves(GameState instance, Piece currPiece, int direction){
 		if(instance.getBoardConfig()[localCoord.first][localCoord.second] == "outOfBounds")
 			return movesSoFar;
 		
-		if(currPiece.isSameColor(instance, make_pair(localCoord.first, localCoord.second)) == false)
+		if(currPiece->isSameColor(instance, make_pair(localCoord.first, localCoord.second)) == false)
 			movesSoFar =  movesSoFar+1;
 		
 		return movesSoFar;
@@ -220,7 +226,7 @@ int straightMoves(GameState instance, Piece currPiece, int direction){
 		if(instance.getBoardConfig()[localCoord.first][localCoord.second] == "outOfBounds")
 			return movesSoFar;
 		
-		if(currPiece.isSameColor(instance, make_pair(localCoord.first, localCoord.second)) == false)
+		if(currPiece->isSameColor(instance, make_pair(localCoord.first, localCoord.second)) == false)
 			movesSoFar =  movesSoFar+1;
 		
 		return movesSoFar;
@@ -238,7 +244,7 @@ int straightMoves(GameState instance, Piece currPiece, int direction){
 		if(instance.getBoardConfig()[localCoord.first][localCoord.second] == "outOfBounds")
 			return movesSoFar;
 		
-		if(currPiece.isSameColor(instance, make_pair(localCoord.first, localCoord.second)) == false)
+		if(currPiece->isSameColor(instance, make_pair(localCoord.first, localCoord.second)) == false)
 			movesSoFar =  movesSoFar+1;
 			
 		return movesSoFar;
@@ -256,7 +262,7 @@ int straightMoves(GameState instance, Piece currPiece, int direction){
 		if(instance.getBoardConfig()[localCoord.first][localCoord.second] == "outOfBounds")
 			return movesSoFar;
 		
-		if(currPiece.isSameColor(instance, make_pair(localCoord.first, localCoord.second)) == false)
+		if(currPiece->isSameColor(instance, make_pair(localCoord.first, localCoord.second)) == false)
 			movesSoFar =  movesSoFar+1;
 
 		return movesSoFar;
@@ -285,7 +291,7 @@ vector<pair<unsigned,unsigned> >  Pawn::generatePossibleMoves (GameState current
 	
 	vector<pair<unsigned, unsigned> > possiblePawnMoves;
 	pair<int, int> localCoord = pieceCoordinates;
-	Piece thisPawn(name, color, weight, pieceCoordinates);
+//	Pawn thisPawn(name, color, weight, pieceCoordinates);
 	
 		//check if space ahead is empty if it is then place that spaces coordinate on vector
 	if(currentGameState.getBoardConfig()[localCoord.first-1][localCoord.second] == "empty"){
@@ -298,7 +304,7 @@ vector<pair<unsigned,unsigned> >  Pawn::generatePossibleMoves (GameState current
 		//check the diagonal one space ahead, if it is opposing piece push on the vector
 	if(currentGameState.getBoardConfig()[localCoord.first-1][localCoord.second+1] != "empty"
 		&& currentGameState.getBoardConfig()[localCoord.first-1][localCoord.second+1] != "outOfBounds"){
-		if(thisPawn.isSameColor(currentGameState, make_pair(localCoord.first-1,localCoord.second+1)) == false){
+		if(this->isSameColor(currentGameState, make_pair(localCoord.first-1,localCoord.second+1)) == false){
 			possiblePawnMoves.push_back(make_pair(localCoord.first-1, localCoord.second+1));
 	
 		}
@@ -307,7 +313,7 @@ vector<pair<unsigned,unsigned> >  Pawn::generatePossibleMoves (GameState current
 		//check other diagonal
 	if(currentGameState.getBoardConfig()[localCoord.first-1][localCoord.second-1] != "empty"
 		&& currentGameState.getBoardConfig()[localCoord.first-1][localCoord.second-1] != "outOfBounds"){
-		if(thisPawn.isSameColor(currentGameState, make_pair(localCoord.first-1,localCoord.second-1)) == false){
+		if(this->isSameColor(currentGameState, make_pair(localCoord.first-1,localCoord.second-1)) == false){
 			possiblePawnMoves.push_back(make_pair(localCoord.first-1, localCoord.second-1));
 	
 		}
@@ -328,12 +334,12 @@ vector<pair<unsigned,unsigned> >  Pawn::generatePossibleMoves (GameState current
 vector<pair<unsigned,unsigned> >  Bishop::generatePossibleMoves (GameState currentGameState){
 	vector<pair<unsigned, unsigned> > possibleBishopMoves;
 	pair<int, int> localCoord = pieceCoordinates;
-	Piece thisBishop(name, color, weight, pieceCoordinates);
+//	Piece thisBishop(name, color, weight, pieceCoordinates);
 	
-	int movesDiagUpRight = diagonalMoves(currentGameState, thisBishop, 1);
-	int movesDiagUpLeft = diagonalMoves(currentGameState, thisBishop, 2);
-	int movesDiagDownLeft = diagonalMoves(currentGameState, thisBishop, 3);
-	int movesDiagDownRight = diagonalMoves(currentGameState, thisBishop, 4);
+	int movesDiagUpRight = diagonalMoves(currentGameState, this, 1);
+	int movesDiagUpLeft = diagonalMoves(currentGameState, this, 2);
+	int movesDiagDownLeft = diagonalMoves(currentGameState, this, 3);
+	int movesDiagDownRight = diagonalMoves(currentGameState, this, 4);
 	
 	for(int i = 0; i<movesDiagUpRight; i++){
 		localCoord.first = localCoord.first-1;
@@ -388,13 +394,13 @@ vector<pair<unsigned,unsigned> >  Knight::generatePossibleMoves (GameState curre
 	
 	vector<pair<unsigned, unsigned> > possibleKnightMoves;
 	pair<int, int> localCoord = pieceCoordinates;
-	Piece thisKnight(name, color, weight, pieceCoordinates);
+//	Piece thisKnight(name, color, weight, pieceCoordinates);
 	//-1,+2
 	
 	try{
 		currentGameState.getBoardConfig()[localCoord.first-1].at(localCoord.second+2);
 		if(currentGameState.getBoardConfig()[localCoord.first-1][localCoord.second+2] == "empty"
-		|| thisKnight.isSameColor(currentGameState, make_pair(localCoord.first-1,localCoord.second+2)) == false){
+		|| this->isSameColor(currentGameState, make_pair(localCoord.first-1,localCoord.second+2)) == false){
 		
 		possibleKnightMoves.push_back(make_pair(localCoord.first-1, localCoord.second+2));
 		}
@@ -413,7 +419,7 @@ vector<pair<unsigned,unsigned> >  Knight::generatePossibleMoves (GameState curre
 	  try{
 		currentGameState.getBoardConfig()[localCoord.first+1].at(localCoord.second+2);
 		if(currentGameState.getBoardConfig()[localCoord.first+1][localCoord.second+2] == "empty"
-		|| thisKnight.isSameColor(currentGameState, make_pair(localCoord.first+1,localCoord.second+2)) == false){
+		|| this->isSameColor(currentGameState, make_pair(localCoord.first+1,localCoord.second+2)) == false){
 		
 		possibleKnightMoves.push_back(make_pair(localCoord.first+1, localCoord.second+2));
 		}
@@ -429,7 +435,7 @@ vector<pair<unsigned,unsigned> >  Knight::generatePossibleMoves (GameState curre
 	try{
 		currentGameState.getBoardConfig()[localCoord.first-1].at(localCoord.second-2);
 	if(currentGameState.getBoardConfig()[localCoord.first-1][localCoord.second-2] == "empty"
-		|| thisKnight.isSameColor(currentGameState, make_pair(localCoord.first-1,localCoord.second-2)) == false){
+		|| this->isSameColor(currentGameState, make_pair(localCoord.first-1,localCoord.second-2)) == false){
 		
 		possibleKnightMoves.push_back(make_pair(localCoord.first-1, localCoord.second-2));
 		}
@@ -442,7 +448,7 @@ vector<pair<unsigned,unsigned> >  Knight::generatePossibleMoves (GameState curre
 	try{
 		currentGameState.getBoardConfig()[localCoord.first+1].at(localCoord.second-2);
 	if(currentGameState.getBoardConfig()[localCoord.first+1][localCoord.second-2] == "empty"
-		|| thisKnight.isSameColor(currentGameState, make_pair(localCoord.first+1,localCoord.second-2)) == false){
+		|| this->isSameColor(currentGameState, make_pair(localCoord.first+1,localCoord.second-2)) == false){
 		
 		possibleKnightMoves.push_back(make_pair(localCoord.first+1, localCoord.second-2));
 		}
@@ -455,7 +461,7 @@ vector<pair<unsigned,unsigned> >  Knight::generatePossibleMoves (GameState curre
    try{
 		currentGameState.getBoardConfig().at(localCoord.first+2).at(localCoord.second+1);
 	if(currentGameState.getBoardConfig()[localCoord.first+2][localCoord.second+1] == "empty"
-		|| thisKnight.isSameColor(currentGameState, make_pair(localCoord.first+2,localCoord.second+1)) == false){
+		|| this->isSameColor(currentGameState, make_pair(localCoord.first+2,localCoord.second+1)) == false){
 		
 		possibleKnightMoves.push_back(make_pair(localCoord.first+2, localCoord.second+1));
 		}
@@ -469,7 +475,7 @@ vector<pair<unsigned,unsigned> >  Knight::generatePossibleMoves (GameState curre
 	try{
 		currentGameState.getBoardConfig().at(localCoord.first+2).at(localCoord.second-1);
 		if(currentGameState.getBoardConfig()[localCoord.first+2][localCoord.second-1] == "empty"
-		|| thisKnight.isSameColor(currentGameState, make_pair(localCoord.first+2,localCoord.second-1)) == false){
+		|| this->isSameColor(currentGameState, make_pair(localCoord.first+2,localCoord.second-1)) == false){
 		
 		possibleKnightMoves.push_back(make_pair(localCoord.first+2, localCoord.second-1));
 		}
@@ -483,7 +489,7 @@ vector<pair<unsigned,unsigned> >  Knight::generatePossibleMoves (GameState curre
 	try{
 		currentGameState.getBoardConfig().at(localCoord.first-2).at(localCoord.second+1);
 	if(currentGameState.getBoardConfig()[localCoord.first-2][localCoord.second+1] == "empty"
-		|| thisKnight.isSameColor(currentGameState, make_pair(localCoord.first-2,localCoord.second+1)) == false){
+		|| this->isSameColor(currentGameState, make_pair(localCoord.first-2,localCoord.second+1)) == false){
 		
 		possibleKnightMoves.push_back(make_pair(localCoord.first-2, localCoord.second+1));
 		}
@@ -496,7 +502,7 @@ vector<pair<unsigned,unsigned> >  Knight::generatePossibleMoves (GameState curre
 	try{
 		currentGameState.getBoardConfig().at(localCoord.first-2).at(localCoord.second-1);
 	if(currentGameState.getBoardConfig()[localCoord.first-2][localCoord.second-1] == "empty"
-		|| thisKnight.isSameColor(currentGameState, make_pair(localCoord.first-2,localCoord.second-1)) == false){
+		|| this->isSameColor(currentGameState, make_pair(localCoord.first-2,localCoord.second-1)) == false){
 		
 		possibleKnightMoves.push_back(make_pair(localCoord.first-2, localCoord.second-1));
 		}
@@ -514,12 +520,12 @@ vector<pair<unsigned,unsigned> >  Rook::generatePossibleMoves (GameState current
 	
 	vector<pair<unsigned, unsigned> > possibleRookMoves;
 	pair<int, int> localCoord = pieceCoordinates;
-	Piece thisRook(name, color, weight, pieceCoordinates);
+//	Piece thisRook(name, color, weight, pieceCoordinates);
 	
-	int movesUp = straightMoves(currentGameState, thisRook, 1);
-	int movesDown = straightMoves(currentGameState, thisRook, 2);
-	int movesLeft = straightMoves(currentGameState, thisRook, 3);
-	int movesRight = straightMoves(currentGameState, thisRook, 4);
+	int movesUp = straightMoves(currentGameState, this, 1);
+	int movesDown = straightMoves(currentGameState, this, 2);
+	int movesLeft = straightMoves(currentGameState, this, 3);
+	int movesRight = straightMoves(currentGameState, this, 4);
 	
 	for(int i = 0; i<movesUp; i++){
 		localCoord.first = localCoord.first-1;
@@ -563,16 +569,16 @@ vector<pair<unsigned,unsigned> >  Queen::generatePossibleMoves (GameState curren
 	
 	vector<pair<unsigned, unsigned> > possibleQueenMoves;
 	pair<int, int> localCoord = pieceCoordinates;
-	Piece thisQueen(name, color, weight, pieceCoordinates);
+//	Piece thisQueen(name, color, weight, pieceCoordinates);
 	
-	int movesDiagUpRight = diagonalMoves(currentGameState, thisQueen, 1);
-	int movesDiagUpLeft = diagonalMoves(currentGameState, thisQueen, 2);
-	int movesDiagDownLeft = diagonalMoves(currentGameState, thisQueen, 3);
-	int movesDiagDownRight = diagonalMoves(currentGameState, thisQueen, 4);
-	int movesUp = straightMoves(currentGameState, thisQueen, 1);
-	int movesDown = straightMoves(currentGameState, thisQueen, 2);
-	int movesLeft = straightMoves(currentGameState, thisQueen, 3);
-	int movesRight = straightMoves(currentGameState, thisQueen, 4);
+	int movesDiagUpRight = diagonalMoves(currentGameState, this, 1);
+	int movesDiagUpLeft = diagonalMoves(currentGameState, this, 2);
+	int movesDiagDownLeft = diagonalMoves(currentGameState, this, 3);
+	int movesDiagDownRight = diagonalMoves(currentGameState, this, 4);
+	int movesUp = straightMoves(currentGameState, this, 1);
+	int movesDown = straightMoves(currentGameState, this, 2);
+	int movesLeft = straightMoves(currentGameState, this, 3);
+	int movesRight = straightMoves(currentGameState, this, 4);
 
 	
 	
@@ -645,61 +651,61 @@ vector<pair<unsigned,unsigned> >  Queen::generatePossibleMoves (GameState curren
 vector<pair<unsigned,unsigned> >  King::generatePossibleMoves (GameState currentGameState){
 	
 	vector<pair<unsigned, unsigned> > possibleKingMoves;
-	Piece thisKing(name, color, weight, pieceCoordinates);
+//	Piece thisKing(name, color, weight, pieceCoordinates);
 	pair<int, int> localCoord = pieceCoordinates;
 	
 		//check if space ahead is empty if it is then place that spaces coordinate on vector
 	if(currentGameState.getBoardConfig()[localCoord.first-1][localCoord.second] == "empty" 
-		|| thisKing.isSameColor(currentGameState, make_pair(localCoord.first-1,localCoord.second)) == false){
+		|| this->isSameColor(currentGameState, make_pair(localCoord.first-1,localCoord.second)) == false){
 		
 		possibleKingMoves.push_back(make_pair(localCoord.first-1, localCoord.second));
 		}
 		
 		//check if space behind is empty
 	if(currentGameState.getBoardConfig()[localCoord.first+1][localCoord.second] == "empty" 
-		|| thisKing.isSameColor(currentGameState, make_pair(localCoord.first+1,localCoord.second)) == false){
+		|| this->isSameColor(currentGameState, make_pair(localCoord.first+1,localCoord.second)) == false){
 		
 		possibleKingMoves.push_back(make_pair(localCoord.first+1, localCoord.second));
 		}
 		
 		//check if space left is empty
 	if(currentGameState.getBoardConfig()[localCoord.first][localCoord.second-1] == "empty" 
-		|| thisKing.isSameColor(currentGameState, make_pair(localCoord.first,localCoord.second-1)) == false){
+		|| this->isSameColor(currentGameState, make_pair(localCoord.first,localCoord.second-1)) == false){
 		
 		possibleKingMoves.push_back(make_pair(localCoord.first, localCoord.second-1));
 		}
 		
 		//check if space right is empty
 	if(currentGameState.getBoardConfig()[localCoord.first][localCoord.second+1] == "empty" 
-		|| thisKing.isSameColor(currentGameState, make_pair(localCoord.first,localCoord.second+1)) == false){
+		|| this->isSameColor(currentGameState, make_pair(localCoord.first,localCoord.second+1)) == false){
 		
 		possibleKingMoves.push_back(make_pair(localCoord.first, localCoord.second+1));
 		}
 		
 		//check right diagonal(forward) 
 	if(currentGameState.getBoardConfig()[localCoord.first-1][localCoord.second+1] == "empty" 
-		|| thisKing.isSameColor(currentGameState, make_pair(localCoord.first-1,localCoord.second+1)) == false){
+		|| this->isSameColor(currentGameState, make_pair(localCoord.first-1,localCoord.second+1)) == false){
 	
 		possibleKingMoves.push_back(make_pair(localCoord.first-1, localCoord.second+1));
 		}
 		
 		//check left diagonal(foward)
 	if(currentGameState.getBoardConfig()[localCoord.first-1][localCoord.second-1] == "empty"
-		|| thisKing.isSameColor(currentGameState, make_pair(localCoord.first-1,localCoord.second-1)) == false){
+		|| this->isSameColor(currentGameState, make_pair(localCoord.first-1,localCoord.second-1)) == false){
 	
 		possibleKingMoves.push_back(make_pair(localCoord.first-1, localCoord.second-1));
 		}
 		
 		//check back left diagonal
 	if(currentGameState.getBoardConfig()[localCoord.first+1][localCoord.second-1] == "empty"
-		|| thisKing.isSameColor(currentGameState, make_pair(localCoord.first+1,localCoord.second-1)) == false){
+		|| this->isSameColor(currentGameState, make_pair(localCoord.first+1,localCoord.second-1)) == false){
 	
 		possibleKingMoves.push_back(make_pair(localCoord.first+1, localCoord.second-1));
 		}
 	
 		//check back right diagonal
 	if(currentGameState.getBoardConfig()[localCoord.first+1][localCoord.second+1] == "empty"
-		|| thisKing.isSameColor(currentGameState, make_pair(localCoord.first+1,localCoord.second+1)) == false){
+		|| this->isSameColor(currentGameState, make_pair(localCoord.first+1,localCoord.second+1)) == false){
 	
 		possibleKingMoves.push_back(make_pair(localCoord.first+1, localCoord.second+1));
 		}

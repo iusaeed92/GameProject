@@ -94,8 +94,8 @@ int main()
 	
     GameState initialGame;
     vector< vector <string> > initialBoard;
-    vector< Piece > whitePieces;
-    vector< Piece > blackPieces;
+    vector< Piece* > whitePieces;
+    vector< Piece*> blackPieces;
     
     ////
     ////Initialization and sizing of the 2D vector
@@ -135,52 +135,52 @@ int main()
     int rowWP1;
     char letterWP1;
     int columnWP1;
-    Pawn whitePawn1;
+    Pawn* whitePawn1 = new Pawn;
     
     int rowWP2;
     char letterWP2;
     int columnWP2;
-    Pawn whitePawn2;
+    Pawn* whitePawn2 = new Pawn;
     
     int rowWP3;
     char letterWP3;
     int columnWP3;
-    Pawn whitePawn3;
+    Pawn* whitePawn3 = new Pawn;
     
     int rowWP4;
     char letterWP4;
     int columnWP4;
-    Pawn whitePawn4;
+    Pawn* whitePawn4 = new Pawn;
     
     int rowWP5;
     char letterWP5;
     int columnWP5;
-    Pawn whitePawn5;
+    Pawn* whitePawn5 = new Pawn;
     
     int rowWN;
     char letterWN;
     int columnWN;
-    Knight whiteKnight;
+    Knight* whiteKnight = new Knight;
     
     int rowWB;
     char letterWB;
     int columnWB;
-    Bishop whiteBishop;
+    Bishop* whiteBishop = new Bishop;
     
     int rowWR;
     char letterWR;
     int columnWR;
-    Rook whiteRook;
+    Rook* whiteRook = new Rook;
     
     int rowWQ;
     char letterWQ;
     int columnWQ;
-    Queen whiteQueen;
+    Queen* whiteQueen = new Queen;
     
     int rowWK;
     char letterWK;
     int columnWK;
-    King whiteKing;
+    King* whiteKing = new King;
     
     ////
     ////Variables for the black pieces
@@ -188,52 +188,52 @@ int main()
     int rowBP1;
     char letterBP1;
     int columnBP1;
-    Pawn blackPawn1;
+    Pawn* blackPawn1 = new Pawn;
     
     int rowBP2;
     char letterBP2;
     int columnBP2;
-    Pawn blackPawn2;
+    Pawn* blackPawn2 = new Pawn;
     
     int rowBP3;
     char letterBP3;
     int columnBP3;
-    Pawn blackPawn3;
+    Pawn* blackPawn3 = new Pawn;
     
     int rowBP4;
     char letterBP4;
     int columnBP4;
-    Pawn blackPawn4;
+    Pawn* blackPawn4 = new Pawn;
     
     int rowBP5;
     char letterBP5;
     int columnBP5;
-    Pawn blackPawn5;
+    Pawn* blackPawn5 = new Pawn;
     
     int rowBN;
     char letterBN;
     int columnBN;
-    Knight blackKnight;
+    Knight* blackKnight = new Knight;
     
     int rowBB;
     char letterBB;
     int columnBB;
-    Bishop blackBishop;
+    Bishop* blackBishop = new Bishop;
     
     int rowBR;
     char letterBR;
     int columnBR;
-    Rook blackRook;
+    Rook* blackRook = new Rook;
     
     int rowBQ;
     char letterBQ;
     int columnBQ;
-    Queen blackQueen;
+    Queen* blackQueen = new Queen;
     
     int rowBK;
     char letterBK;
     int columnBK;
-    King blackKing;
+    King* blackKing = new King;
 	
 	
 	////
@@ -246,161 +246,161 @@ int main()
 	if(answer == 'y'){
 		rowWP1 = 5;
 		columnWP1 = 1;
-		whitePawn1.setPieceCoordinates(rowWP1, columnWP1);
-		whitePawn1.setPieceColor("White");
-		whitePawn1.setPieceWeight(1);
+		whitePawn1->setPieceCoordinates(rowWP1, columnWP1);
+		whitePawn1->setPieceColor("White");
+		whitePawn1->setPieceWeight(1);
 		whitePieces.push_back(whitePawn1);
 		initialBoard[rowWP1][columnWP1] = "WP";
 		
 		rowWP2 = 5;
 		columnWP2 = 2;
-		whitePawn2.setPieceCoordinates(rowWP2, columnWP2);
-		whitePawn2.setPieceColor("White");
-		whitePawn2.setPieceWeight(1);
+		whitePawn2->setPieceCoordinates(rowWP2, columnWP2);
+		whitePawn2->setPieceColor("White");
+		whitePawn2->setPieceWeight(1);
 		whitePieces.push_back(whitePawn2);
 		initialBoard[rowWP2][columnWP2] = "WP";
 		
 		rowWP3 = 5;
 		columnWP3 = 3;
-		whitePawn3.setPieceCoordinates(rowWP3, columnWP3);
-		whitePawn3.setPieceColor("White");
-		whitePawn3.setPieceWeight(1);
+		whitePawn3->setPieceCoordinates(rowWP3, columnWP3);
+		whitePawn3->setPieceColor("White");
+		whitePawn3->setPieceWeight(1);
 		whitePieces.push_back(whitePawn3);
 		initialBoard[rowWP3][columnWP3] = "WP";
 		
 		rowWP4 = 5;
 		columnWP4 = 4;
-		whitePawn4.setPieceCoordinates(rowWP4, columnWP4);
-		whitePawn4.setPieceColor("White");
-		whitePawn4.setPieceWeight(1);
+		whitePawn4->setPieceCoordinates(rowWP4, columnWP4);
+		whitePawn4->setPieceColor("White");
+		whitePawn4->setPieceWeight(1);
 		whitePieces.push_back(whitePawn4);
 		initialBoard[rowWP4][columnWP4] = "WP";
 		
 		rowWP5 = 5;
 		columnWP5 = 5;
-		whitePawn5.setPieceCoordinates(rowWP5, columnWP5);
-		whitePawn5.setPieceColor("White");
-		whitePawn5.setPieceWeight(1);
+		whitePawn5->setPieceCoordinates(rowWP5, columnWP5);
+		whitePawn5->setPieceColor("White");
+		whitePawn5->setPieceWeight(1);
 		whitePieces.push_back(whitePawn5);
 		initialBoard[rowWP5][columnWP5] = "WP";
 		
 		rowWR = 6;
 		columnWR = 1;
-		whiteRook.setPieceCoordinates(rowWR, columnWR);
-		whiteRook.setPieceColor("White");
-		whiteRook.setPieceWeight(5);
+		whiteRook->setPieceCoordinates(rowWR, columnWR);
+		whiteRook->setPieceColor("White");
+		whiteRook->setPieceWeight(5);
 		whitePieces.push_back(whiteRook);
 		initialBoard[rowWR][columnWR] = "WR";
 		
 		rowWB = 6;
 		columnWB = 2;
-		whiteBishop.setPieceCoordinates(rowWB, columnWB);
-		whiteBishop.setPieceColor("White");
-		whiteBishop.setPieceWeight(3);
+		whiteBishop->setPieceCoordinates(rowWB, columnWB);
+		whiteBishop->setPieceColor("White");
+		whiteBishop->setPieceWeight(3);
 		whitePieces.push_back(whiteBishop);
 		initialBoard[rowWB][columnWB] = "WB";
 		
 		rowWK = 6;
 		columnWK = 3;
-		whiteKing.setPieceCoordinates(rowWK, columnWK);
-		whiteKing.setPieceColor("White");
-		whiteKing.setPieceWeight(10);
+		whiteKing->setPieceCoordinates(rowWK, columnWK);
+		whiteKing->setPieceColor("White");
+		whiteKing->setPieceWeight(10);
 		whitePieces.push_back(whiteKing);
 		initialBoard[rowWK][columnWK] = "WK";
 		
 		rowWQ = 6;
 		columnWQ = 4;
-		whiteQueen.setPieceCoordinates(rowWQ, columnWQ);
-		whiteQueen.setPieceColor("White");
-		whiteQueen.setPieceWeight(9);
+		whiteQueen->setPieceCoordinates(rowWQ, columnWQ);
+		whiteQueen->setPieceColor("White");
+		whiteQueen->setPieceWeight(9);
 		whitePieces.push_back(whiteQueen);
 		initialBoard[rowWQ][columnWQ] = "WQ";
 		
 		rowWN = 6;
 		columnWN = 5;
-		whiteKnight.setPieceCoordinates(rowWN, columnWN);
-		whiteKnight.setPieceColor("White");
-		whiteKnight.setPieceWeight(3);
+		whiteKnight->setPieceCoordinates(rowWN, columnWN);
+		whiteKnight->setPieceColor("White");
+		whiteKnight->setPieceWeight(3);
 		whitePieces.push_back(whiteKnight);
 		initialBoard[rowWN][columnWN] = "WN";
 		
 		rowBP1 = 2;
 		columnBP1 = 1;
-		blackPawn1.setPieceCoordinates(rowBP1, columnBP1);
-		blackPawn1.setPieceColor("Black");
-		blackPawn1.setPieceWeight(1);
+		blackPawn1->setPieceCoordinates(rowBP1, columnBP1);
+		blackPawn1->setPieceColor("Black");
+		blackPawn1->setPieceWeight(1);
 		blackPieces.push_back(blackPawn1);
 		initialBoard[rowBP1][columnBP1] = "BP";
 		
 		rowBP2 = 2;
 		columnBP2 = 2;
-		blackPawn2.setPieceCoordinates(rowBP2, columnBP2);
-		blackPawn2.setPieceColor("Black");
-		blackPawn2.setPieceWeight(1);
+		blackPawn2->setPieceCoordinates(rowBP2, columnBP2);
+		blackPawn2->setPieceColor("Black");
+		blackPawn2->setPieceWeight(1);
 		blackPieces.push_back(blackPawn2);
 		initialBoard[rowBP2][columnBP2] = "BP";
 		
 		rowBP3 = 2;
 		columnBP3 = 3;
-		blackPawn3.setPieceCoordinates(rowBP3, columnBP3);
-		blackPawn3.setPieceColor("Black");
-		blackPawn3.setPieceWeight(1);
+		blackPawn3->setPieceCoordinates(rowBP3, columnBP3);
+		blackPawn3->setPieceColor("Black");
+		blackPawn3->setPieceWeight(1);
 		blackPieces.push_back(blackPawn3);
 		initialBoard[rowBP3][columnBP3] = "BP";
 		
 		rowBP4 = 2;
 		columnBP4 = 4;
-		blackPawn4.setPieceCoordinates(rowBP4, columnBP4);
-		blackPawn4.setPieceColor("Black");
-		blackPawn4.setPieceWeight(1);
+		blackPawn4->setPieceCoordinates(rowBP4, columnBP4);
+		blackPawn4->setPieceColor("Black");
+		blackPawn4->setPieceWeight(1);
 		blackPieces.push_back(blackPawn4);
 		initialBoard[rowBP4][columnBP4] = "BP";
 		
 		rowBP5 = 2;
 		columnBP5 = 5;
-		blackPawn5.setPieceCoordinates(rowBP5, columnBP5);
-		blackPawn5.setPieceColor("Black");
-		blackPawn5.setPieceWeight(1);
+		blackPawn5->setPieceCoordinates(rowBP5, columnBP5);
+		blackPawn5->setPieceColor("Black");
+		blackPawn5->setPieceWeight(1);
 		blackPieces.push_back(blackPawn5);
 		initialBoard[rowBP5][columnBP5] = "BP";
 		
 		rowBR = 1;
 		columnBR = 1;
-		blackRook.setPieceCoordinates(rowBR, columnBR);
-		blackRook.setPieceColor("Black");
-		blackRook.setPieceWeight(5);
+		blackRook->setPieceCoordinates(rowBR, columnBR);
+		blackRook->setPieceColor("Black");
+		blackRook->setPieceWeight(5);
 		blackPieces.push_back(blackRook);
 		initialBoard[rowBR][columnBR] = "BR";
 		
 		rowBB = 1;
 		columnBB = 2;
-		blackBishop.setPieceCoordinates(rowBB, columnBB);
-		blackBishop.setPieceColor("Black");
-		blackBishop.setPieceWeight(3);
+		blackBishop->setPieceCoordinates(rowBB, columnBB);
+		blackBishop->setPieceColor("Black");
+		blackBishop->setPieceWeight(3);
 		blackPieces.push_back(blackBishop);
 		initialBoard[rowBB][columnBB] = "BB";
 		
 		rowBK = 1;
 		columnBK = 3;
-		blackKing.setPieceCoordinates(rowBK, columnBK);
-		blackKing.setPieceColor("Black");
-		blackKing.setPieceWeight(10);
+		blackKing->setPieceCoordinates(rowBK, columnBK);
+		blackKing->setPieceColor("Black");
+		blackKing->setPieceWeight(10);
 		blackPieces.push_back(blackKing);
 		initialBoard[rowBK][columnBK] = "BK";
 		
 		rowBQ = 1;
 		columnBQ = 4;
-		blackQueen.setPieceCoordinates(rowBQ, columnBQ);
-		blackQueen.setPieceColor("Black");
-		blackQueen.setPieceWeight(9);
+		blackQueen->setPieceCoordinates(rowBQ, columnBQ);
+		blackQueen->setPieceColor("Black");
+		blackQueen->setPieceWeight(9);
 		blackPieces.push_back(blackQueen);
 		initialBoard[rowBQ][columnBQ] = "BQ";
 		
 		rowBN = 1;
 		columnBN = 5;
-		blackKnight.setPieceCoordinates(rowBN, columnBN);
-		blackKnight.setPieceColor("Black");
-		blackKnight.setPieceWeight(3);
+		blackKnight->setPieceCoordinates(rowBN, columnBN);
+		blackKnight->setPieceColor("Black");
+		blackKnight->setPieceWeight(3);
 		blackPieces.push_back(blackKnight);
 		initialBoard[rowBN][columnBN] = "BN";
 	}
@@ -414,7 +414,7 @@ int main()
 		cin >> rowWP1;
 		cin >> letterWP1;
 		columnWP1 = letterWP1 - 96;
-		whitePawn1.setPieceCoordinates(rowWP1, columnWP1);
+		whitePawn1->setPieceCoordinates(rowWP1, columnWP1);
 		whitePieces.push_back(whitePawn1);
 		initialBoard[rowWP1][columnWP1] = "WP";
 		
@@ -422,7 +422,7 @@ int main()
 		cin >> rowWP2;
 		cin >> letterWP2;
 		columnWP2 = letterWP2 - 96;
-		whitePawn2.setPieceCoordinates(rowWP2, columnWP2);
+		whitePawn2->setPieceCoordinates(rowWP2, columnWP2);
 		whitePieces.push_back(whitePawn2);
 		initialBoard[rowWP2][columnWP2] = "WP";
 		
@@ -430,7 +430,7 @@ int main()
 		cin >> rowWP3;
 		cin >> letterWP3;
 		columnWP3 = letterWP3 - 96;
-		whitePawn3.setPieceCoordinates(rowWP3, columnWP3);
+		whitePawn3->setPieceCoordinates(rowWP3, columnWP3);
 		whitePieces.push_back(whitePawn3);
 		initialBoard[rowWP3][columnWP3] = "WP";
 		
@@ -438,7 +438,7 @@ int main()
 		cin >> rowWP4;
 		cin >> letterWP4;
 		columnWP4 = letterWP4 - 96;
-		whitePawn4.setPieceCoordinates(rowWP4, columnWP4);
+		whitePawn4->setPieceCoordinates(rowWP4, columnWP4);
 		whitePieces.push_back(whitePawn4);
 		initialBoard[rowWP4][columnWP4] = "WP";
 		
@@ -446,7 +446,7 @@ int main()
 		cin >> rowWP5;
 		cin >> letterWP5;
 		columnWP5 = letterWP5 - 96;
-		whitePawn5.setPieceCoordinates(rowWP5, columnWP5);
+		whitePawn5->setPieceCoordinates(rowWP5, columnWP5);
 		whitePieces.push_back(whitePawn5);
 		initialBoard[rowWP5][columnWP5] = "WP";
 		
@@ -454,7 +454,7 @@ int main()
 		cin >> rowWR;
 		cin >> letterWR;
 		columnWR = letterWR - 96;
-		whiteRook.setPieceCoordinates(rowWR, columnWR);
+		whiteRook->setPieceCoordinates(rowWR, columnWR);
 		whitePieces.push_back(whiteRook);
 		initialBoard[rowWR][columnWR] = "WR";
 		
@@ -462,7 +462,7 @@ int main()
 		cin >> rowWN;
 		cin >> letterWN;
 		columnWN = letterWN - 96;
-		whiteKnight.setPieceCoordinates(rowWN, columnWN);
+		whiteKnight->setPieceCoordinates(rowWN, columnWN);
 		whitePieces.push_back(whiteKnight);
 		initialBoard[rowWN][columnWN] = "WN";
 		
@@ -470,7 +470,7 @@ int main()
 		cin >> rowWB;
 		cin >> letterWB;
 		columnWB = letterWB - 96;
-		whiteBishop.setPieceCoordinates(rowWB, columnWB);
+		whiteBishop->setPieceCoordinates(rowWB, columnWB);
 		whitePieces.push_back(whiteBishop);
 		initialBoard[rowWB][columnWB] = "WB";
 		
@@ -478,7 +478,7 @@ int main()
 		cin >> rowWQ;
 		cin >> letterWQ;
 		columnWQ = letterWQ - 96;
-		whiteQueen.setPieceCoordinates(rowWQ, columnWQ);
+		whiteQueen->setPieceCoordinates(rowWQ, columnWQ);
 		whitePieces.push_back(whiteQueen);
 		initialBoard[rowWQ][columnWQ] = "WQ";
 		
@@ -486,7 +486,7 @@ int main()
 		cin >> rowWK;
 		cin >> letterWK;
 		columnWK = letterWK - 96;
-		whiteKing.setPieceCoordinates(rowWK, columnWK);
+		whiteKing->setPieceCoordinates(rowWK, columnWK);
 		whitePieces.push_back(whiteKing);
 		initialBoard[rowWK][columnWK] = "WK";
 		
@@ -497,8 +497,8 @@ int main()
 		cin >> rowBP1;
 		cin >> letterBP1;
 		columnBP1 = letterBP1 - 96;
-		blackPawn1.setPieceCoordinates(rowBP1, columnBP1);
-		blackPawn1.setPieceColor("Black");
+		blackPawn1->setPieceCoordinates(rowBP1, columnBP1);
+		blackPawn1->setPieceColor("Black");
 		blackPieces.push_back(blackPawn1);
 		initialBoard[rowBP1][columnBP1] = "BP";
 		
@@ -506,8 +506,8 @@ int main()
 		cin >> rowBP2;
 		cin >> letterBP2;
 		columnBP2 = letterBP2 - 96;
-		blackPawn2.setPieceCoordinates(rowBP2, columnBP2);
-		blackPawn2.setPieceColor("Black");
+		blackPawn2->setPieceCoordinates(rowBP2, columnBP2);
+		blackPawn2->setPieceColor("Black");
 		blackPieces.push_back(blackPawn2);
 		initialBoard[rowBP2][columnBP2] = "BP";
 		
@@ -515,8 +515,8 @@ int main()
 		cin >> rowBP3;
 		cin >> letterBP3;
 		columnBP3 = letterBP3 - 96;
-		blackPawn3.setPieceCoordinates(rowBP3, columnBP3);
-		blackPawn3.setPieceColor("Black");
+		blackPawn3->setPieceCoordinates(rowBP3, columnBP3);
+		blackPawn3->setPieceColor("Black");
 		blackPieces.push_back(blackPawn3);
 		initialBoard[rowBP3][columnBP3] = "BP";
 		
@@ -524,8 +524,8 @@ int main()
 		cin >> rowBP4;
 		cin >> letterBP4;
 		columnBP4 = letterBP4 - 96;
-		blackPawn4.setPieceCoordinates(rowBP4, columnBP4);
-		blackPawn4.setPieceColor("Black");
+		blackPawn4->setPieceCoordinates(rowBP4, columnBP4);
+		blackPawn4->setPieceColor("Black");
 		blackPieces.push_back(blackPawn4);
 		initialBoard[rowBP4][columnBP4] = "BP";
 		
@@ -533,8 +533,8 @@ int main()
 		cin >> rowBP5;
 		cin >> letterBP5;
 		columnBP5 = letterBP5 - 96;
-		blackPawn5.setPieceCoordinates(rowBP5, columnBP5);
-		blackPawn5.setPieceColor("Black");
+		blackPawn5->setPieceCoordinates(rowBP5, columnBP5);
+		blackPawn5->setPieceColor("Black");
 		blackPieces.push_back(blackPawn5);
 		initialBoard[rowBP5][columnBP5] = "BP";
 		
@@ -542,8 +542,8 @@ int main()
 		cin >> rowBR;
 		cin >> letterBR;
 		columnBR = letterBR - 96;
-		blackRook.setPieceCoordinates(rowBR, columnBR);
-		blackRook.setPieceColor("Black");
+		blackRook->setPieceCoordinates(rowBR, columnBR);
+		blackRook->setPieceColor("Black");
 		blackPieces.push_back(blackRook);
 		initialBoard[rowBR][columnBR] = "BR";
 		
@@ -551,8 +551,8 @@ int main()
 		cin >> rowBN;
 		cin >> letterBN;
 		columnBN = letterBN - 96;
-		blackKnight.setPieceCoordinates(rowBN, columnBN);
-		blackKnight.setPieceColor("Black");
+		blackKnight->setPieceCoordinates(rowBN, columnBN);
+		blackKnight->setPieceColor("Black");
 		blackPieces.push_back(blackKnight);
 		initialBoard[rowBN][columnBN] = "BN";
 		
@@ -560,8 +560,8 @@ int main()
 		cin >> rowBB;
 		cin >> letterBB;
 		columnBB = letterBB - 96;
-		blackBishop.setPieceCoordinates(rowBB, columnBB);
-		blackBishop.setPieceColor("Black");
+		blackBishop->setPieceCoordinates(rowBB, columnBB);
+		blackBishop->setPieceColor("Black");
 		blackPieces.push_back(blackBishop);
 		initialBoard[rowBB][columnBB] = "BB";
 		
@@ -569,8 +569,8 @@ int main()
 		cin >> rowBQ;
 		cin >> letterBQ;
 		columnBQ = letterBQ - 96;
-		blackQueen.setPieceCoordinates(rowBQ, columnBQ);
-		blackQueen.setPieceColor("Black");
+		blackQueen->setPieceCoordinates(rowBQ, columnBQ);
+		blackQueen->setPieceColor("Black");
 		blackPieces.push_back(blackQueen);
 		initialBoard[rowBQ][columnBQ] = "BQ";
 		
@@ -578,8 +578,8 @@ int main()
 		cin >> rowBK;
 		cin >> letterBK;
 		columnBK = letterBK - 96;
-		blackKing.setPieceCoordinates(rowBK, columnBK);
-		blackKing.setPieceColor("Black");
+		blackKing->setPieceCoordinates(rowBK, columnBK);
+		blackKing->setPieceColor("Black");
 		blackPieces.push_back(blackKing);
 		initialBoard[rowBK][columnBK]="BK";
 	}
@@ -609,16 +609,16 @@ int main()
 //// setting the members of initialGame
 ////
 	initialGame.setBoardConfig(initialBoard);
-	initialGame.setBlack(blackPieces);
-	initialGame.setWhite(whitePieces);
+//	initialGame.setBlack(blackPieces);
+//	initialGame.setWhite(whitePieces);
 	
 	
 ////
 ////Testing code for "generatePossibleMoves functions
 ////
 	vector<pair<unsigned,unsigned> > availableMoves;
-	availableMoves = whiteKing.generatePossibleMoves(initialGame);
-
+	availableMoves = whitePieces[0]->generatePossibleMoves(initialGame);
+	
 	for(unsigned i=0; i<availableMoves.size(); i++){
 		cout << "Row: " << availableMoves[i].first << " Column: " << availableMoves[i].second << endl;
 	}
