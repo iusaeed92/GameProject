@@ -297,7 +297,7 @@ vector<pair<unsigned,unsigned> >  Pawn::generatePossibleMoves (GameState current
 //	Pawn thisPawn(name, color, weight, pieceCoordinates);
 	string newColor = this->color;
 		//check if space ahead is empty if it is then place that spaces coordinate on vector
-	if(newColor == "white"){
+	if(newColor == "White"){
 	
 	if(currentGameState.getBoardConfig()[localCoord.first-1][localCoord.second] == "empty"){
 		pair <int, int> test;

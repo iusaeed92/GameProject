@@ -12,8 +12,7 @@ using namespace std;
 
 int main()
 {
-    
-	
+
     GameState initialGame;
     vector< vector <string> > initialBoard;
     vector< Piece* > whitePieces;
@@ -532,8 +531,16 @@ int main()
 ////Initial Questions and variable declarations
 ////
 	string programColor;
-	cout << "Which color will the program be playing? (white/black)" << endl;
-	cin >> programColor;
+	string userColor;
+	cout << "Which color will you be playing as? (white/black)" << endl;
+	cin >> userColor;
+	if(userColor == "white"){
+		programColor = "black";
+	}
+	
+	else{
+		programColor = "white";
+	}
 	
 	string firstMoveColor;
 	cout << "Which color has the first move? (white/black)" << endl;
@@ -558,7 +565,7 @@ int main()
 ////
 ////Testing code for "generatePossibleMoves functions
 ////
-	vector<pair<unsigned,unsigned> > availableMoves;
+/*	vector<pair<unsigned,unsigned> > availableMoves;
 	availableMoves = blackPieces[0]->generatePossibleMoves(initialGame);
 	
 	for(unsigned i=0; i<availableMoves.size(); i++){
@@ -570,7 +577,7 @@ int main()
 	
 	cout << "Black weight heuristic: " << initialGame.blackHeuristicValue() << endl;
 	cout << "White weight heuristic: " << initialGame.whiteHeuristicValue() << endl << endl;
-	
+*/	
 	cout << "Starting configuration: " << endl;
 	
 	initialGame.print();
@@ -591,7 +598,7 @@ int main()
 // priority queue for worklist/closed node list
 //
 //
-	cout << "Priority queue test code: " << endl;
+/*	cout << "Priority queue test code: " << endl;
 	vector <vector <string> > example;
 	vector <vector <string> > example2;
 	vector <vector <string> > example3;
@@ -605,7 +612,7 @@ int main()
 	cout << worklist.top().first << endl;
 	worklist.pop();
 	cout << worklist.top().first << endl << endl;
-	
+	*/
 	
 	string currentMoveColor = firstMoveColor;
 	

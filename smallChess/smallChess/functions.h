@@ -23,23 +23,25 @@
 }*/
 
 
-/*vector <boards> makeBoards(GameState currBoard){
+/*vector <vector <vector <string > > > makeBoards(GameState currBoard){
 
-	vector <pair <int, int> > possibleMoveForI;
-	vector <boards> boards;
+	vector <pair <unsigned, unsigned> > possibleMoveForI;
+	vector <vector <vector <string> > > boards;
+	GameState firstBoard = currBoard;
 
-	for(int i = 0; i < currBoard.getBoardConfig().size(); i++){
-		possibleMovesForI= whitePieces[i].generatePossibleMoves(currBoard);
+	for(int i = 0; i < currBoard.getWhite().size(); i++){
+		possibleMovesForI= whitePieces[i]->generatePossibleMoves(currBoard);
 		
 		for(int j = 0; j < possibleMovesForI.size(); j++){
-			boards.push_back(movePiece(currBoard, ??, whitePieces[i].getPieceCoordinates(), possibleMovesForI[j]));
+			vector <vector <string> > newBoard = movePiece(firstBoard, "white", whitePieces[i]->getPieceCoordinates(), possibleMovesForI[j]);
+			boards.push_back(newBoard);
 		}
  }
 	
  return boards;
 }*/
 
-/*void makeHeuristicPairs(vector<boards> boards, priority_queue <pair <int, boards> > &worklist){
+/*void makeHeuristicPairs(vector<vector<string> > boards, priority_queue <pair <int, vector<vector <string> > > &worklist){
 
 	int heuristicForI;
 
