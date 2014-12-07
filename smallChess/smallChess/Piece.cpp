@@ -30,8 +30,11 @@ using namespace std;
 }*/
 
 vector<pair<unsigned,unsigned> >  Piece::generatePossibleMoves (GameState currentGameState){
-	vector<pair<unsigned, unsigned> > possiblePawnMoves;
-	possiblePawnMoves.push_back(make_pair(1,1));
+	vector<pair<unsigned, unsigned> > possiblePieceMoves;
+	possiblePieceMoves.push_back(make_pair(1,1));
+	
+	return possiblePieceMoves; 
+
 }
 
 
@@ -292,8 +295,10 @@ vector<pair<unsigned,unsigned> >  Pawn::generatePossibleMoves (GameState current
 	vector<pair<unsigned, unsigned> > possiblePawnMoves;
 	pair<int, int> localCoord = pieceCoordinates;
 //	Pawn thisPawn(name, color, weight, pieceCoordinates);
-	
+	string newColor = this->color;
 		//check if space ahead is empty if it is then place that spaces coordinate on vector
+	if(newColor == "white"){
+	
 	if(currentGameState.getBoardConfig()[localCoord.first-1][localCoord.second] == "empty"){
 		pair <int, int> test;
 		test = make_pair(localCoord.first-1, localCoord.second);
@@ -321,8 +326,36 @@ vector<pair<unsigned,unsigned> >  Pawn::generatePossibleMoves (GameState current
 		
 	return possiblePawnMoves;
 	}
+
+else{
+	if(currentGameState.getBoardConfig()[localCoord.first+1][localCoord.second] == "empty"){
+		pair <int, int> test;
+		test = make_pair(localCoord.first+1, localCoord.second);
+		
+		possiblePawnMoves.push_back(test);
+		}
 	
+		//check the diagonal one space ahead, if it is opposing piece push on the vector
+	if(currentGameState.getBoardConfig()[localCoord.first+1][localCoord.second+1] != "empty"
+		&& currentGameState.getBoardConfig()[localCoord.first+1][localCoord.second+1] != "outOfBounds"){
+		if(this->isSameColor(currentGameState, make_pair(localCoord.first+1,localCoord.second+1)) == false){
+			possiblePawnMoves.push_back(make_pair(localCoord.first+1, localCoord.second+1));
 	
+		}
+	}
+		
+		//check other diagonal
+	if(currentGameState.getBoardConfig()[localCoord.first+1][localCoord.second-1] != "empty"
+		&& currentGameState.getBoardConfig()[localCoord.first+1][localCoord.second-1] != "outOfBounds"){
+		if(this->isSameColor(currentGameState, make_pair(localCoord.first-1,localCoord.second-1)) == false){
+			possiblePawnMoves.push_back(make_pair(localCoord.first+1, localCoord.second-1));
+	
+		}
+	}
+	return possiblePawnMoves;
+
+}
+}	
 	
 	
 	
