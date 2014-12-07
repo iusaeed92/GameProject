@@ -8,11 +8,11 @@
 
 using namespace std; 
 
-void GameState::setWhite(vector <Piece> x){
+void GameState::setWhite(vector <Piece*> x){
 	white = x;
 }
 
-void GameState::setBlack(vector <Piece> y){
+void GameState::setBlack(vector <Piece*> y){
 	black = y;
 }
 
@@ -20,11 +20,11 @@ void GameState::setBoardConfig(vector<vector<string> > board){
 	boardConfig = board;
 }
 
-vector <Piece> GameState::getWhite(){
+vector <Piece*> GameState::getWhite(){
 	return white;
 }
 
-vector <Piece> GameState::getBlack(){
+vector <Piece*> GameState::getBlack(){
 	return black;
 }
 
@@ -58,7 +58,7 @@ int GameState::whiteHeuristicValue(){
 	int heuristicValue = 0;
 	
 	for(unsigned i = 0; i < white.size(); i++){
-		heuristicValue = white[i].getPieceWeight() + heuristicValue;
+		heuristicValue = white[i]->getPieceWeight() + heuristicValue;
 	}
 	
 	return heuristicValue;
@@ -68,7 +68,7 @@ int GameState::blackHeuristicValue(){
 	int heuristicValue = 0;
 	
 	for(unsigned i = 0; i < black.size(); i++){
-		heuristicValue = black[i].getPieceWeight() + heuristicValue;
+		heuristicValue = black[i]->getPieceWeight() + heuristicValue;
 	}
 	
 	return heuristicValue;

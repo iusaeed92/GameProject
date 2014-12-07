@@ -6,87 +6,9 @@
 #include "Piece.h"
 #include "GameState.h"
 #include "time.h"
+#include "functions.h"
 
 using namespace std;
-
-//int negaMax(Board b, int depth, int color, priority_queue <pair <int, vector <vector <string> > > worklist){
-//	if(GameOver(board) or time>timeLimit){
-//		return sign[color]*getHeuristic(b);
-//	}
-//	
-//	int BestHeuristic = -1000000;
-//	
-//	for(int i = 0; i < worklist.size(); i++){
-//		int x = negaMax(worklist.top(), depth+1, 1-color, worklist.pop());
-//		if(x>BestHeuristic){
-//			BestHeuristic = x;
-//		}
-//	}
-//	
-//	return BestHeuristic;
-//}
-
-
-//vector <boards> makeBoards(GameState currBoard){
-//
-//	vector <pair <int, int> > possibleMoveForI;
-//	vector <boards> boards;
-//
-//	for(int i = 0; i < currBoard.getBoardConfig().size(); i++){
-//		possibleMovesForI= whitePieces[i].generatePossibleMoves(currBoard);
-//		
-//		for(int j = 0; j < possibleMovesForI.size(); j++){
-//			boards.push_back(movePiece(currBoard, ??, whitePieces[i].getPieceCoordinates(), possibleMovesForI[j]));
-//		}
-// }
-//	
-// return boards;
-//}
-
-//void makeHeuristicPairs(vector<boards> boards, priority_queue <pair <int, boards> > &worklist){
-//
-//	int heuristicForI;
-//
-//	for(int i = 0; i < boards.size(); i++){
-//		heuristicForI = boards[i].getHeuristic();
-//		worklist.push(make_pair(heuristicForI, boards[i]));
-//	}
-//
-//}
-
-void movePiece(GameState &currState, string movingColor, pair <int, int> starting, pair<int, int> ending){
-	if(movingColor == "white"){
-		for(unsigned i = 0; i < currState.getWhite().size(); i++){
-			if(currState.getWhite()[i].getPieceCoordinates().first == starting.first &&
-			currState.getWhite()[i].getPieceCoordinates().second == starting.second){
-				currState.getWhite()[i].setPieceCoordinates(ending.first, ending.second);
-			}
-		}
-		
-		vector< vector< string > > temp = currState.getBoardConfig();
-		temp[ending.first][ending.second]=currState.getBoardConfig()[starting.first][starting.second];
-		temp[starting.first][starting.second] = "empty";
-		currState.setBoardConfig(temp);
-	}
-	
-	else{
-		for(unsigned i = 0; i < currState.getBlack().size(); i++){
-			if(currState.getBlack()[i].getPieceCoordinates().first == starting.first &&
-			currState.getBlack()[i].getPieceCoordinates().second == starting.second){
-				currState.getBlack()[i].setPieceCoordinates(ending.first, ending.second);
-			}
-		}
-		
-		vector< vector< string > > temp = currState.getBoardConfig();
-		temp[ending.first][ending.second]=currState.getBoardConfig()[starting.first][starting.second];
-		temp[starting.first][starting.second] = "empty";
-		currState.setBoardConfig(temp);
-	}
-	
-}
-
-
-
 
 int main()
 {
@@ -136,51 +58,61 @@ int main()
     char letterWP1;
     int columnWP1;
     Pawn* whitePawn1 = new Pawn;
+    whitePawn1->setPieceName("P");
     
     int rowWP2;
     char letterWP2;
     int columnWP2;
     Pawn* whitePawn2 = new Pawn;
+	whitePawn2->setPieceName("P");
     
     int rowWP3;
     char letterWP3;
     int columnWP3;
     Pawn* whitePawn3 = new Pawn;
+	whitePawn3->setPieceName("P");
     
     int rowWP4;
     char letterWP4;
     int columnWP4;
     Pawn* whitePawn4 = new Pawn;
+    whitePawn4->setPieceName("P");
     
     int rowWP5;
     char letterWP5;
     int columnWP5;
     Pawn* whitePawn5 = new Pawn;
+	whitePawn5->setPieceName("P");
     
     int rowWN;
     char letterWN;
     int columnWN;
     Knight* whiteKnight = new Knight;
+	whiteKnight->setPieceName("N");
     
     int rowWB;
     char letterWB;
     int columnWB;
     Bishop* whiteBishop = new Bishop;
+	whiteBishop->setPieceName("B");
     
     int rowWR;
     char letterWR;
     int columnWR;
     Rook* whiteRook = new Rook;
+	whiteRook->setPieceName("R");
     
     int rowWQ;
     char letterWQ;
     int columnWQ;
     Queen* whiteQueen = new Queen;
+	whiteQueen->setPieceName("Q");
     
     int rowWK;
     char letterWK;
     int columnWK;
     King* whiteKing = new King;
+	whiteKing->setPieceName("K");
     
     ////
     ////Variables for the black pieces
@@ -189,51 +121,61 @@ int main()
     char letterBP1;
     int columnBP1;
     Pawn* blackPawn1 = new Pawn;
+	blackPawn1->setPieceName("P");
     
     int rowBP2;
     char letterBP2;
     int columnBP2;
     Pawn* blackPawn2 = new Pawn;
+	blackPawn2->setPieceName("P");
     
     int rowBP3;
     char letterBP3;
     int columnBP3;
     Pawn* blackPawn3 = new Pawn;
+	blackPawn3->setPieceName("P");
     
     int rowBP4;
     char letterBP4;
     int columnBP4;
     Pawn* blackPawn4 = new Pawn;
+	blackPawn4->setPieceName("P");
     
     int rowBP5;
     char letterBP5;
     int columnBP5;
     Pawn* blackPawn5 = new Pawn;
+	blackPawn5->setPieceName("P");
     
     int rowBN;
     char letterBN;
     int columnBN;
     Knight* blackKnight = new Knight;
+	blackKnight->setPieceName("N");
     
     int rowBB;
     char letterBB;
     int columnBB;
     Bishop* blackBishop = new Bishop;
+	blackBishop->setPieceName("B");
     
     int rowBR;
     char letterBR;
     int columnBR;
     Rook* blackRook = new Rook;
+	blackRook->setPieceName("R");
     
     int rowBQ;
     char letterBQ;
     int columnBQ;
     Queen* blackQueen = new Queen;
+	blackQueen->setPieceName("Q");
     
     int rowBK;
     char letterBK;
     int columnBK;
     King* blackKing = new King;
+	blackKing->setPieceName("K");
 	
 	
 	////
@@ -609,15 +551,15 @@ int main()
 //// setting the members of initialGame
 ////
 	initialGame.setBoardConfig(initialBoard);
-//	initialGame.setBlack(blackPieces);
-//	initialGame.setWhite(whitePieces);
+	initialGame.setBlack(blackPieces);
+	initialGame.setWhite(whitePieces);
 	
 	
 ////
 ////Testing code for "generatePossibleMoves functions
 ////
 	vector<pair<unsigned,unsigned> > availableMoves;
-	availableMoves = whitePieces[0]->generatePossibleMoves(initialGame);
+	availableMoves = blackPieces[0]->generatePossibleMoves(initialGame);
 	
 	for(unsigned i=0; i<availableMoves.size(); i++){
 		cout << "Row: " << availableMoves[i].first << " Column: " << availableMoves[i].second << endl;
@@ -715,7 +657,9 @@ int main()
 				int humanMoveStartRow;
 				int humanMoveEndRow;
 				string result;
-				cout << "Enter your move in the format and hit enter after each parameter:" << endl << "startColumn(a-e) startRow(1-6) endColumn(a-e) endRow(1-6): " << endl;
+				cout << "Enter your move in the format and hit enter after each parameter:" << endl 
+				<< "Piece name(P, B, N, R, Q, K) startColumn(a-e) startRow(1-6) endColumn(a-e) endRow(1-6): " << endl;
+				cin >> humanMoveName;
 				cin >> humanMoveStartColumn;
 				cin >> humanMoveStartRow;
 				cin >> humanMoveEndColumn;
@@ -723,9 +667,24 @@ int main()
 				numHumanMoveStartColumn = humanMoveStartColumn - 96;
 				numHumanMoveEndColumn = humanMoveEndColumn - 96;
 				pair <int, int> startCoords = make_pair(humanMoveStartRow, numHumanMoveStartColumn);
+				cout << "first: " << startCoords.first << "second: " << startCoords.second << endl;
 				pair <int, int> endCoords = make_pair(humanMoveEndRow, numHumanMoveEndColumn);
 				
-				movePiece(initialGame, currentMoveColor, startCoords, endCoords);
+				while(validMove(initialGame, currentMoveColor, humanMoveName, startCoords, endCoords, result) == false){
+					cout << "Invalid move." << endl;
+					cout << "Enter your move in the format and hit enter after each parameter:" << endl << "startColumn(a-e) startRow(1-6) endColumn(a-e) endRow(1-6): " << endl;
+					cin >> humanMoveName;
+					cin >> humanMoveStartColumn;
+					cin >> humanMoveStartRow;
+					cin >> humanMoveEndColumn;
+					cin >> humanMoveEndRow;
+					numHumanMoveStartColumn = humanMoveStartColumn - 96;
+					numHumanMoveEndColumn = humanMoveEndColumn - 96;
+					startCoords = make_pair(humanMoveStartRow, numHumanMoveStartColumn);
+					endCoords = make_pair(humanMoveEndRow, numHumanMoveEndColumn);
+				}
+				
+					movePiece(initialGame, currentMoveColor, startCoords, endCoords);
 				
 				initialGame.print();
 			}
