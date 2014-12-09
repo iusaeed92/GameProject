@@ -17,6 +17,7 @@ int main()
     vector< vector <string> > initialBoard;
     vector< Piece* > whitePieces;
     vector< Piece*> blackPieces;
+	priority_queue <pair <int, vector <vector <string> > > >worklist;
     
     ////
     ////Initialization and sizing of the 2D vector
@@ -241,7 +242,7 @@ int main()
 		whitePieces.push_back(whiteBishop);
 		initialBoard[rowWB][columnWB] = "WB";
 		
-		rowWK = 4;
+		rowWK = 6;
 		columnWK = 3;
 		whiteKing->setPieceCoordinates(rowWK, columnWK);
 		whiteKing->setPieceColor("White");
@@ -249,8 +250,8 @@ int main()
 		whitePieces.push_back(whiteKing);
 		initialBoard[rowWK][columnWK] = "WK";
 		
-		rowWQ = 6;
-		columnWQ = 4;
+		rowWQ = 3;
+		columnWQ = 3;
 		whiteQueen->setPieceCoordinates(rowWQ, columnWQ);
 		whiteQueen->setPieceColor("White");
 		whiteQueen->setPieceWeight(9);
@@ -588,6 +589,7 @@ int main()
 	GameState test;
 	GameState test2;
 	
+	
 	for(unsigned i = 0; i < possibleBoards.size(); i++){
 		cout << "Board " << i << ":" << endl;
 		test.setBoardConfig(possibleBoards[i]);
@@ -595,7 +597,7 @@ int main()
 		cout << endl << endl;
 	}
 	
-	
+//	makeHeuristicPairs(possibleBoards, worklist);
 	
 ////
 ////Negamax Search and game simulation

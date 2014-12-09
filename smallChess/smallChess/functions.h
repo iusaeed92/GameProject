@@ -30,38 +30,35 @@ vector <vector <vector <string > > > makeBoards(GameState currBoard){
 	
 	vector <pair <unsigned, unsigned> > possibleMovesForI;
 	vector <vector <vector <string> > > boards;
+	
 	GameState newBoard;
 	newBoard.setWhite(currBoard.getWhite());
 	newBoard.setBlack(currBoard.getBlack());
 	newBoard.setBoardConfig(currBoard.getBoardConfig());
-
+	
 	for(unsigned i = 0; i < currBoard.getWhite().size(); i++){
 		possibleMovesForI = currBoard.getWhite()[i]->generatePossibleMoves(currBoard);
+		pair<int, int> thisPieceCoords = newBoard.getWhite()[i]->getPieceCoordinates();
 		
 		for(unsigned j = 0; j < possibleMovesForI.size(); j++){
 			newBoard.setWhite(currBoard.getWhite());
 			newBoard.setBlack(currBoard.getBlack());
 			newBoard.setBoardConfig(currBoard.getBoardConfig());
-			cout << "Row: " << possibleMovesForI[j].first << " Column: " << possibleMovesForI[j].second << endl;
-			movePiece(newBoard, "white", newBoard.getWhite()[i]->getPieceCoordinates(), possibleMovesForI[j]);
+			movePiece(newBoard, "white", thisPieceCoords, possibleMovesForI[j]);
 			boards.push_back(newBoard.getBoardConfig());
 		}
 		
-/*		for(unsigned k = 0; k < possibleMovesForI.size(); k++){
-			cout << k << endl;
-			cout << "Row: " << possibleMovesForI[k].first << " Column: " << possibleMovesForI[k].second << endl;
-		
- */}
+}
 	
  return boards;
 }
 
-/*void makeHeuristicPairs(vector<vector<string> > boards, priority_queue <pair <int, vector<vector <string> > > &worklist){
+/*void makeHeuristicPairs(vector <vector < vector <string> > > boards, priority_queue <pair <int, vector<vector <string> > > > &worklist){
 
 	int heuristicForI;
 
-	for(int i = 0; i < boards.size(); i++){
-		heuristicForI = boards[i].getHeuristic();
+	for(unsigned i = 0; i < boards.size(); i++){
+		heuristicForI = boards[i].whiteHeuristicValue();
 		worklist.push(make_pair(heuristicForI, boards[i]));
 	}
 
@@ -114,7 +111,6 @@ void movePiece(GameState &currState, string movingColor, pair <int, int> startin
 		for(unsigned i = 0; i < currState.getWhite().size(); i++){
 			if(currState.getWhite()[i]->getPieceCoordinates().first == starting.first &&
 			currState.getWhite()[i]->getPieceCoordinates().second == starting.second){
-				cout << "made it" << currState.getWhite()[i]->getPieceName() << endl;
 				currState.getWhite()[i]->setPieceCoordinates(ending.first, ending.second);
 			}
 		}
