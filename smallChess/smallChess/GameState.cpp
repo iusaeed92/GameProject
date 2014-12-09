@@ -74,3 +74,107 @@ int GameState::blackHeuristicValue(){
 	return heuristicValue;
 }
 
+bool GameState::kingInCheck(string color){
+	GameState dummyGameState;
+	dummyGameState.setWhite(white);
+	dummyGameState.setBlack(black);
+	dummyGameState.setBoardConfig(boardConfig);
+	
+	pair<unsigned,unsigned> kingCoords;
+	
+	if(color == "white"){
+		//find king
+		
+		for(unsigned i=0; i < white.size(); i++){
+			if(white[i]->getPieceName() == "K"){
+				kingCoords = white[i]->getPieceCoordinates();
+			}
+		}	
+		
+			//create all possible moves for black
+			//traverse to see if any possible move matches the white kings coordinates
+			vector< pair<unsigned,unsigned> > blackMoves;
+			for(unsigned i=0; i < black.size(); i++){
+				blackMoves = black[i]->generatePossibleMoves(dummyGameState);
+				for(unsigned j=0; j < blackMoves.size(); j++){
+					if(kingCoords == blackMoves[j]){
+						return true;
+				}
+			  }
+			}
+			return false;
+	}
+
+else{
+		pair<unsigned,unsigned> kingCoords;
+		for(unsigned i=0; i < black.size(); i++){
+			cout << black[i]->getPieceName() << endl;
+			cout << black.size() << endl;
+			
+			if(black[i]->getPieceName() == "K"){
+				kingCoords = black[i]->getPieceCoordinates();
+			}
+		}
+			//create all possible moves for white
+			//traverse to see if any possible move matches the black kings coordinates
+			vector< pair<unsigned,unsigned> > whiteMoves;
+			for(unsigned i=0; i < white.size(); i++){
+				whiteMoves = white[i]->generatePossibleMoves(dummyGameState);
+				for(unsigned j=0; j < whiteMoves.size(); j++){
+					if(kingCoords == whiteMoves[j]){
+						return true;
+				}
+			  }
+			}
+			//if it finds no match, king not in check
+			return false; 
+		}
+    
+	cout << "king in check has returned false do to some unknown error" << endl;
+	return false;
+}
+
+bool GameState::isThreatened(pair<unsigned, unsigned> squareToCheck, string color){
+	GameState dummyGameState;
+	dummyGameState.setWhite(white);
+	dummyGameState.setBlack(black);
+	dummyGameState.setBoardConfig(boardConfig);
+	
+	if(color == "white"){
+			pair<unsigned, unsigned> testSquare = squareToCheck;
+			//create all possible moves for black
+			//traverse to see if any possible move matches the white kings coordinates
+			vector< pair<unsigned,unsigned> > blackMoves;
+			for(unsigned i=0; i < black.size(); i++){
+				blackMoves = black[i]->generatePossibleMoves(dummyGameState);
+				for(unsigned j=0; j < blackMoves.size(); j++){
+					if(squareToCheck == blackMoves[j]){
+						return true;
+				}
+			  }
+			}
+			return false;
+	}
+
+else{
+		
+			//create all possible moves for white
+			//traverse to see if any possible move matches the black kings coordinates
+			vector< pair<unsigned,unsigned> > whiteMoves;
+			for(unsigned i=0; i < white.size(); i++){
+				whiteMoves = white[i]->generatePossibleMoves(dummyGameState);
+				for(unsigned j=0; j < whiteMoves.size(); j++){
+					if(squareToCheck == whiteMoves[j]){
+						return true;
+				}
+			  }
+			}
+			//if it finds no match, space is not threatened
+			return false; 
+		}
+    
+	cout << "space has returned false do to some unknown error" << endl;
+	return false;
+}
+	
+	
