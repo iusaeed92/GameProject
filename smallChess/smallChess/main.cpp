@@ -241,7 +241,7 @@ int main()
 		whitePieces.push_back(whiteBishop);
 		initialBoard[rowWB][columnWB] = "WB";
 		
-		rowWK = 6;
+		rowWK = 4;
 		columnWK = 3;
 		whiteKing->setPieceCoordinates(rowWK, columnWK);
 		whiteKing->setPieceColor("White");
@@ -566,7 +566,7 @@ int main()
 ////Testing code for "generatePossibleMoves functions
 ////
 /*	vector<pair<unsigned,unsigned> > availableMoves;
-	availableMoves = blackPieces[0]->generatePossibleMoves(initialGame);
+	availableMoves = whiteKnight->generatePossibleMoves(initialGame);
 	
 	for(unsigned i=0; i<availableMoves.size(); i++){
 		cout << "Row: " << availableMoves[i].first << " Column: " << availableMoves[i].second << endl;
@@ -582,6 +582,18 @@ int main()
 	
 	initialGame.print();
 	
+
+	vector <vector <vector <string> > > possibleBoards;
+	possibleBoards = makeBoards(initialGame);
+	GameState test;
+	GameState test2;
+	
+	for(unsigned i = 0; i < possibleBoards.size(); i++){
+		cout << "Board " << i << ":" << endl;
+		test.setBoardConfig(possibleBoards[i]);
+		test.print();
+		cout << endl << endl;
+	}
 	
 	
 	
@@ -733,7 +745,9 @@ int main()
 			int humanMoveStartRow;
 			int humanMoveEndRow;
 			string result;
-			cout << "Enter your move in the format and hit enter after each parameter:" << endl << "startColumn(a-e) startRow(1-6) endColumn(a-e) endRow(1-6): " << endl;
+			cout << "Enter your move in the format and hit enter after each parameter:" << endl 
+			<< "Piece name(P, B, N, R, Q, K) startColumn(a-e) startRow(1-6) endColumn(a-e) endRow(1-6): " << endl;
+			cin >> humanMoveName;
 			cin >> humanMoveStartColumn;
 			cin >> humanMoveStartRow;
 			cin >> humanMoveEndColumn;
@@ -741,9 +755,24 @@ int main()
 			numHumanMoveStartColumn = humanMoveStartColumn - 96;
 			numHumanMoveEndColumn = humanMoveEndColumn - 96;
 			pair <int, int> startCoords = make_pair(humanMoveStartRow, numHumanMoveStartColumn);
+			cout << "first: " << startCoords.first << "second: " << startCoords.second << endl;
 			pair <int, int> endCoords = make_pair(humanMoveEndRow, numHumanMoveEndColumn);
 			
-			movePiece(initialGame, currentMoveColor, startCoords, endCoords);
+			while(validMove(initialGame, currentMoveColor, humanMoveName, startCoords, endCoords, result) == false){
+				cout << "Invalid move." << endl;
+				cout << "Enter your move in the format and hit enter after each parameter:" << endl << "startColumn(a-e) startRow(1-6) endColumn(a-e) endRow(1-6): " << endl;
+				cin >> humanMoveName;
+				cin >> humanMoveStartColumn;
+				cin >> humanMoveStartRow;
+				cin >> humanMoveEndColumn;
+				cin >> humanMoveEndRow;
+				numHumanMoveStartColumn = humanMoveStartColumn - 96;
+				numHumanMoveEndColumn = humanMoveEndColumn - 96;
+				startCoords = make_pair(humanMoveStartRow, numHumanMoveStartColumn);
+				endCoords = make_pair(humanMoveEndRow, numHumanMoveEndColumn);
+			}
+			
+				movePiece(initialGame, currentMoveColor, startCoords, endCoords);
 			
 			initialGame.print();
 		}

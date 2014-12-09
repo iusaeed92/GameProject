@@ -2,7 +2,10 @@
 //H file for functions used in main
 //
 
-
+vector <vector <vector <string > > > makeBoards(GameState currBoard);
+pair<Piece*, bool> retrievePiece(GameState currGame, string moveColor, string Name, pair<int, int> start);
+bool validMove(GameState currGame, string moveColor, string Name, pair<unsigned, unsigned> start, pair<unsigned, unsigned> end, string result);
+void movePiece(GameState &currState, string movingColor, pair <int, int> starting, pair<int, int> ending);
 
 
 /*int negaMax(Board b, int depth, int color, priority_queue <pair <int, vector <vector <string> > > worklist){
@@ -23,23 +26,35 @@
 }*/
 
 
-/*vector <vector <vector <string > > > makeBoards(GameState currBoard){
-
-	vector <pair <unsigned, unsigned> > possibleMoveForI;
+vector <vector <vector <string > > > makeBoards(GameState currBoard){
+	
+	vector <pair <unsigned, unsigned> > possibleMovesForI;
 	vector <vector <vector <string> > > boards;
-	GameState firstBoard = currBoard;
+	GameState newBoard;
+	newBoard.setWhite(currBoard.getWhite());
+	newBoard.setBlack(currBoard.getBlack());
+	newBoard.setBoardConfig(currBoard.getBoardConfig());
 
-	for(int i = 0; i < currBoard.getWhite().size(); i++){
-		possibleMovesForI= whitePieces[i]->generatePossibleMoves(currBoard);
+	for(unsigned i = 0; i < currBoard.getWhite().size(); i++){
+		possibleMovesForI = currBoard.getWhite()[i]->generatePossibleMoves(currBoard);
 		
-		for(int j = 0; j < possibleMovesForI.size(); j++){
-			vector <vector <string> > newBoard = movePiece(firstBoard, "white", whitePieces[i]->getPieceCoordinates(), possibleMovesForI[j]);
-			boards.push_back(newBoard);
+		for(unsigned j = 0; j < possibleMovesForI.size(); j++){
+			newBoard.setWhite(currBoard.getWhite());
+			newBoard.setBlack(currBoard.getBlack());
+			newBoard.setBoardConfig(currBoard.getBoardConfig());
+			cout << "Row: " << possibleMovesForI[j].first << " Column: " << possibleMovesForI[j].second << endl;
+			movePiece(newBoard, "white", newBoard.getWhite()[i]->getPieceCoordinates(), possibleMovesForI[j]);
+			boards.push_back(newBoard.getBoardConfig());
 		}
- }
+		
+/*		for(unsigned k = 0; k < possibleMovesForI.size(); k++){
+			cout << k << endl;
+			cout << "Row: " << possibleMovesForI[k].first << " Column: " << possibleMovesForI[k].second << endl;
+		
+ */}
 	
  return boards;
-}*/
+}
 
 /*void makeHeuristicPairs(vector<vector<string> > boards, priority_queue <pair <int, vector<vector <string> > > &worklist){
 
@@ -99,6 +114,7 @@ void movePiece(GameState &currState, string movingColor, pair <int, int> startin
 		for(unsigned i = 0; i < currState.getWhite().size(); i++){
 			if(currState.getWhite()[i]->getPieceCoordinates().first == starting.first &&
 			currState.getWhite()[i]->getPieceCoordinates().second == starting.second){
+				cout << "made it" << currState.getWhite()[i]->getPieceName() << endl;
 				currState.getWhite()[i]->setPieceCoordinates(ending.first, ending.second);
 			}
 		}
