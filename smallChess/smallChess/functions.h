@@ -58,7 +58,7 @@ int negaMax(vector <vector <string> > currBoard, int depth, string color){
 		}
 	}
 	
-
+	int bestHeuristic = -1000000;
 	priority_queue <pair <int, vector <vector <string> > > > currWorklist;
 	vector <GameState> movesForCurrBoard = makeBoards(currState, color);
 	makeHeuristicPairs(movesForCurrBoard, currWorklist);
@@ -87,9 +87,6 @@ vector <GameState> makeBoards(GameState currBoard, string color){
 	vector <GameState> gameStates;
 	GameState newBoard;
 	newBoard=currBoard;
-	//	newBoard.setWhite(currBoard.getWhite());
-	//	newBoard.setBlack(currBoard.getBlack());
-	//	newBoard.setBoardConfig(currBoard.getBoardConfig());
 
     if (color == "white"){
 
@@ -98,14 +95,13 @@ vector <GameState> makeBoards(GameState currBoard, string color){
 			pair<int, int> thisPieceCoords = newBoard.getWhite()[i]->getPieceCoordinates();
 			
 			for(unsigned j = 0; j < possibleMovesForI.size(); j++){
-				//	newBoard.setWhite(currBoard.getWhite());
-				//	newBoard.setBlack(currBoard.getBlack());
 				newBoard.setBoardConfig(currBoard.getBoardConfig());
 				searchMovePiece(newBoard, "white", thisPieceCoords, possibleMovesForI[j]);
 				gameStates.push_back(newBoard);
 			}
 		}
-	return gameStates;
+		
+		return gameStates;
 	}
 	
     else {
@@ -114,8 +110,6 @@ vector <GameState> makeBoards(GameState currBoard, string color){
             pair<int, int> thisPieceCoords = newBoard.getBlack()[i]->getPieceCoordinates();
 			
             for(unsigned j = 0; j < possibleMovesForI.size(); j++){
-                //	newBoard.setWhite(currBoard.getWhite());
-                //	newBoard.setBlack(currBoard.getBlack());
                 newBoard.setBoardConfig(currBoard.getBoardConfig());
                 searchMovePiece(newBoard, "black", thisPieceCoords, possibleMovesForI[j]);
                 gameStates.push_back(newBoard);
@@ -124,23 +118,7 @@ vector <GameState> makeBoards(GameState currBoard, string color){
         return gameStates;
     }
 }
-    else {
-        for(unsigned i = 0; i < currBoard.getBlack().size(); i++){
-            possibleMovesForI = currBoard.getBlack()[i]->generatePossibleMoves(currBoard);
-            pair<int, int> thisPieceCoords = newBoard.getBlack()[i]->getPieceCoordinates();
-            
-            for(unsigned j = 0; j < possibleMovesForI.size(); j++){
-                //			newBoard.setWhite(currBoard.getWhite());
-                //			newBoard.setBlack(currBoard.getBlack());
-                newBoard.setBoardConfig(currBoard.getBoardConfig());
-                searchMovePiece(newBoard, "black", thisPieceCoords, possibleMovesForI[j]);
-                gameStates.push_back(newBoard);
-            }
-            
-        }
-        return gameStates;
-    }
-}
+
 
 void makeHeuristicPairs(vector <GameState> boards, priority_queue <pair <int, vector< vector <string> > > > &worklist){
 

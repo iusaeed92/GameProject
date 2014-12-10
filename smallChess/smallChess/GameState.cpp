@@ -221,18 +221,7 @@ int GameState::heuristicValue(){
 	return heuristicValue;
 }
 
-int GameState::blackHeuristicValue(){
-	int heuristicValue = 0;
-	
-	for(unsigned i = 0; i < black.size(); i++){
-		heuristicValue = black[i]->getPieceWeight() + heuristicValue;
-	}
-	
-	return heuristicValue;
-}
 
-<<<<<<< HEAD
-=======
 bool GameState::kingInCheck(string color){
 	GameState dummyGameState;
 	dummyGameState.setWhite(white);
@@ -686,8 +675,3 @@ bool GameState::checkmate(string color){
 		
 	
 	
-	
-
-	
-	
->>>>>>> f49b4e81a1808643482fe8ca9b9ebbd0720972cc
