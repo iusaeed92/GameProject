@@ -17,7 +17,7 @@ int main()
     vector< vector <string> > initialBoard;
     vector< Piece* > whitePieces;
     vector< Piece*> blackPieces;
-	priority_queue <pair <int, vector <vector <string> > > >worklist;
+	priority_queue <pair <int, vector <vector <string > > > > worklist;
     
     ////
     ////Initialization and sizing of the 2D vector
@@ -562,9 +562,37 @@ int main()
 	initialGame.setBlack(blackPieces);
 	initialGame.setWhite(whitePieces);
 	
+/*	for(unsigned r = 0; r < test.getWhite().size(); r++){
+		if(test.getWhite()[r]->getPieceName() == "P"){
+			test.getWhite()[r] = new Pawn;
+			test.getWhite()[r]->setPieceCoordinates(initialGame.getWhite()[r]->getPieceCoordinates().first, initialGame.getWhite()[r]->getPieceCoordinates().second);
+		}
+		if(test.getWhite()[r]->getPieceName() == "B"){
+			test.getWhite()[r] = new Bishop;
+		}
+		if(test.getWhite()[r]->getPieceName() == "N"){
+			test.getWhite()[r] = new Knight;
+		}
+		if(test.getWhite()[r]->getPieceName() == "R"){
+			test.getWhite()[r] = new Rook;
+		}
+		if(test.getWhite()[r]->getPieceName() == "Q"){
+			test.getWhite()[r] = new Queen;
+		}
+		if(test.getWhite()[r]->getPieceName() == "K"){
+			test.getWhite()[r] = new King;
+		}
+	}
+	
+	for(unsigned k = 0; k < test.getWhite().size(); k++){
+		cout << "row: " << test.getWhite()[k]->getPieceCoordinates().first << endl;
+		cout << "row: " << initialGame.getWhite()[k]->getPieceCoordinates().first << endl << endl;
+		test.getWhite()[k]->setPieceCoordinates(initialGame.getWhite()[k]->getPieceCoordinates().first, initialGame.getWhite()[k]->getPieceCoordinates().second);
+	}*/
+	
 	
 ////
-////Testing code for "generatePossibleMoves functions
+////Testing code for "generatePossibleMoves" functions
 ////
 /*	vector<pair<unsigned,unsigned> > availableMoves;
 	availableMoves = whiteKnight->generatePossibleMoves(initialGame);
@@ -581,23 +609,28 @@ int main()
 */	
 	cout << "Starting configuration: " << endl;
 	
-	initialGame.print();
-	
-
-	vector <vector <vector <string> > > possibleBoards;
+	vector <GameState> possibleBoards;
 	possibleBoards = makeBoards(initialGame);
-	GameState test;
-	GameState test2;
-	
+
+/*		for(unsigned j = 0; j < initialGame.getWhite().size(); j++){
+			cout << "Row: " << initialGame.getWhite()[j]->getPieceCoordinates().first;
+			cout << "Column: " << initialGame.getWhite()[j]->getPieceCoordinates().second << endl;
+		}*/
+
 	
 	for(unsigned i = 0; i < possibleBoards.size(); i++){
 		cout << "Board " << i << ":" << endl;
-		test.setBoardConfig(possibleBoards[i]);
-		test.print();
+//		possibleBoards[i].print();
+//		for(unsigned r = 0; r < possibleBoards[i].getWhite().size(); r++){
+//			*possibleBoards[i].getWhite()[r] = *whitePieces[r];
+//		}
+		possibleBoards[i].setWhite(whitePieces);
+		for(unsigned j = 0; j < possibleBoards[i].getWhite().size(); j++){
+			cout << "Row: " << possibleBoards[i].getWhite()[j]->getPieceCoordinates().first;
+			cout << "Column: " << possibleBoards[i].getWhite()[j]->getPieceCoordinates().second << endl;
+		}
 		cout << endl << endl;
 	}
-	
-//	makeHeuristicPairs(possibleBoards, worklist);
 	
 ////
 ////Negamax Search and game simulation
@@ -627,6 +660,10 @@ int main()
 	worklist.pop();
 	cout << worklist.top().first << endl << endl;
 	*/
+	
+
+	makeHeuristicPairs(possibleBoards, worklist);
+
 	
 	string currentMoveColor = firstMoveColor;
 	

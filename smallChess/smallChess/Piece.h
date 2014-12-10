@@ -29,8 +29,8 @@ public:
     
 	bool isSameColor(GameState instance, pair<int, int> coordinates);
 	
-//	Piece();
-//	Piece(string n, string c, int w, pair<int,int> coords);
+	//Piece();
+	//Piece(string n, string c, int w, pair<int,int> coords);
 
 	//mutators:
     void setPieceName(string s);
