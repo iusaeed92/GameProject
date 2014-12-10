@@ -30,11 +30,10 @@ using namespace std;
 }*/
 
 vector<pair<unsigned,unsigned> >  Piece::generatePossibleMoves (GameState currentGameState){
-	vector<pair<unsigned, unsigned> > possiblePieceMoves;
-	possiblePieceMoves.push_back(make_pair(1,1));
-	
-	return possiblePieceMoves; 
 
+	vector<pair<unsigned, unsigned> > possiblePawnMoves;
+	possiblePawnMoves.push_back(make_pair(1,1));
+    return possiblePawnMoves;
 }
 
 
@@ -169,7 +168,7 @@ int diagonalMoves(GameState instance, Piece* currPiece, int direction){
 		return movesSoFar;
 	}
     
-    else if(direction == 4){
+    else {
 		localCoord.first = localCoord.first+1;
 		localCoord.second = localCoord.second+1;
 		
@@ -253,7 +252,7 @@ int straightMoves(GameState instance, Piece* currPiece, int direction){
 		return movesSoFar;
 	}
 
-    else if(direction == 4){
+    else {
 		localCoord.second = localCoord.second+1;
 		
 		while(instance.getBoardConfig()[localCoord.first][ localCoord.second] == "empty"){

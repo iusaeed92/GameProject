@@ -610,17 +610,17 @@ int main()
 	cout << "Starting configuration: " << endl;
 	
 	vector <GameState> possibleBoards;
-	possibleBoards = makeBoards(initialGame);
+	possibleBoards = makeBoards(initialGame, "black");
+
 
 /*		for(unsigned j = 0; j < initialGame.getWhite().size(); j++){
 			cout << "Row: " << initialGame.getWhite()[j]->getPieceCoordinates().first;
 			cout << "Column: " << initialGame.getWhite()[j]->getPieceCoordinates().second << endl;
 		}*/
 
-	
 	for(unsigned i = 0; i < possibleBoards.size(); i++){
 		cout << "Board " << i << ":" << endl;
-//		possibleBoards[i].print();
+         possibleBoards[i].print();
 //		for(unsigned r = 0; r < possibleBoards[i].getWhite().size(); r++){
 //			*possibleBoards[i].getWhite()[r] = *whitePieces[r];
 //		}
