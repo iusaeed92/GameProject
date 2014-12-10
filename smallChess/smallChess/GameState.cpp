@@ -227,7 +227,6 @@ bool GameState::kingInCheck(string color){
 	dummyGameState.setWhite(white);
 	dummyGameState.setBlack(black);
 	dummyGameState.setBoardConfig(boardConfig);
-	
 	pair<unsigned,unsigned> kingCoords;
 	
 	if(color == "white"){
@@ -337,6 +336,9 @@ bool GameState::checkmate(string color){
 	bool canBlock = false;
 	bool canMove = false;
 	
+	if(dummyGameState.kingInCheck("white") == false && dummyGameState.kingInCheck("black") == false){
+		return false; 
+	}
 	if(color == "white"){
 		//find king
 		for(unsigned i=0; i < white.size(); i++){
