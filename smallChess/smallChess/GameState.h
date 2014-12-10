@@ -39,6 +39,7 @@ public:
 	void setBoardConfig(vector<vector<string> > board);
 	bool kingInCheck(string color);
 	bool isThreatened(pair<unsigned,unsigned> squareToCheck, string color);
+	bool checkmate(string color);
 	vector <Piece*> getWhite();
 	vector <Piece*> getBlack();
 	vector<vector<string> > getBoardConfig();
