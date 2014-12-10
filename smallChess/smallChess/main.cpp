@@ -250,8 +250,8 @@ int main()
 		whitePieces.push_back(whiteKing);
 		initialBoard[rowWK][columnWK] = "WK";
 		
-		rowWQ = 3;
-		columnWQ = 3;
+		rowWQ = 6;
+		columnWQ = 4;
 		whiteQueen->setPieceCoordinates(rowWQ, columnWQ);
 		whiteQueen->setPieceColor("White");
 		whiteQueen->setPieceWeight(9);
@@ -603,14 +603,14 @@ int main()
 
 	cout << "Number of Moves for x piece: " << availableMoves.size() << endl;
 	
-	
-	cout << "Black weight heuristic: " << initialGame.blackHeuristicValue() << endl;
-	cout << "White weight heuristic: " << initialGame.whiteHeuristicValue() << endl << endl;
 */	
+	cout << "Weight heuristic: " << initialGame.heuristicValue() << endl;
+
 	cout << "Starting configuration: " << endl;
+	initialGame.print();
 	
 	vector <GameState> possibleBoards;
-	possibleBoards = makeBoards(initialGame);
+	possibleBoards = makeBoards(initialGame, "white");
 
 /*		for(unsigned j = 0; j < initialGame.getWhite().size(); j++){
 			cout << "Row: " << initialGame.getWhite()[j]->getPieceCoordinates().first;
@@ -618,19 +618,6 @@ int main()
 		}*/
 
 	
-	for(unsigned i = 0; i < possibleBoards.size(); i++){
-		cout << "Board " << i << ":" << endl;
-//		possibleBoards[i].print();
-//		for(unsigned r = 0; r < possibleBoards[i].getWhite().size(); r++){
-//			*possibleBoards[i].getWhite()[r] = *whitePieces[r];
-//		}
-		possibleBoards[i].setWhite(whitePieces);
-		for(unsigned j = 0; j < possibleBoards[i].getWhite().size(); j++){
-			cout << "Row: " << possibleBoards[i].getWhite()[j]->getPieceCoordinates().first;
-			cout << "Column: " << possibleBoards[i].getWhite()[j]->getPieceCoordinates().second << endl;
-		}
-		cout << endl << endl;
-	}
 	
 ////
 ////Negamax Search and game simulation
@@ -763,16 +750,32 @@ int main()
 ////Negamax search for program moves
 ////
 		
+		priority_queue <pair <int, vector <vector <string> > > > currWorklist;
+		
 		if(currentMoveColor == programColor){
 			//search for programMove using Negamax
 			cout << "We made it to the program move using negamax!" << endl;
 			
+			vector <GameState> movesForCurrBoard = makeBoards(initialGame, programColor);
+			makeHeuristicPairs(movesForCurrBoard, currWorklist);
 			
+			int bestMoveHeuristic = negaMax(initialGame.getBoardConfig(), 0, programColor);
 			
+			cout << "Negamax best heuristic: " << bestMoveHeuristic << endl;
 			
+			for(unsigned i = 0; i < currWorklist.size(); i++){
+				cout << "Worklist value: " << currWorklist.top().first << endl;
+				currWorklist.pop();
+			}
 			
+			for(unsigned i = 0; i < currWorklist.size(); i++){
+				if(currWorklist.top().first != bestMoveHeuristic){
+					currWorklist.pop();
+				}
+			}
 			
-			
+			initialGame.setBoardConfig(currWorklist.top().second);
+			initialGame.print();
 		}
 		
 		else{

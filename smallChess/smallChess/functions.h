@@ -2,67 +2,103 @@
 //H file for functions used in main
 //
 
-vector <GameState> makeBoards(GameState currBoard);
-void makeHeuristicPairs(vector <GameState> boards, priority_queue <pair <int, GameState> > &worklist);
+int negaMax(vector <vector <string> > currBoard, int depth, string color);
+vector <GameState> makeBoards(GameState currBoard, string color);
+void makeHeuristicPairs(vector <GameState> boards, priority_queue <pair <int, vector <vector <string> > > > &worklist);
 pair<Piece*, bool> retrievePiece(GameState currGame, string moveColor, string Name, pair<int, int> start);
 bool validMove(GameState currGame, string moveColor, string Name, pair<unsigned, unsigned> start, pair<unsigned, unsigned> end, string result);
 void movePiece(GameState &currState, string movingColor, pair <int, int> starting, pair<int, int> ending);
 void searchMovePiece(GameState &currState, string movingColor, pair <int, int> starting, pair<int, int> ending);
 
 
-/*int negaMax(Board b, int depth, int color, priority_queue <pair <int, vector <vector <string> > > worklist){
-	if(GameOver(board) or time>timeLimit){
-		return sign[color]*getHeuristic(b);
-	}
-	
-	int BestHeuristic = -1000000;
-	
-	for(int i = 0; i < worklist.size(); i++){
-		int x = negaMax(worklist.top(), depth+1, 1-color, worklist.pop());
-		if(x>BestHeuristic){
-			BestHeuristic = x;
+int negaMax(vector <vector <string> > currBoard, int depth, string color){
+	GameState currState;
+	currState.setBoardConfig(currBoard);
+
+	if(depth > 3){
+		if(color == "white"){
+			return currState.heuristicValue();
+		}
+		else{
+			return - currState.heuristicValue();
 		}
 	}
 	
-	return BestHeuristic;
-}*/
-
-
-vector <GameState> makeBoards(GameState currBoard){
+	int bestHeuristic = -1000000;
 	
+
+	priority_queue <pair <int, vector <vector <string> > > > currWorklist;
+	vector <GameState> movesForCurrBoard = makeBoards(currState, color);
+	makeHeuristicPairs(movesForCurrBoard, currWorklist);
+	for(unsigned i = 0; i < currWorklist.size(); i++){
+		int x;
+		if(color == "white"){
+			x = - negaMax(currWorklist.top().second, depth+1, "black");
+		}
+		else{
+			x = - negaMax(currWorklist.top().second, depth+1, "white");
+		}
+		
+		currWorklist.pop();
+		
+		if(x > bestHeuristic){
+			bestHeuristic = x;
+		}
+	}
+	
+	return bestHeuristic;
+}
+
+
+vector <GameState> makeBoards(GameState currBoard, string color){
 	vector <pair <unsigned, unsigned> > possibleMovesForI;
 	vector <GameState> gameStates;
-	
 	GameState newBoard;
 	newBoard=currBoard;
-//	newBoard.setWhite(currBoard.getWhite());
-//	newBoard.setBlack(currBoard.getBlack());
-//	newBoard.setBoardConfig(currBoard.getBoardConfig());
-	
+	//	newBoard.setWhite(currBoard.getWhite());
+	//	newBoard.setBlack(currBoard.getBlack());
+	//	newBoard.setBoardConfig(currBoard.getBoardConfig());
+
+    if (color == "white"){
+   
 	for(unsigned i = 0; i < currBoard.getWhite().size(); i++){
 		possibleMovesForI = currBoard.getWhite()[i]->generatePossibleMoves(currBoard);
 		pair<int, int> thisPieceCoords = newBoard.getWhite()[i]->getPieceCoordinates();
 		
 		for(unsigned j = 0; j < possibleMovesForI.size(); j++){
-//			newBoard.setWhite(currBoard.getWhite());
-//			newBoard.setBlack(currBoard.getBlack());
+			//	newBoard.setWhite(currBoard.getWhite());
+			//	newBoard.setBlack(currBoard.getBlack());
 			newBoard.setBoardConfig(currBoard.getBoardConfig());
 			searchMovePiece(newBoard, "white", thisPieceCoords, possibleMovesForI[j]);
 			gameStates.push_back(newBoard);
 		}
-		
-}
+	}
+	return gameStates;
+	}
 	
- return gameStates;
+    else {
+        for(unsigned i = 0; i < currBoard.getBlack().size(); i++){
+            possibleMovesForI = currBoard.getBlack()[i]->generatePossibleMoves(currBoard);
+            pair<int, int> thisPieceCoords = newBoard.getBlack()[i]->getPieceCoordinates();
+			
+            for(unsigned j = 0; j < possibleMovesForI.size(); j++){
+                //	newBoard.setWhite(currBoard.getWhite());
+                //	newBoard.setBlack(currBoard.getBlack());
+                newBoard.setBoardConfig(currBoard.getBoardConfig());
+                searchMovePiece(newBoard, "black", thisPieceCoords, possibleMovesForI[j]);
+                gameStates.push_back(newBoard);
+            }
+     	}
+        return gameStates;
+    }
 }
-
 
 void makeHeuristicPairs(vector <GameState> boards, priority_queue <pair <int, vector< vector <string> > > > &worklist){
 
 	int heuristicForI;
 
 	for(unsigned i = 0; i < boards.size(); i++){
-		heuristicForI = boards[i].whiteHeuristicValue() - boards[i].blackHeuristicValue();
+		heuristicForI = boards[i].heuristicValue();
 		worklist.push(make_pair(heuristicForI, boards[i].getBoardConfig()));
 	}
 }
