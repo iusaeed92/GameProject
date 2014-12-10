@@ -9,11 +9,13 @@
 using namespace std; 
 
 void GameState::setWhite(vector <Piece*> x){
-	white = x;
+    white = x; 
+
 }
 
 void GameState::setBlack(vector <Piece*> y){
-	black = y;
+    black = y;
+
 }
 
 void GameState::setBoardConfig(vector<vector<string> > board){

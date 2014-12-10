@@ -25,6 +25,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		8E6B0D841A381074000467D4 /* functions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = functions.h; sourceTree = "<group>"; };
 		8EA39A851A19D5A200746DF8 /* smallChess */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = smallChess; sourceTree = BUILT_PRODUCTS_DIR; };
 		8EA39A881A19D5A200746DF8 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		8EA39A921A19D71300746DF8 /* GameState.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameState.cpp; sourceTree = "<group>"; };
@@ -63,6 +64,7 @@
 		8EA39A871A19D5A200746DF8 /* smallChess */ = {
 			isa = PBXGroup;
 			children = (
+				8E6B0D841A381074000467D4 /* functions.h */,
 				8EA39A921A19D71300746DF8 /* GameState.cpp */,
 				8EA39A931A19D71300746DF8 /* GameState.h */,
 				8EA39A941A19D71300746DF8 /* Piece.cpp */,
@@ -244,6 +246,7 @@
 				8EA39A8E1A19D5A200746DF8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

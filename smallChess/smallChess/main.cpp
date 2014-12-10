@@ -617,7 +617,19 @@ int main()
 			cout << "Column: " << initialGame.getWhite()[j]->getPieceCoordinates().second << endl;
 		}*/
 
-	
+	for(unsigned i = 0; i < possibleBoards.size(); i++){
+		cout << "Board " << i << ":" << endl;
+//		possibleBoards[i].print();
+//		for(unsigned r = 0; r < possibleBoards[i].getWhite().size(); r++){
+//			*possibleBoards[i].getWhite()[r] = *whitePieces[r];
+//		}
+		possibleBoards[i].setWhite(whitePieces);
+		for(unsigned j = 0; j < possibleBoards[i].getWhite().size(); j++){
+			cout << "Row: " << possibleBoards[i].getWhite()[j]->getPieceCoordinates().first;
+			cout << "Column: " << possibleBoards[i].getWhite()[j]->getPieceCoordinates().second << endl;
+		}
+		cout << endl << endl;
+	}
 	
 ////
 ////Negamax Search and game simulation
