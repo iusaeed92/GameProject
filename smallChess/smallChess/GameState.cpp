@@ -410,7 +410,6 @@ bool GameState::checkmate(string color){
 			
 			if(path == 1){
 				vector< pair<unsigned,unsigned> > whiteMoves;
-				while(dummyGameState.getBoardConfig()[localCoord.first-1][localCoord.second] == "empty"){
 					for(unsigned i=0; i < white.size(); i++){
 						whiteMoves = white[i]->generatePossibleMoves(dummyGameState);
 						for(unsigned j=0; j < whiteMoves.size(); j++){
@@ -418,12 +417,10 @@ bool GameState::checkmate(string color){
 							canBlock = true;
 				        }
 					  }
-				    }
 				}
 			}
 			if(path == 2){
 				vector< pair<unsigned,unsigned> > whiteMoves;
-				while(dummyGameState.getBoardConfig()[localCoord.first+1][localCoord.second] == "empty"){
 				for(unsigned i=0; i < white.size(); i++){
 					whiteMoves = white[i]->generatePossibleMoves(dummyGameState);
 					for(unsigned j=0; j < whiteMoves.size(); j++){
@@ -431,12 +428,10 @@ bool GameState::checkmate(string color){
 							canBlock = true;
 					    }
 				    }
-			      }
 				}
 			}
 			if(path == 3){
 				vector< pair<unsigned,unsigned> > whiteMoves;
-				while(dummyGameState.getBoardConfig()[localCoord.first][localCoord.second-1] == "empty"){
 				for(unsigned i=0; i < white.size(); i++){
 					whiteMoves = white[i]->generatePossibleMoves(dummyGameState);
 					for(unsigned j=0; j < whiteMoves.size(); j++){
@@ -444,12 +439,10 @@ bool GameState::checkmate(string color){
 							canBlock = true;
 					    }
 				    }
-			      }
 				}
 			}
 			if(path == 4){
 				vector< pair<unsigned,unsigned> > whiteMoves;
-				while(dummyGameState.getBoardConfig()[localCoord.first][localCoord.second+1] == "empty"){
 				for(unsigned i=0; i < white.size(); i++){
 					whiteMoves = white[i]->generatePossibleMoves(dummyGameState);
 					for(unsigned j=0; j < whiteMoves.size(); j++){
@@ -457,12 +450,10 @@ bool GameState::checkmate(string color){
 							canBlock = true;
 					    }
 				    }
-			      }
 				}
 			}
 			if(path == 5){
 				vector< pair<unsigned,unsigned> > whiteMoves;
-				while(dummyGameState.getBoardConfig()[localCoord.first-1][localCoord.second+1] == "empty"){
 				for(unsigned i=0; i < white.size(); i++){
 					whiteMoves = white[i]->generatePossibleMoves(dummyGameState);
 					for(unsigned j=0; j < whiteMoves.size(); j++){
@@ -470,12 +461,10 @@ bool GameState::checkmate(string color){
 							canBlock = true;
 					    }
 				    }
-			      }
 				}
 			}
 			if(path == 6){
 				vector< pair<unsigned,unsigned> > whiteMoves;
-				while(dummyGameState.getBoardConfig()[localCoord.first+1][localCoord.second+1] == "empty"){
 				for(unsigned i=0; i < white.size(); i++){
 					whiteMoves = white[i]->generatePossibleMoves(dummyGameState);
 					for(unsigned j=0; j < whiteMoves.size(); j++){
@@ -483,12 +472,10 @@ bool GameState::checkmate(string color){
 							canBlock = true;
 					    }
 				    }
-			      }
 				}
 			}
 			if(path == 7){
 				vector< pair<unsigned,unsigned> > whiteMoves;
-				while(dummyGameState.getBoardConfig()[localCoord.first+1][localCoord.second-1] == "empty"){
 				for(unsigned i=0; i < white.size(); i++){
 					whiteMoves = white[i]->generatePossibleMoves(dummyGameState);
 					for(unsigned j=0; j < whiteMoves.size(); j++){
@@ -497,12 +484,10 @@ bool GameState::checkmate(string color){
 					    }
 				    }
 			      }
-				}
 			}
 			if(path == 8){
 				vector< pair<unsigned,unsigned> > whiteMoves;
-				while(dummyGameState.getBoardConfig()[localCoord.first-1][localCoord.second-1] == "empty"){
-				for(unsigned i=0; i < white.size(); i++){
+					for(unsigned i=0; i < white.size(); i++){
 					whiteMoves = white[i]->generatePossibleMoves(dummyGameState);
 					for(unsigned j=0; j < whiteMoves.size(); j++){
 						if(make_pair(localCoord.first-1, localCoord.second-1) == whiteMoves[j]){
@@ -513,7 +498,6 @@ bool GameState::checkmate(string color){
 				}
 			}
 		}
-	}
 	if(capThreat == false && canBlock == false){
 	//now test all spaces around king to see if it can move to any without remaining in check
 		vector< pair<unsigned, unsigned> > kingMoves = tempKing.generatePossibleMoves(dummyGameState);
@@ -728,7 +712,7 @@ void GameState::makeVectors(){
         for (int j = 1; j < 6; j++) {
 			if(boardConfig[i][j] == "WP"){
 				Pawn* newPawn = new Pawn;
-				newPawn->setPieceColor("white");
+				newPawn->setPieceColor("White");
 				newPawn->setPieceCoordinates(i, j);
 				newPawn->setPieceName("P");
 				newPawn->setPieceWeight(1);
@@ -737,7 +721,7 @@ void GameState::makeVectors(){
 			
 			if(boardConfig[i][j] == "BP"){
 				Pawn* newPawn = new Pawn;
-				newPawn->setPieceColor("black");
+				newPawn->setPieceColor("Black");
 				newPawn->setPieceCoordinates(i, j);
 				newPawn->setPieceName("P");
 				newPawn->setPieceWeight(1);
@@ -746,7 +730,7 @@ void GameState::makeVectors(){
 			
 			if(boardConfig[i][j] == "WB"){
 				Bishop* newBishop = new Bishop;
-				newBishop->setPieceColor("white");
+				newBishop->setPieceColor("White");
 				newBishop->setPieceCoordinates(i, j);
 				newBishop->setPieceName("B");
 				newBishop->setPieceWeight(3);
@@ -755,7 +739,7 @@ void GameState::makeVectors(){
 			
 			if(boardConfig[i][j] == "BB"){
 				Bishop* newBishop = new Bishop;
-				newBishop->setPieceColor("black");
+				newBishop->setPieceColor("Black");
 				newBishop->setPieceCoordinates(i, j);
 				newBishop->setPieceName("B");
 				newBishop->setPieceWeight(3);
@@ -763,7 +747,7 @@ void GameState::makeVectors(){
 			}
 			if(boardConfig[i][j] == "WN"){
 				Knight* newKnight = new Knight;
-				newKnight->setPieceColor("white");
+				newKnight->setPieceColor("White");
 				newKnight->setPieceCoordinates(i, j);
 				newKnight->setPieceName("N");
 				newKnight->setPieceWeight(3);
@@ -771,7 +755,7 @@ void GameState::makeVectors(){
 			}
 			if(boardConfig[i][j] == "BN"){
 				Knight* newKnight = new Knight;
-				newKnight->setPieceColor("black");
+				newKnight->setPieceColor("Black");
 				newKnight->setPieceCoordinates(i, j);
 				newKnight->setPieceName("N");
 				newKnight->setPieceWeight(3);
@@ -779,7 +763,7 @@ void GameState::makeVectors(){
 			}
 			if(boardConfig[i][j] == "WR"){
 				Rook* newRook = new Rook;
-				newRook->setPieceColor("white");
+				newRook->setPieceColor("White");
 				newRook->setPieceCoordinates(i, j);
 				newRook->setPieceName("R");
 				newRook->setPieceWeight(5);
@@ -787,7 +771,7 @@ void GameState::makeVectors(){
 			}
 			if(boardConfig[i][j] == "BR"){
 				Rook* newRook = new Rook;
-				newRook->setPieceColor("black");
+				newRook->setPieceColor("Black");
 				newRook->setPieceCoordinates(i, j);
 				newRook->setPieceName("R");
 				newRook->setPieceWeight(5);
@@ -795,7 +779,7 @@ void GameState::makeVectors(){
 			}
 			if(boardConfig[i][j] == "WQ"){
 				Queen* newQueen = new Queen;
-				newQueen->setPieceColor("white");
+				newQueen->setPieceColor("White");
 				newQueen->setPieceCoordinates(i, j);
 				newQueen->setPieceName("Q");
 				newQueen->setPieceWeight(9);
@@ -803,7 +787,7 @@ void GameState::makeVectors(){
 			}
 			if(boardConfig[i][j] == "BQ"){
 				Queen* newQueen = new Queen;
-				newQueen->setPieceColor("black");
+				newQueen->setPieceColor("Black");
 				newQueen->setPieceCoordinates(i, j);
 				newQueen->setPieceName("Q");
 				newQueen->setPieceWeight(9);
@@ -811,7 +795,7 @@ void GameState::makeVectors(){
 			}
 			if(boardConfig[i][j] == "WK"){
 				King* newKing = new King;
-				newKing->setPieceColor("white");
+				newKing->setPieceColor("White");
 				newKing->setPieceCoordinates(i, j);
 				newKing->setPieceName("K");
 				newKing->setPieceWeight(10);
@@ -819,7 +803,7 @@ void GameState::makeVectors(){
 			}
 			if(boardConfig[i][j] == "BK"){
 				King* newKing = new King;
-				newKing->setPieceColor("black");
+				newKing->setPieceColor("Black");
 				newKing->setPieceCoordinates(i, j);
 				newKing->setPieceName("K");
 				newKing->setPieceWeight(10);
