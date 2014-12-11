@@ -8,7 +8,13 @@
 
 using namespace std; 
 
-
+//helper function "findPath"
+//This is a helper function for member function checkmate
+//Pre Cond: Parameters are pair of coordinates string color and a gamestate
+//         The coordintes are the starting coordinates of the function, the color is the perspective of the function,
+//         and the Game State is to get the vectors of pieces
+//Post Cond: returns an integer 1 through 8 each integer corresponds to a line of sight up down left right and diagonals
+//          This is so checkmate can find out if it can block the threatening piece
 int findPath(pair<int,int> coordinates, string color,GameState dummyGameState){
 	pair<int, int> localCoord = coordinates;
 	string rook;
@@ -221,7 +227,9 @@ int GameState::heuristicValue(){
 	return heuristicValue;
 }
 
-
+//member function "kingInCheck"
+//Pre Cond: parameter string color is the color to be evaluated. Will look at the color's king to see if it's in check
+//Post Cond: returns a bool if the color entered king is in check
 bool GameState::kingInCheck(string color){
 	GameState dummyGameState;
 	dummyGameState.setWhite(white);
@@ -255,9 +263,6 @@ bool GameState::kingInCheck(string color){
 else{
 		pair<unsigned,unsigned> kingCoords;
 		for(unsigned i=0; i < black.size(); i++){
-			cout << black[i]->getPieceName() << endl;
-			cout << black.size() << endl;
-			
 			if(black[i]->getPieceName() == "K"){
 				kingCoords = black[i]->getPieceCoordinates();
 			}
@@ -281,6 +286,10 @@ else{
 	return false;
 }
 
+//member function "isThreatened"
+//Pre Cond: Parameters are a pair of unsigned ints and a string for the color to be evaluated
+//			 the function will evaluate threats from the perspective of color entered
+//Post Cond: Returns a bool whether or not the squareToCheck is threatened by a piece of opposite color
 bool GameState::isThreatened(pair<unsigned, unsigned> squareToCheck, string color){
 	GameState dummyGameState;
 	dummyGameState.setWhite(white);
@@ -294,6 +303,12 @@ bool GameState::isThreatened(pair<unsigned, unsigned> squareToCheck, string colo
 			vector< pair<unsigned,unsigned> > blackMoves;
 			for(unsigned i=0; i < black.size(); i++){
 				blackMoves = black[i]->generatePossibleMoves(dummyGameState);
+				if(black[i]->getPieceName() == "P"){
+					pair<unsigned,unsigned> temp = black[i]->getPieceCoordinates();
+					blackMoves.push_back(make_pair(temp.first+1, temp.second+1));
+					blackMoves.push_back(make_pair(temp.first+1, temp.second-1));
+				}
+				
 				for(unsigned j=0; j < blackMoves.size(); j++){
 					if(squareToCheck == blackMoves[j]){
 						return true;
@@ -306,10 +321,15 @@ bool GameState::isThreatened(pair<unsigned, unsigned> squareToCheck, string colo
 else{
 		
 			//create all possible moves for white
-			//traverse to see if any possible move matches the black kings coordinates
+			//traverse to see if any possible move matches the squares coordinates
 			vector< pair<unsigned,unsigned> > whiteMoves;
 			for(unsigned i=0; i < white.size(); i++){
 				whiteMoves = white[i]->generatePossibleMoves(dummyGameState);
+				if(white[i]->getPieceName() == "P"){
+					pair<unsigned,unsigned> temp = white[i]->getPieceCoordinates();
+					whiteMoves.push_back(make_pair(temp.first-1, temp.second+1));
+					whiteMoves.push_back(make_pair(temp.first-1, temp.second-1));
+				}
 				for(unsigned j=0; j < whiteMoves.size(); j++){
 					if(squareToCheck == whiteMoves[j]){
 						return true;
@@ -324,7 +344,10 @@ else{
 	return false;
 } 
 
-
+//member function "checkmate"
+//Pre cond: takes a string of the color you want to evaluate
+//Post Cond: returns a bool whether or not the three conditions of 
+//checkmate have been evaluated (Capturing piece, blocking piece, moving out of check with king)
 bool GameState::checkmate(string color){
 	GameState dummyGameState;
 	dummyGameState.setWhite(white);
@@ -334,15 +357,19 @@ bool GameState::checkmate(string color){
 	pair<unsigned,unsigned> localCoord;
 	bool capThreat = false;
 	bool canBlock = false;
-	bool canMove = false;
+	bool canMove = false; 
 	
 	if(dummyGameState.kingInCheck("white") == false && dummyGameState.kingInCheck("black") == false){
 		return false; 
 	}
 	if(color == "white"){
 		//find king
+		King tempKing;
+		pair<int, int> tempKingCoord;
 		for(unsigned i=0; i < white.size(); i++){
 			if(white[i]->getPieceName() == "K"){
+				tempKingCoord = white[i]->getPieceCoordinates();
+				tempKing.setPieceCoordinates(tempKingCoord.first,tempKingCoord.second);
 				kingCoords = white[i]->getPieceCoordinates();
 				localCoord = kingCoords;
 			}
@@ -375,9 +402,10 @@ bool GameState::checkmate(string color){
 			canBlock = false;
 		}
 		else{
+			
+			if(capThreat == false){
 			//iterate from the king's position out in all eight directions to find enemy piece path.
 			//once found, iterate through path seeing if friendly pieces can occupy them.
-			
 			int path = findPath(kingCoords, "white", dummyGameState);
 			
 			if(path == 1){
@@ -485,21 +513,31 @@ bool GameState::checkmate(string color){
 				}
 			}
 		}
-		//now test all spaces around king to see if it can move to any without remaining in check
-		if(dummyGameState.isThreatened(make_pair(kingCoords.first+1,kingCoords.second), "white") == false
-		|| dummyGameState.isThreatened(make_pair(kingCoords.first-1,kingCoords.second), "white") == false
-		|| dummyGameState.isThreatened(make_pair(kingCoords.first,kingCoords.second+1), "white") == false
-		|| dummyGameState.isThreatened(make_pair(kingCoords.first,kingCoords.second-1), "white") == false
-		|| dummyGameState.isThreatened(make_pair(kingCoords.first+1,kingCoords.second-1), "white") == false
-		|| dummyGameState.isThreatened(make_pair(kingCoords.first+1,kingCoords.second+1), "white") == false
-		|| dummyGameState.isThreatened(make_pair(kingCoords.first-1,kingCoords.second-1), "white") == false
-		|| dummyGameState.isThreatened(make_pair(kingCoords.first-1,kingCoords.second+1), "white") == false){
-			canMove = true;
+	}
+	if(capThreat == false && canBlock == false){
+	//now test all spaces around king to see if it can move to any without remaining in check
+		vector< pair<unsigned, unsigned> > kingMoves = tempKing.generatePossibleMoves(dummyGameState);
+		bool movement = true;
+		pair<unsigned, unsigned> moveCoord;
+		for(int i = 0; i < kingMoves.size(); i++){
+			moveCoord = kingMoves[i];
+			if(dummyGameState.isThreatened(moveCoord, "black") == true){
+				canMove = false;
+				movement = false; 
+			}
+			else{
+				canMove = true;
+			}
+		}
+	
+		if(movement == false){
+			canMove = false;
 		}
 		else{
-			canMove =false;
+			canMove = true;
 		}
-		if(capThreat == false || canBlock == false || canMove == false){
+	}
+		if(capThreat == false && canBlock == false && canMove == false){
 				return true;
 			}
 			else{
@@ -508,8 +546,12 @@ bool GameState::checkmate(string color){
 	}
 	else{
 		//find king
+		King tempKing;
+		pair<int, int> tempKingCoord;
 		for(unsigned i=0; i < black.size(); i++){
 			if(black[i]->getPieceName() == "K"){
+				tempKingCoord = black[i]->getPieceCoordinates();
+				tempKing.setPieceCoordinates(tempKingCoord.first,tempKingCoord.second);
 				kingCoords = black[i]->getPieceCoordinates();
 				localCoord = kingCoords;
 			}
@@ -544,12 +586,11 @@ bool GameState::checkmate(string color){
 		else{
 			//iterate from the king's position out in all eight directions to find enemy piece path.
 			//once found, iterate through path seeing if friendly pieces can occupy them.
-			
+		if(capThreat == false){	
 			int path = findPath(kingCoords, "black", dummyGameState);
 			
 			if(path == 1){
 				vector< pair<unsigned,unsigned> > blackMoves;
-				while(dummyGameState.getBoardConfig()[localCoord.first-1][localCoord.second] == "empty"){
 					for(unsigned i=0; i < black.size(); i++){
 						blackMoves = black[i]->generatePossibleMoves(dummyGameState);
 						for(unsigned j=0; j <blackMoves.size(); j++){
@@ -559,10 +600,9 @@ bool GameState::checkmate(string color){
 					  }
 				    }
 				}
-			}
+			
 			if(path == 2){
 				vector< pair<unsigned,unsigned> > blackMoves;
-				while(dummyGameState.getBoardConfig()[localCoord.first+1][localCoord.second] == "empty"){
 				for(unsigned i=0; i < black.size(); i++){
 					blackMoves = black[i]->generatePossibleMoves(dummyGameState);
 					for(unsigned j=0; j < blackMoves.size(); j++){
@@ -572,10 +612,9 @@ bool GameState::checkmate(string color){
 				    }
 			      }
 				}
-			}
+			
 			if(path == 3){
 				vector< pair<unsigned,unsigned> > blackMoves;
-				while(dummyGameState.getBoardConfig()[localCoord.first][localCoord.second-1] == "empty"){
 				for(unsigned i=0; i < black.size(); i++){
 					blackMoves = black[i]->generatePossibleMoves(dummyGameState);
 					for(unsigned j=0; j < blackMoves.size(); j++){
@@ -585,10 +624,9 @@ bool GameState::checkmate(string color){
 				    }
 			      }
 				}
-			}
+			
 			if(path == 4){
 				vector< pair<unsigned,unsigned> > blackMoves;
-				while(dummyGameState.getBoardConfig()[localCoord.first][localCoord.second+1] == "empty"){
 				for(unsigned i=0; i < black.size(); i++){
 					blackMoves = black[i]->generatePossibleMoves(dummyGameState);
 					for(unsigned j=0; j < blackMoves.size(); j++){
@@ -598,10 +636,9 @@ bool GameState::checkmate(string color){
 				    }
 			      }
 				}
-			}
+			
 			if(path == 5){
 				vector< pair<unsigned,unsigned> > blackMoves;
-				while(dummyGameState.getBoardConfig()[localCoord.first-1][localCoord.second+1] == "empty"){
 				for(unsigned i=0; i < black.size(); i++){
 					blackMoves = black[i]->generatePossibleMoves(dummyGameState);
 					for(unsigned j=0; j < blackMoves.size(); j++){
@@ -611,10 +648,9 @@ bool GameState::checkmate(string color){
 				    }
 			      }
 				}
-			}
+			
 			if(path == 6){
 				vector< pair<unsigned,unsigned> > blackMoves;
-				while(dummyGameState.getBoardConfig()[localCoord.first+1][localCoord.second+1] == "empty"){
 				for(unsigned i=0; i < black.size(); i++){
 					blackMoves = black[i]->generatePossibleMoves(dummyGameState);
 					for(unsigned j=0; j < blackMoves.size(); j++){
@@ -624,10 +660,9 @@ bool GameState::checkmate(string color){
 				    }
 			      }
 				}
-			}
+			
 			if(path == 7){
 				vector< pair<unsigned,unsigned> > blackMoves;
-				while(dummyGameState.getBoardConfig()[localCoord.first+1][localCoord.second-1] == "empty"){
 				for(unsigned i=0; i <black.size(); i++){
 					blackMoves = black[i]->generatePossibleMoves(dummyGameState);
 					for(unsigned j=0; j < blackMoves.size(); j++){
@@ -637,10 +672,9 @@ bool GameState::checkmate(string color){
 				    }
 			      }
 				}
-			}
+			
 			if(path == 8){
 				vector< pair<unsigned,unsigned> > blackMoves;
-				while(dummyGameState.getBoardConfig()[localCoord.first-1][localCoord.second-1] == "empty"){
 				for(unsigned i=0; i < black.size(); i++){
 					blackMoves = black[i]->generatePossibleMoves(dummyGameState);
 					for(unsigned j=0; j < blackMoves.size(); j++){
@@ -652,27 +686,147 @@ bool GameState::checkmate(string color){
 				}
 			}
 		}
-		//now test all spaces around king to see if it can move to any without remaining in check
-		if(dummyGameState.isThreatened(make_pair(kingCoords.first+1,kingCoords.second), "black") == false
-		|| dummyGameState.isThreatened(make_pair(kingCoords.first-1,kingCoords.second), "black") == false
-		|| dummyGameState.isThreatened(make_pair(kingCoords.first,kingCoords.second+1), "black") == false
-		|| dummyGameState.isThreatened(make_pair(kingCoords.first,kingCoords.second-1), "black") == false
-		|| dummyGameState.isThreatened(make_pair(kingCoords.first+1,kingCoords.second-1), "black") == false
-		|| dummyGameState.isThreatened(make_pair(kingCoords.first+1,kingCoords.second+1), "black") == false
-		|| dummyGameState.isThreatened(make_pair(kingCoords.first-1,kingCoords.second-1), "black") == false
-		|| dummyGameState.isThreatened(make_pair(kingCoords.first-1,kingCoords.second+1), "black") == false){
-			canMove = true;
+	if(capThreat == false && canBlock == false){	
+	//now test all spaces around king to see if it can move to any without remaining in check
+	vector< pair<unsigned, unsigned> > kingMoves = tempKing.generatePossibleMoves(dummyGameState);
+	bool movement = true;
+	pair<unsigned, unsigned> moveCoord;
+	for(int i = 0; i < kingMoves.size(); i++){
+		moveCoord = kingMoves[i];
+			if(dummyGameState.isThreatened(moveCoord, "black") == true){
+				canMove = false;
+				movement = false; 
+			}
+			else{
+				canMove = true;
+			}
 		}
-		else{
+	
+		if(movement == false){
 			canMove = false;
 		}
-		if(capThreat == false || canBlock == false || canMove == false){
+		else{
+			canMove = true;
+		}
+	}
+		if(capThreat == false && canBlock == false && canMove == false){
 				return true;
 			}
 			else{
 				return false;
 			}
 	}
+}
+
+//make vectors
+void GameState::makeVectors(){
+	
+	white.clear();
+	black.clear();
+	
+    for (int i = 1; i < 7; i++) {
+        for (int j = 1; j < 6; j++) {
+			if(boardConfig[i][j] == "WP"){
+				Pawn* newPawn = new Pawn;
+				newPawn->setPieceColor("white");
+				newPawn->setPieceCoordinates(i, j);
+				newPawn->setPieceName("P");
+				newPawn->setPieceWeight(1);
+				white.push_back(newPawn);
+			}
+			
+			if(boardConfig[i][j] == "BP"){
+				Pawn* newPawn = new Pawn;
+				newPawn->setPieceColor("black");
+				newPawn->setPieceCoordinates(i, j);
+				newPawn->setPieceName("P");
+				newPawn->setPieceWeight(1);
+				black.push_back(newPawn);
+			}
+			
+			if(boardConfig[i][j] == "WB"){
+				Bishop* newBishop = new Bishop;
+				newBishop->setPieceColor("white");
+				newBishop->setPieceCoordinates(i, j);
+				newBishop->setPieceName("B");
+				newBishop->setPieceWeight(3);
+				white.push_back(newBishop);
+			}
+			
+			if(boardConfig[i][j] == "BB"){
+				Bishop* newBishop = new Bishop;
+				newBishop->setPieceColor("black");
+				newBishop->setPieceCoordinates(i, j);
+				newBishop->setPieceName("B");
+				newBishop->setPieceWeight(3);
+				black.push_back(newBishop);
+			}
+			if(boardConfig[i][j] == "WN"){
+				Knight* newKnight = new Knight;
+				newKnight->setPieceColor("white");
+				newKnight->setPieceCoordinates(i, j);
+				newKnight->setPieceName("N");
+				newKnight->setPieceWeight(3);
+				white.push_back(newKnight);
+			}
+			if(boardConfig[i][j] == "BN"){
+				Knight* newKnight = new Knight;
+				newKnight->setPieceColor("black");
+				newKnight->setPieceCoordinates(i, j);
+				newKnight->setPieceName("N");
+				newKnight->setPieceWeight(3);
+				black.push_back(newKnight);
+			}
+			if(boardConfig[i][j] == "WR"){
+				Rook* newRook = new Rook;
+				newRook->setPieceColor("white");
+				newRook->setPieceCoordinates(i, j);
+				newRook->setPieceName("R");
+				newRook->setPieceWeight(5);
+				white.push_back(newRook);
+			}
+			if(boardConfig[i][j] == "BR"){
+				Rook* newRook = new Rook;
+				newRook->setPieceColor("black");
+				newRook->setPieceCoordinates(i, j);
+				newRook->setPieceName("R");
+				newRook->setPieceWeight(5);
+				black.push_back(newRook);
+			}
+			if(boardConfig[i][j] == "WQ"){
+				Queen* newQueen = new Queen;
+				newQueen->setPieceColor("white");
+				newQueen->setPieceCoordinates(i, j);
+				newQueen->setPieceName("Q");
+				newQueen->setPieceWeight(9);
+				white.push_back(newQueen);
+			}
+			if(boardConfig[i][j] == "BQ"){
+				Queen* newQueen = new Queen;
+				newQueen->setPieceColor("black");
+				newQueen->setPieceCoordinates(i, j);
+				newQueen->setPieceName("Q");
+				newQueen->setPieceWeight(9);
+				black.push_back(newQueen);
+			}
+			if(boardConfig[i][j] == "WK"){
+				King* newKing = new King;
+				newKing->setPieceColor("white");
+				newKing->setPieceCoordinates(i, j);
+				newKing->setPieceName("K");
+				newKing->setPieceWeight(10);
+				white.push_back(newKing);
+			}
+			if(boardConfig[i][j] == "BK"){
+				King* newKing = new King;
+				newKing->setPieceColor("black");
+				newKing->setPieceCoordinates(i, j);
+				newKing->setPieceName("K");
+				newKing->setPieceWeight(10);
+				black.push_back(newKing);
+			}
+		}
+	} 
 }
 		
 	
