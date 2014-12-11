@@ -531,6 +531,9 @@ int main()
 ////
 ////Initial Questions and variable declarations
 ////
+
+
+
 	string programColor;
 	string userColor;
 	cout << "Which color will you be playing as? (white/black)" << endl;
@@ -561,6 +564,7 @@ int main()
 	initialGame.setBoardConfig(initialBoard);
 	initialGame.setBlack(blackPieces);
 	initialGame.setWhite(whitePieces);
+	
 	
 /*	for(unsigned r = 0; r < test.getWhite().size(); r++){
 		if(test.getWhite()[r]->getPieceName() == "P"){
@@ -617,7 +621,7 @@ int main()
 			cout << "Column: " << initialGame.getWhite()[j]->getPieceCoordinates().second << endl;
 		}*/
 
-	for(unsigned i = 0; i < possibleBoards.size(); i++){
+/*	for(unsigned i = 0; i < possibleBoards.size(); i++){
 		cout << "Board " << i << ":" << endl;
 //		possibleBoards[i].print();
 //		for(unsigned r = 0; r < possibleBoards[i].getWhite().size(); r++){
@@ -630,7 +634,7 @@ int main()
 		}
 		cout << endl << endl;
 	}
-	
+*/	
 ////
 ////Negamax Search and game simulation
 ////On the programs turn: the negamax function runs and a move is choosen.
@@ -661,9 +665,6 @@ int main()
 	*/
 	
 
-	makeHeuristicPairs(possibleBoards, worklist);
-
-	
 	string currentMoveColor = firstMoveColor;
 	
 	bool gameOver = false;
@@ -678,11 +679,13 @@ int main()
 				//Make the appriopriate move.
 				if(programColor=="black"){
 					movePiece(initialGame, currentMoveColor, make_pair(2, 3), make_pair(3, 3));
+					initialGame.makeVectors();
 					cout << "Program's move: " << endl << endl;
 				}
 				
 				else{
 					movePiece(initialGame, currentMoveColor, make_pair(5, 3), make_pair(4, 3));
+					initialGame.makeVectors();
 					cout << "Program's move: " << endl;
 				}
 				
@@ -693,11 +696,13 @@ int main()
 				//Make the appriopriate move.
 				if(programColor=="black"){
 					movePiece(initialGame, currentMoveColor, make_pair(3, 3), make_pair(4, 3));
+					initialGame.makeVectors();
 					cout << "Program's move: " << endl << endl;
 				}
 				
 				else{
 					movePiece(initialGame, currentMoveColor, make_pair(4, 3), make_pair(3, 3));
+					initialGame.makeVectors();
 					cout << "Program's move: " << endl;
 				}
 				
@@ -727,6 +732,7 @@ int main()
 				cout << "first: " << startCoords.first << "second: " << startCoords.second << endl;
 				pair <int, int> endCoords = make_pair(humanMoveEndRow, numHumanMoveEndColumn);
 				
+				
 				while(validMove(initialGame, currentMoveColor, humanMoveName, startCoords, endCoords, result) == false){
 					cout << "Invalid move." << endl;
 					cout << "Enter your move in the format and hit enter after each parameter:" << endl << "startColumn(a-e) startRow(1-6) endColumn(a-e) endRow(1-6): " << endl;
@@ -741,7 +747,18 @@ int main()
 					endCoords = make_pair(humanMoveEndRow, numHumanMoveEndColumn);
 				}
 				
+					for(unsigned i = 0; i < initialGame.getWhite().size(); i++){
+						cout << initialGame.getWhite()[i]->getPieceCoordinates().first << ", " << initialGame.getWhite()[i]->getPieceCoordinates().second << endl;
+					}
+					
+					cout << endl;
+				
 					movePiece(initialGame, currentMoveColor, startCoords, endCoords);
+					initialGame.makeVectors();
+					
+					for(unsigned i = 0; i < initialGame.getWhite().size(); i++){
+						cout << initialGame.getWhite()[i]->getPieceCoordinates().first << ", " << initialGame.getWhite()[i]->getPieceCoordinates().second << endl;
+					}
 				
 				initialGame.print();
 			}
@@ -787,6 +804,7 @@ int main()
 			}
 			
 			initialGame.setBoardConfig(currWorklist.top().second);
+			initialGame.makeVectors();
 			initialGame.print();
 		}
 		
@@ -814,7 +832,8 @@ int main()
 			
 			while(validMove(initialGame, currentMoveColor, humanMoveName, startCoords, endCoords, result) == false){
 				cout << "Invalid move." << endl;
-				cout << "Enter your move in the format and hit enter after each parameter:" << endl << "startColumn(a-e) startRow(1-6) endColumn(a-e) endRow(1-6): " << endl;
+				cout << "Enter your move in the format and hit enter after each parameter:" << endl 
+				<< "Piece name(P, B, N, R, Q, K) startColumn(a-e) startRow(1-6) endColumn(a-e) endRow(1-6): " << endl;
 				cin >> humanMoveName;
 				cin >> humanMoveStartColumn;
 				cin >> humanMoveStartRow;
@@ -827,6 +846,7 @@ int main()
 			}
 			
 				movePiece(initialGame, currentMoveColor, startCoords, endCoords);
+				initialGame.makeVectors();
 			
 			initialGame.print();
 		}

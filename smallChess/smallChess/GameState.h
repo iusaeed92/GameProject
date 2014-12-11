@@ -47,6 +47,7 @@ public:
 	vector<vector<string> > getBoardConfig();
 	void print();
 	int heuristicValue();
+	void makeVectors();
 };
 
 #endif

@@ -48,6 +48,7 @@ vector < vector <string >> (gameState &currentGameState, double moveTime) {
 int negaMax(vector <vector <string> > currBoard, int depth, string color){
 	GameState currState;
 	currState.setBoardConfig(currBoard);
+	currState.makeVectors();
 
 	if(depth > 3){
 		if(color == "white"){
@@ -71,7 +72,9 @@ int negaMax(vector <vector <string> > currBoard, int depth, string color){
 			x = - negaMax(currWorklist.top().second, depth+1, "white");
 		}
 		
-		currWorklist.pop();
+		if(!currWorklist.empty()){
+			currWorklist.pop();
+		}
 		
 		if(x > bestHeuristic){
 			bestHeuristic = x;
@@ -161,8 +164,14 @@ bool validMove(GameState currGame, string moveColor, string Name, pair<unsigned,
 	
 	vector <pair <unsigned, unsigned> > validMoves;
 	
+//	cout << currPiece.first->getPieceCoordinates().first << ", " << currPiece.first->getPieceCoordinates().first << endl;
+	
 	if(currPiece.second){
 		validMoves = currPiece.first->generatePossibleMoves(currGame);
+//		cout << "size of valid moves: " << validMoves.size() << endl;
+//		for(int j = 0; j < validMoves.size(); j++){
+//			cout << validMoves[j].first << ", " << validMoves[j].second << endl;
+//		}
 		for(unsigned i = 0; i < validMoves.size(); i++){
 			if(end == validMoves[i]){
 				return true;
