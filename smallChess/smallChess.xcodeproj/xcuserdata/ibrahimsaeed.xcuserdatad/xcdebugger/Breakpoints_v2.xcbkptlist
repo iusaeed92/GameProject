@@ -9,13 +9,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "smallChess/main.cpp"
-            timestampString = "437950786.780609"
+            filePath = "smallChess/functions.h"
+            timestampString = "440001256.279216"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "303"
-            endingLineNumber = "303"
-            landmarkName = "main()"
+            startingLineNumber = "53"
+            endingLineNumber = "53"
+            landmarkName = "negaMax(vector &lt;vector &lt;string&gt; &gt; currBoard, int depth, string color)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -25,13 +25,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "smallChess/main.cpp"
-            timestampString = "437950786.780609"
+            filePath = "smallChess/functions.h"
+            timestampString = "440001256.279216"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "305"
-            endingLineNumber = "305"
-            landmarkName = "main()"
+            startingLineNumber = "54"
+            endingLineNumber = "54"
+            landmarkName = "negaMax(vector &lt;vector &lt;string&gt; &gt; currBoard, int depth, string color)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -41,13 +41,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "smallChess/main.cpp"
-            timestampString = "437950786.780609"
+            filePath = "smallChess/functions.h"
+            timestampString = "440001256.279216"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "306"
-            endingLineNumber = "306"
-            landmarkName = "main()"
+            startingLineNumber = "57"
+            endingLineNumber = "57"
+            landmarkName = "negaMax(vector &lt;vector &lt;string&gt; &gt; currBoard, int depth, string color)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -57,13 +57,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "smallChess/main.cpp"
-            timestampString = "437950786.780609"
+            filePath = "smallChess/functions.h"
+            timestampString = "440001256.279216"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "307"
-            endingLineNumber = "307"
-            landmarkName = "main()"
+            startingLineNumber = "55"
+            endingLineNumber = "55"
+            landmarkName = "negaMax(vector &lt;vector &lt;string&gt; &gt; currBoard, int depth, string color)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -73,13 +73,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "smallChess/main.cpp"
-            timestampString = "437950786.780609"
+            filePath = "smallChess/functions.h"
+            timestampString = "440001256.279216"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "318"
-            endingLineNumber = "318"
-            landmarkName = "main()"
+            startingLineNumber = "58"
+            endingLineNumber = "58"
+            landmarkName = "negaMax(vector &lt;vector &lt;string&gt; &gt; currBoard, int depth, string color)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -89,13 +89,109 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "smallChess/main.cpp"
-            timestampString = "437950786.780609"
+            filePath = "smallChess/functions.h"
+            timestampString = "440001256.279216"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "317"
-            endingLineNumber = "317"
-            landmarkName = "main()"
+            startingLineNumber = "59"
+            endingLineNumber = "59"
+            landmarkName = "negaMax(vector &lt;vector &lt;string&gt; &gt; currBoard, int depth, string color)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "smallChess/functions.h"
+            timestampString = "440001256.279216"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "63"
+            endingLineNumber = "63"
+            landmarkName = "negaMax(vector &lt;vector &lt;string&gt; &gt; currBoard, int depth, string color)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "smallChess/functions.h"
+            timestampString = "440001256.279216"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "64"
+            endingLineNumber = "64"
+            landmarkName = "negaMax(vector &lt;vector &lt;string&gt; &gt; currBoard, int depth, string color)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "smallChess/functions.h"
+            timestampString = "440001256.279216"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "66"
+            endingLineNumber = "66"
+            landmarkName = "negaMax(vector &lt;vector &lt;string&gt; &gt; currBoard, int depth, string color)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "smallChess/functions.h"
+            timestampString = "440001256.279216"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "67"
+            endingLineNumber = "67"
+            landmarkName = "negaMax(vector &lt;vector &lt;string&gt; &gt; currBoard, int depth, string color)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "smallChess/functions.h"
+            timestampString = "440191710.089268"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "69"
+            endingLineNumber = "69"
+            landmarkName = "negaMax(vector &lt;vector &lt;string&gt; &gt; currBoard, int depth, string color)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "smallChess/functions.h"
+            timestampString = "439948264.462395"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "48"
+            endingLineNumber = "48"
+            landmarkName = "negaMax(vector &lt;vector &lt;string&gt; &gt; currBoard, int depth, string color)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

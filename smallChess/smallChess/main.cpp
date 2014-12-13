@@ -185,167 +185,168 @@ int main()
 	cout << "Would you like to have the customary starting configuration? (y/n)" << endl;
 	cin >> answer;
 	
-	if(answer == 'y'){
-		rowWP1 = 5;
-		columnWP1 = 1;
-		whitePawn1->setPieceCoordinates(rowWP1, columnWP1);
-		whitePawn1->setPieceColor("White");
-		whitePawn1->setPieceWeight(1);
-		whitePieces.push_back(whitePawn1);
-		initialBoard[rowWP1][columnWP1] = "WP";
-		
-		rowWP2 = 5;
-		columnWP2 = 2;
-		whitePawn2->setPieceCoordinates(rowWP2, columnWP2);
-		whitePawn2->setPieceColor("White");
-		whitePawn2->setPieceWeight(1);
-		whitePieces.push_back(whitePawn2);
-		initialBoard[rowWP2][columnWP2] = "WP";
-		
-		rowWP3 = 5;
-		columnWP3 = 3;
-		whitePawn3->setPieceCoordinates(rowWP3, columnWP3);
-		whitePawn3->setPieceColor("White");
-		whitePawn3->setPieceWeight(1);
-		whitePieces.push_back(whitePawn3);
-		initialBoard[rowWP3][columnWP3] = "WP";
-		
-		rowWP4 = 5;
-		columnWP4 = 4;
-		whitePawn4->setPieceCoordinates(rowWP4, columnWP4);
-		whitePawn4->setPieceColor("White");
-		whitePawn4->setPieceWeight(1);
-		whitePieces.push_back(whitePawn4);
-		initialBoard[rowWP4][columnWP4] = "WP";
-		
-		rowWP5 = 5;
-		columnWP5 = 5;
-		whitePawn5->setPieceCoordinates(rowWP5, columnWP5);
-		whitePawn5->setPieceColor("White");
-		whitePawn5->setPieceWeight(1);
-		whitePieces.push_back(whitePawn5);
-		initialBoard[rowWP5][columnWP5] = "WP";
-		
-		rowWR = 6;
-		columnWR = 1;
-		whiteRook->setPieceCoordinates(rowWR, columnWR);
-		whiteRook->setPieceColor("White");
-		whiteRook->setPieceWeight(5);
-		whitePieces.push_back(whiteRook);
-		initialBoard[rowWR][columnWR] = "WR";
-		
-		rowWB = 6;
-		columnWB = 2;
-		whiteBishop->setPieceCoordinates(rowWB, columnWB);
-		whiteBishop->setPieceColor("White");
-		whiteBishop->setPieceWeight(3);
-		whitePieces.push_back(whiteBishop);
-		initialBoard[rowWB][columnWB] = "WB";
-		
-		rowWK = 6;
-		columnWK = 3;
-		whiteKing->setPieceCoordinates(rowWK, columnWK);
-		whiteKing->setPieceColor("White");
-		whiteKing->setPieceWeight(10);
-		whitePieces.push_back(whiteKing);
-		initialBoard[rowWK][columnWK] = "WK";
-		
-		rowWQ = 6;
-		columnWQ = 4;
-		whiteQueen->setPieceCoordinates(rowWQ, columnWQ);
-		whiteQueen->setPieceColor("White");
-		whiteQueen->setPieceWeight(9);
-		whitePieces.push_back(whiteQueen);
-		initialBoard[rowWQ][columnWQ] = "WQ";
-		
-		rowWN = 6;
-		columnWN = 5;
-		whiteKnight->setPieceCoordinates(rowWN, columnWN);
-		whiteKnight->setPieceColor("White");
-		whiteKnight->setPieceWeight(3);
-		whitePieces.push_back(whiteKnight);
-		initialBoard[rowWN][columnWN] = "WN";
-		
-		rowBP1 = 2;
-		columnBP1 = 1;
-		blackPawn1->setPieceCoordinates(rowBP1, columnBP1);
-		blackPawn1->setPieceColor("Black");
-		blackPawn1->setPieceWeight(1);
-		blackPieces.push_back(blackPawn1);
-		initialBoard[rowBP1][columnBP1] = "BP";
-		
-		rowBP2 = 2;
-		columnBP2 = 2;
-		blackPawn2->setPieceCoordinates(rowBP2, columnBP2);
-		blackPawn2->setPieceColor("Black");
-		blackPawn2->setPieceWeight(1);
-		blackPieces.push_back(blackPawn2);
-		initialBoard[rowBP2][columnBP2] = "BP";
-		
-		rowBP3 = 2;
-		columnBP3 = 3;
-		blackPawn3->setPieceCoordinates(rowBP3, columnBP3);
-		blackPawn3->setPieceColor("Black");
-		blackPawn3->setPieceWeight(1);
-		blackPieces.push_back(blackPawn3);
-		initialBoard[rowBP3][columnBP3] = "BP";
-		
-		rowBP4 = 2;
-		columnBP4 = 4;
-		blackPawn4->setPieceCoordinates(rowBP4, columnBP4);
-		blackPawn4->setPieceColor("Black");
-		blackPawn4->setPieceWeight(1);
-		blackPieces.push_back(blackPawn4);
-		initialBoard[rowBP4][columnBP4] = "BP";
-		
-		rowBP5 = 2;
-		columnBP5 = 5;
-		blackPawn5->setPieceCoordinates(rowBP5, columnBP5);
-		blackPawn5->setPieceColor("Black");
-		blackPawn5->setPieceWeight(1);
-		blackPieces.push_back(blackPawn5);
-		initialBoard[rowBP5][columnBP5] = "BP";
-		
-		rowBR = 1;
-		columnBR = 1;
-		blackRook->setPieceCoordinates(rowBR, columnBR);
-		blackRook->setPieceColor("Black");
-		blackRook->setPieceWeight(5);
-		blackPieces.push_back(blackRook);
-		initialBoard[rowBR][columnBR] = "BR";
-		
-		rowBB = 1;
-		columnBB = 2;
-		blackBishop->setPieceCoordinates(rowBB, columnBB);
-		blackBishop->setPieceColor("Black");
-		blackBishop->setPieceWeight(3);
-		blackPieces.push_back(blackBishop);
-		initialBoard[rowBB][columnBB] = "BB";
-		
-		rowBK = 1;
-		columnBK = 3;
-		blackKing->setPieceCoordinates(rowBK, columnBK);
-		blackKing->setPieceColor("Black");
-		blackKing->setPieceWeight(10);
-		blackPieces.push_back(blackKing);
-		initialBoard[rowBK][columnBK] = "BK";
-		
-		rowBQ = 1;
-		columnBQ = 4;
-		blackQueen->setPieceCoordinates(rowBQ, columnBQ);
-		blackQueen->setPieceColor("Black");
-		blackQueen->setPieceWeight(9);
-		blackPieces.push_back(blackQueen);
-		initialBoard[rowBQ][columnBQ] = "BQ";
-		
-		rowBN = 1;
-		columnBN = 5;
-		blackKnight->setPieceCoordinates(rowBN, columnBN);
-		blackKnight->setPieceColor("Black");
-		blackKnight->setPieceWeight(3);
-		blackPieces.push_back(blackKnight);
-		initialBoard[rowBN][columnBN] = "BN";
-	}
+    if(answer == 'y') {
+        rowWP1 = 5;
+        columnWP1 = 1;
+        whitePawn1->setPieceCoordinates(rowWP1, columnWP1);
+        whitePawn1->setPieceColor("White");
+        whitePawn1->setPieceWeight(1);
+        whitePieces.push_back(whitePawn1);
+        initialBoard[rowWP1][columnWP1] = "WP";
+        
+        rowWP2 = 5;
+        columnWP2 = 2;
+        whitePawn2->setPieceCoordinates(rowWP2, columnWP2);
+        whitePawn2->setPieceColor("White");
+        whitePawn2->setPieceWeight(1);
+        whitePieces.push_back(whitePawn2);
+        initialBoard[rowWP2][columnWP2] = "WP";
+        
+        rowWP3 = 5;
+        columnWP3 = 3;
+        whitePawn3->setPieceCoordinates(rowWP3, columnWP3);
+        whitePawn3->setPieceColor("White");
+        whitePawn3->setPieceWeight(1);
+        whitePieces.push_back(whitePawn3);
+        initialBoard[rowWP3][columnWP3] = "WP";
+        
+        rowWP4 = 5;
+        columnWP4 = 4;
+        whitePawn4->setPieceCoordinates(rowWP4, columnWP4);
+        whitePawn4->setPieceColor("White");
+        whitePawn4->setPieceWeight(1);
+        whitePieces.push_back(whitePawn4);
+        initialBoard[rowWP4][columnWP4] = "WP";
+        
+        rowWP5 = 5;
+        columnWP5 = 5;
+        whitePawn5->setPieceCoordinates(rowWP5, columnWP5);
+        whitePawn5->setPieceColor("White");
+        whitePawn5->setPieceWeight(1);
+        whitePieces.push_back(whitePawn5);
+        initialBoard[rowWP5][columnWP5] = "WP";
+        
+        rowWR = 6;
+        columnWR = 1;
+        whiteRook->setPieceCoordinates(rowWR, columnWR);
+        whiteRook->setPieceColor("White");
+        whiteRook->setPieceWeight(5);
+        whitePieces.push_back(whiteRook);
+        initialBoard[rowWR][columnWR] = "WR";
+        
+        rowWB = 6;
+        columnWB = 2;
+        whiteBishop->setPieceCoordinates(rowWB, columnWB);
+        whiteBishop->setPieceColor("White");
+        whiteBishop->setPieceWeight(3);
+        whitePieces.push_back(whiteBishop);
+        initialBoard[rowWB][columnWB] = "WB";
+        
+        rowWK = 6;
+        columnWK = 3;
+        whiteKing->setPieceCoordinates(rowWK, columnWK);
+        whiteKing->setPieceColor("White");
+        whiteKing->setPieceWeight(10);
+        whitePieces.push_back(whiteKing);
+        initialBoard[rowWK][columnWK] = "WK";
+        
+        rowWQ = 6;
+        columnWQ = 4;
+        whiteQueen->setPieceCoordinates(rowWQ, columnWQ);
+        whiteQueen->setPieceColor("White");
+        whiteQueen->setPieceWeight(9);
+        whitePieces.push_back(whiteQueen);
+        initialBoard[rowWQ][columnWQ] = "WQ";
+        
+        rowWN = 6;
+        columnWN = 5;
+        whiteKnight->setPieceCoordinates(rowWN, columnWN);
+        whiteKnight->setPieceColor("White");
+        whiteKnight->setPieceWeight(3);
+        whitePieces.push_back(whiteKnight);
+        initialBoard[rowWN][columnWN] = "WN";
+        
+        rowBP1 = 2;
+        columnBP1 = 1;
+        blackPawn1->setPieceCoordinates(rowBP1, columnBP1);
+        blackPawn1->setPieceColor("Black");
+        blackPawn1->setPieceWeight(1);
+        blackPieces.push_back(blackPawn1);
+        initialBoard[rowBP1][columnBP1] = "BP";
+        
+        rowBP2 = 2;
+        columnBP2 = 2;
+        blackPawn2->setPieceCoordinates(rowBP2, columnBP2);
+        blackPawn2->setPieceColor("Black");
+        blackPawn2->setPieceWeight(1);
+        blackPieces.push_back(blackPawn2);
+        initialBoard[rowBP2][columnBP2] = "BP";
+        
+        rowBP3 = 2;
+        columnBP3 = 3;
+        blackPawn3->setPieceCoordinates(rowBP3, columnBP3);
+        blackPawn3->setPieceColor("Black");
+        blackPawn3->setPieceWeight(1);
+        blackPieces.push_back(blackPawn3);
+        initialBoard[rowBP3][columnBP3] = "BP";
+        
+        rowBP4 = 2;
+        columnBP4 = 4;
+        blackPawn4->setPieceCoordinates(rowBP4, columnBP4);
+        blackPawn4->setPieceColor("Black");
+        blackPawn4->setPieceWeight(1);
+        blackPieces.push_back(blackPawn4);
+        initialBoard[rowBP4][columnBP4] = "BP";
+        
+        rowBP5 = 2;
+        columnBP5 = 5;
+        blackPawn5->setPieceCoordinates(rowBP5, columnBP5);
+        blackPawn5->setPieceColor("Black");
+        blackPawn5->setPieceWeight(1);
+        blackPieces.push_back(blackPawn5);
+        initialBoard[rowBP5][columnBP5] = "BP";
+        
+        rowBR = 1;
+        columnBR = 1;
+        blackRook->setPieceCoordinates(rowBR, columnBR);
+        blackRook->setPieceColor("Black");
+        blackRook->setPieceWeight(5);
+        blackPieces.push_back(blackRook);
+        initialBoard[rowBR][columnBR] = "BR";
+        
+        rowBB = 1;
+        columnBB = 2;
+        blackBishop->setPieceCoordinates(rowBB, columnBB);
+        blackBishop->setPieceColor("Black");
+        blackBishop->setPieceWeight(3);
+        blackPieces.push_back(blackBishop);
+        initialBoard[rowBB][columnBB] = "BB";
+        
+        rowBK = 1;
+        columnBK = 3;
+        blackKing->setPieceCoordinates(rowBK, columnBK);
+        blackKing->setPieceColor("Black");
+        blackKing->setPieceWeight(10);
+        blackPieces.push_back(blackKing);
+        initialBoard[rowBK][columnBK] = "BK";
+        
+        rowBQ = 1;
+        columnBQ = 4;
+        blackQueen->setPieceCoordinates(rowBQ, columnBQ);
+        blackQueen->setPieceColor("Black");
+        blackQueen->setPieceWeight(9);
+        blackPieces.push_back(blackQueen);
+        initialBoard[rowBQ][columnBQ] = "BQ";
+        
+        rowBN = 1;
+        columnBN = 5;
+        blackKnight->setPieceCoordinates(rowBN, columnBN);
+        blackKnight->setPieceColor("Black");
+        blackKnight->setPieceWeight(3);
+        blackPieces.push_back(blackKnight);
+        initialBoard[rowBN][columnBN] = "BN";
+    }
+    
 	
 	
 ////
@@ -696,16 +697,20 @@ int main()
 				if(programColor=="black"){
 					movePiece(initialGame, currentMoveColor, make_pair(2, 3), make_pair(3, 3));
 					initialGame.makeVectors();
-					cout << "Program's move: " << endl << endl;
+					cout << "Program's move: " << endl;
+                    cout << "Piece name: (P) startColumn(c) startRow(2) endColumn(c) endRow(2) result(move)" << endl << endl ;
 				}
 				
 				else{
 					movePiece(initialGame, currentMoveColor, make_pair(5, 3), make_pair(4, 3));
 					initialGame.makeVectors();
 					cout << "Program's move: " << endl;
+                    cout << "Piece name: (P) startColumn(c) startRow(5) endColumn(c) endRow(4) result(move)" << endl  << endl ;
 				}
-				
+      
+            
 			initialGame.print();
+               
 			}
 			
 			else if(currentMoveColor==programColor and moveNumber > 2){
@@ -713,13 +718,15 @@ int main()
 				if(programColor=="black"){
 					movePiece(initialGame, currentMoveColor, make_pair(1, 2), make_pair(2, 3));
 					initialGame.makeVectors();
-					cout << "Program's move: " << endl << endl;
+					cout << "Program's move: " << endl;
+                    cout << "Piece name: (B) startColumn(b) startRow(1) endColumn(c) endRow(2) result(move)" << endl << endl;
 				}
 				
 				else{
 					movePiece(initialGame, currentMoveColor, make_pair(6, 2), make_pair(5, 3));
 					initialGame.makeVectors();
 					cout << "Program's move: " << endl;
+                    cout << "Piece name: (B) startColumn(b) startRow(6) endColumn(c) endRow(5) result(move)" << endl << endl;
 				}
 				
 			initialGame.print();
@@ -790,6 +797,7 @@ int main()
 			moveNumber++;
 			cout << "Move number:  " << moveNumber << endl;
 		}
+
 		
 ////
 ////Negamax search for program moves
@@ -803,12 +811,12 @@ int main()
 		if(currentMoveColor == programColor){
 			//search for programMove using Negamax
 			cout << "We made it to the program move using negamax!" << endl;
-			
 			movesForCurrBoard = makeBoards(initialGame, programColor);
 			currWorklist = makeHeuristicPairs(movesForCurrBoard);
 			currCopy = currWorklist;
 			
 			int bestMoveHeuristic = - negaMax(initialGame.getBoardConfig(), 0, programColor);
+
 			
 			cout << "Negamax best heuristic: " << bestMoveHeuristic << endl;
 			
@@ -827,10 +835,18 @@ int main()
 					currCopy.pop();
 				}
 			}
-			
+            //remembering the board
+            tempo.setBoardConfig(initialGame.getBoardConfig());
+            tempo.makeVectors();
 			initialGame.setBoardConfig(currCopy.top().second);
 			initialGame.makeVectors();
-			initialGame.print();
+            cout << "Program's move: " << endl << endl;
+            tempo.print();
+            
+            cout << endl;
+            
+            initialGame.print();
+            
 		}
 		
 		else{

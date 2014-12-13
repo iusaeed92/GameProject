@@ -48,13 +48,16 @@ vector < vector <string >> (gameState &currentGameState, double moveTime) {
 int negaMax(vector <vector <string> > currBoard, int depth, string color){
 	GameState currState;
 	currState.setBoardConfig(currBoard);
+
 	currState.makeVectors();
 
 	if(depth > 0){
 		if(color == "white"){
+         //   cout << "if Lame heuristic " << currState.heuristicValue() << endl;
 			return currState.heuristicValue();
 		}
 		else{
+          //  cout << "if Lame heuristic " <<  - currState.heuristicValue() << endl;
 			return - currState.heuristicValue();
 		}
 	}
@@ -65,23 +68,29 @@ int negaMax(vector <vector <string> > currBoard, int depth, string color){
 	currWorklist = makeHeuristicPairs(movesForCurrBoard);
 	unsigned listSize = currWorklist.size();
 	for(unsigned i = 0; i < listSize; i++){
+
 		int x;
-		if(color == "white"){
-			x = - negaMax(currWorklist.top().second, depth+1, "black");
+        //
+        //cout << "meow" << endl;
+		if(color== "white"){
+           // cout << "I made it " << endl;
+			x =  - negaMax(currWorklist.top().second, depth+1, "black");
 		}
 		else{
+          //    cout << "I made it " << endl;
 			x = - negaMax(currWorklist.top().second, depth+1, "white");
 		}
+
 		
 		if(!currWorklist.empty()){
 			currWorklist.pop();
 		}
-		
+
 		if(x > bestHeuristic){
 			bestHeuristic = x;
 		}
 	}
-	
+   // cout << "See it comes straight here" << endl;
 	return bestHeuristic;
 }
 
@@ -101,6 +110,7 @@ vector <GameState> makeBoards(GameState currBoard, string color){
 			for(unsigned j = 0; j < possibleMovesForI.size(); j++){
 				newBoard.setBoardConfig(currBoard.getBoardConfig());
 				searchMovePiece(newBoard, "white", thisPieceCoords, possibleMovesForI[j]);
+               // newBoard.print();
 				gameStates.push_back(newBoard);
 			}
 		}
@@ -116,6 +126,8 @@ vector <GameState> makeBoards(GameState currBoard, string color){
             for(unsigned j = 0; j < possibleMovesForI.size(); j++){
                 newBoard.setBoardConfig(currBoard.getBoardConfig());
                 searchMovePiece(newBoard, "black", thisPieceCoords, possibleMovesForI[j]);
+                //
+               // newBoard.print();
                 gameStates.push_back(newBoard);
             }
      	}
@@ -178,9 +190,10 @@ bool validMove(GameState currGame, string moveColor, string Name, pair<unsigned,
 //		}
 		for(unsigned i = 0; i < validMoves.size(); i++){
 			if(end == validMoves[i]){
+
 				return true;
-			}
-		}
+                }
+            }
 	}
 	
 	return false;
