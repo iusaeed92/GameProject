@@ -4,7 +4,7 @@
 
 int negaMax(vector <vector <string> > currBoard, int depth, string color);
 vector <GameState> makeBoards(GameState currBoard, string color);
-void makeHeuristicPairs(vector <GameState> boards, priority_queue <pair <int, vector <vector <string> > > > &worklist);
+priority_queue <pair <int, vector <vector <string> > > > makeHeuristicPairs(vector <GameState> boards);
 pair<Piece*, bool> retrievePiece(GameState currGame, string moveColor, string Name, pair<int, int> start);
 bool validMove(GameState currGame, string moveColor, string Name, pair<unsigned, unsigned> start, pair<unsigned, unsigned> end, string result);
 void movePiece(GameState &currState, string movingColor, pair <int, int> starting, pair<int, int> ending);
@@ -50,7 +50,7 @@ int negaMax(vector <vector <string> > currBoard, int depth, string color){
 	currState.setBoardConfig(currBoard);
 	currState.makeVectors();
 
-	if(depth > 3){
+	if(depth > 0){
 		if(color == "white"){
 			return currState.heuristicValue();
 		}
@@ -62,8 +62,9 @@ int negaMax(vector <vector <string> > currBoard, int depth, string color){
 	int bestHeuristic = -1000000;
 	priority_queue <pair <int, vector <vector <string> > > > currWorklist;
 	vector <GameState> movesForCurrBoard = makeBoards(currState, color);
-	makeHeuristicPairs(movesForCurrBoard, currWorklist);
-	for(unsigned i = 0; i < currWorklist.size(); i++){
+	currWorklist = makeHeuristicPairs(movesForCurrBoard);
+	unsigned listSize = currWorklist.size();
+	for(unsigned i = 0; i < listSize; i++){
 		int x;
 		if(color == "white"){
 			x = - negaMax(currWorklist.top().second, depth+1, "black");
@@ -123,14 +124,17 @@ vector <GameState> makeBoards(GameState currBoard, string color){
 }
 
 
-void makeHeuristicPairs(vector <GameState> boards, priority_queue <pair <int, vector< vector <string> > > > &worklist){
+priority_queue <pair <int, vector <vector <string> > > > makeHeuristicPairs(vector <GameState> boards){
 
 	int heuristicForI;
+	priority_queue <pair <int, vector <vector <string> > > > worklist;
 
 	for(unsigned i = 0; i < boards.size(); i++){
 		heuristicForI = boards[i].heuristicValue();
 		worklist.push(make_pair(heuristicForI, boards[i].getBoardConfig()));
 	}
+	
+	return worklist;
 }
 
 

@@ -346,7 +346,7 @@ else{
 		//check other diagonal
 	if(currentGameState.getBoardConfig()[localCoord.first+1][localCoord.second-1] != "empty"
 		&& currentGameState.getBoardConfig()[localCoord.first+1][localCoord.second-1] != "outOfBounds"){
-		if(this->isSameColor(currentGameState, make_pair(localCoord.first-1,localCoord.second-1)) == false){
+		if(this->isSameColor(currentGameState, make_pair(localCoord.first+1,localCoord.second-1)) == false){
 			possiblePawnMoves.push_back(make_pair(localCoord.first+1, localCoord.second-1));
 	
 		}
