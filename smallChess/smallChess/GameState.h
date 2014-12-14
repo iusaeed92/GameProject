@@ -48,6 +48,7 @@ public:
 	void print();
 	int heuristicValue();
 	void makeVectors();
+	string findStalemateWinner(string colorStalematedOpponent);
 };
 
 #endif

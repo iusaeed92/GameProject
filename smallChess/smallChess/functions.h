@@ -2,13 +2,14 @@
 //H file for functions used in main
 //
 
-int negaMax(vector <vector <string> > currBoard, int depth, string color);
+int negaMax(vector <vector <string> > currBoard, int depth, string color, int &bestBoardNum);
 vector <GameState> makeBoards(GameState currBoard, string color);
 priority_queue <pair <int, vector <vector <string> > > > makeHeuristicPairs(vector <GameState> boards);
 pair<Piece*, bool> retrievePiece(GameState currGame, string moveColor, string Name, pair<int, int> start);
 bool validMove(GameState currGame, string moveColor, string Name, pair<unsigned, unsigned> start, pair<unsigned, unsigned> end, string result);
 void movePiece(GameState &currState, string movingColor, pair <int, int> starting, pair<int, int> ending);
 void searchMovePiece(GameState &currState, string movingColor, pair <int, int> starting, pair<int, int> ending);
+bool isBoardEqual(vector <vector <string> > boardOne, vector <vector <string> > boardTwo);
 
 
 /* 
@@ -45,53 +46,46 @@ vector < vector <string >> (gameState &currentGameState, double moveTime) {
  */
 
 
-int negaMax(vector <vector <string> > currBoard, int depth, string color){
+int negaMax(vector <vector <string> > currBoard, int depth, string color, int &bestBoardNum){
 	GameState currState;
 	currState.setBoardConfig(currBoard);
-
 	currState.makeVectors();
 
-	if(depth > 0){
+	if(depth > 2){
 		if(color == "white"){
-         //   cout << "if Lame heuristic " << currState.heuristicValue() << endl;
-			return currState.heuristicValue();
+			return - currState.heuristicValue();
 		}
 		else{
-          //  cout << "if Lame heuristic " <<  - currState.heuristicValue() << endl;
-			return - currState.heuristicValue();
+			return currState.heuristicValue();
 		}
 	}
 	
 	int bestHeuristic = -1000000;
 	priority_queue <pair <int, vector <vector <string> > > > currWorklist;
 	vector <GameState> movesForCurrBoard = makeBoards(currState, color);
-	currWorklist = makeHeuristicPairs(movesForCurrBoard);
-	unsigned listSize = currWorklist.size();
-	for(unsigned i = 0; i < listSize; i++){
-
+//	currWorklist = makeHeuristicPairs(movesForCurrBoard);
+//	unsigned listSize = currWorklist.size();
+	for(unsigned i = 0; i < movesForCurrBoard.size(); i++){
 		int x;
-        //
-        //cout << "meow" << endl;
-		if(color== "white"){
-           // cout << "I made it " << endl;
-			x =  - negaMax(currWorklist.top().second, depth+1, "black");
+		if(color == "white"){
+			x = negaMax(movesForCurrBoard[i].getBoardConfig(), depth+1, "black", bestBoardNum);
 		}
 		else{
-          //    cout << "I made it " << endl;
-			x = - negaMax(currWorklist.top().second, depth+1, "white");
+			x = negaMax(movesForCurrBoard[i].getBoardConfig(), depth+1, "white", bestBoardNum);
 		}
-
 		
-		if(!currWorklist.empty()){
-			currWorklist.pop();
-		}
-
+//		if(!currWorklist.empty()){
+//			currWorklist.pop();
+//		}
+		
 		if(x > bestHeuristic){
 			bestHeuristic = x;
+			bestBoardNum = i;
+//			best = currWorklist.top();
 		}
 	}
-   // cout << "See it comes straight here" << endl;
-	return bestHeuristic;
+	
+	return - bestHeuristic;
 }
 
 
@@ -110,7 +104,6 @@ vector <GameState> makeBoards(GameState currBoard, string color){
 			for(unsigned j = 0; j < possibleMovesForI.size(); j++){
 				newBoard.setBoardConfig(currBoard.getBoardConfig());
 				searchMovePiece(newBoard, "white", thisPieceCoords, possibleMovesForI[j]);
-               // newBoard.print();
 				gameStates.push_back(newBoard);
 			}
 		}
@@ -126,8 +119,6 @@ vector <GameState> makeBoards(GameState currBoard, string color){
             for(unsigned j = 0; j < possibleMovesForI.size(); j++){
                 newBoard.setBoardConfig(currBoard.getBoardConfig());
                 searchMovePiece(newBoard, "black", thisPieceCoords, possibleMovesForI[j]);
-                //
-               // newBoard.print();
                 gameStates.push_back(newBoard);
             }
      	}
@@ -190,10 +181,18 @@ bool validMove(GameState currGame, string moveColor, string Name, pair<unsigned,
 //		}
 		for(unsigned i = 0; i < validMoves.size(); i++){
 			if(end == validMoves[i]){
-
-				return true;
-                }
-            }
+				movePiece(currGame, moveColor, start, end);
+				bool check = currGame.kingInCheck(moveColor);
+				if(check == false){
+					movePiece(currGame, moveColor, end, start);
+					return true;
+				}
+				else{
+					movePiece(currGame, moveColor, end, start);
+					return false;
+				}
+			}
+		}
 	}
 	
 	return false;
@@ -246,3 +245,18 @@ void searchMovePiece(GameState &currState, string movingColor, pair <int, int> s
 		currState.setBoardConfig(temp);
 	}
 }
+
+
+bool isBoardEqual(vector <vector <string> > boardOne, vector <vector <string> > boardTwo){
+    for (int i = 1; i < 7; i++) {
+        for (int j = 1; j < 6; j++) {
+            if(boardOne[i][j] != boardTwo[i][j]){
+                return false;
+            }
+        }
+    }
+    return true; 
+}
+
+
+
