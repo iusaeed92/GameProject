@@ -65,9 +65,9 @@ int findPath(pair<int,int> coordinates, string color,GameState dummyGameState){
 				}
 		//move right (4)
 		localCoord = coordinates;
-		localCoord.first = localCoord.second+1;
+		localCoord.second = localCoord.second+1;
 		while(dummyGameState.getBoardConfig()[localCoord.first][localCoord.second] == "empty"){
-			localCoord.first = localCoord.second+1;
+			localCoord.second = localCoord.second+1;
 		}
 		if(dummyGameState.getBoardConfig()[localCoord.first][localCoord.second] == rook
 				|| dummyGameState.getBoardConfig()[localCoord.first][localCoord.second] == queen){
@@ -359,7 +359,7 @@ bool GameState::checkmate(string color){
 	bool canBlock = false;
 	bool canMove = false; 
 	
-	if(dummyGameState.kingInCheck("white") == false && dummyGameState.kingInCheck("black") == false){
+	if(dummyGameState.kingInCheck(color) == false){
 		return false; 
 	}
 	if(color == "white"){
@@ -390,7 +390,7 @@ bool GameState::checkmate(string color){
 			}
 		
 		//see if threat piece can be captured
-		if(countThreats <= 1){
+		if(countThreats <= 1){ 
 			capThreat = dummyGameState.isThreatened(threat.getPieceCoordinates(), "black");
 		}
 		else{
@@ -707,8 +707,6 @@ void GameState::makeVectors(){
 	
 	white.clear();
 	black.clear();
-    
-    
 	
     for (int i = 1; i < 7; i++) {
         for (int j = 1; j < 6; j++) {
@@ -814,4 +812,6 @@ void GameState::makeVectors(){
 		}
 	} 
 }
-
+		
+	
+	
