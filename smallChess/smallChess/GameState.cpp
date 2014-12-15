@@ -605,7 +605,10 @@ bool GameState::checkmate(string color){
 					for(unsigned i=0; i < black.size(); i++){
 						blackMoves = black[i]->generatePossibleMoves(dummyGameState);
 						for(unsigned j=0; j <blackMoves.size(); j++){
-							if(make_pair(localCoord.first-1, localCoord.second) == blackMoves[j]){
+							if(white[i]->getPieceName() == "K"){
+							canBlock = false;
+							}
+						else if(make_pair(localCoord.first-1, localCoord.second) == blackMoves[j]){
 							canBlock = true;
 				        }
 					  }
@@ -617,7 +620,10 @@ bool GameState::checkmate(string color){
 				for(unsigned i=0; i < black.size(); i++){
 					blackMoves = black[i]->generatePossibleMoves(dummyGameState);
 					for(unsigned j=0; j < blackMoves.size(); j++){
-						if(make_pair(localCoord.first+1, localCoord.second) == blackMoves[j]){
+						if(white[i]->getPieceName() == "K"){
+						canBlock = false;
+					    }
+						else if(make_pair(localCoord.first+1, localCoord.second) == blackMoves[j]){
 							canBlock = true;
 					    }
 				    }
@@ -629,8 +635,11 @@ bool GameState::checkmate(string color){
 				for(unsigned i=0; i < black.size(); i++){
 					blackMoves = black[i]->generatePossibleMoves(dummyGameState);
 					for(unsigned j=0; j < blackMoves.size(); j++){
-						if(make_pair(localCoord.first, localCoord.second-1) == blackMoves[j]){
-							canBlock = true;
+						if(white[i]->getPieceName() == "K"){
+						canBlock = false;
+					    }
+						else if(make_pair(localCoord.first, localCoord.second-1) == blackMoves[j]){
+				         canBlock = true;
 					    }
 				    }
 			      }
@@ -641,7 +650,10 @@ bool GameState::checkmate(string color){
 				for(unsigned i=0; i < black.size(); i++){
 					blackMoves = black[i]->generatePossibleMoves(dummyGameState);
 					for(unsigned j=0; j < blackMoves.size(); j++){
-						if(make_pair(localCoord.first+1, localCoord.second+1) == blackMoves[j]){
+						if(white[i]->getPieceName() == "K"){
+						canBlock = false;
+					    }
+						else if(make_pair(localCoord.first+1, localCoord.second+1) == blackMoves[j]){
 							canBlock = true;
 					    }
 				    }
@@ -653,7 +665,10 @@ bool GameState::checkmate(string color){
 				for(unsigned i=0; i < black.size(); i++){
 					blackMoves = black[i]->generatePossibleMoves(dummyGameState);
 					for(unsigned j=0; j < blackMoves.size(); j++){
-						if(make_pair(localCoord.first-1, localCoord.second+1) == blackMoves[j]){
+						if(white[i]->getPieceName() == "K"){
+						canBlock = false;
+					    }
+						else if(make_pair(localCoord.first-1, localCoord.second+1) == blackMoves[j]){
 							canBlock = true;
 					    }
 				    }
@@ -665,7 +680,10 @@ bool GameState::checkmate(string color){
 				for(unsigned i=0; i < black.size(); i++){
 					blackMoves = black[i]->generatePossibleMoves(dummyGameState);
 					for(unsigned j=0; j < blackMoves.size(); j++){
-						if(make_pair(localCoord.first+1, localCoord.second+1) == blackMoves[j]){
+						if(white[i]->getPieceName() == "K"){
+						canBlock = false;
+					    }
+						else if(make_pair(localCoord.first+1, localCoord.second+1) == blackMoves[j]){
 							canBlock = true;
 					    }
 				    }
@@ -677,7 +695,10 @@ bool GameState::checkmate(string color){
 				for(unsigned i=0; i <black.size(); i++){
 					blackMoves = black[i]->generatePossibleMoves(dummyGameState);
 					for(unsigned j=0; j < blackMoves.size(); j++){
-						if(make_pair(localCoord.first+1, localCoord.second-1) == blackMoves[j]){
+						if(white[i]->getPieceName() == "K"){
+						canBlock = false;
+					    }
+						else if(make_pair(localCoord.first+1, localCoord.second-1) == blackMoves[j]){
 							canBlock = true;
 					    }
 				    }
@@ -689,7 +710,10 @@ bool GameState::checkmate(string color){
 				for(unsigned i=0; i < black.size(); i++){
 					blackMoves = black[i]->generatePossibleMoves(dummyGameState);
 					for(unsigned j=0; j < blackMoves.size(); j++){
-						if(make_pair(localCoord.first-1, localCoord.second-1) == blackMoves[j]){
+						if(white[i]->getPieceName() == "K"){
+						canBlock = false;
+					    }
+						else if(make_pair(localCoord.first-1, localCoord.second-1) == blackMoves[j]){
 							canBlock = true;
 					    }
 				    }
@@ -839,6 +863,10 @@ void GameState::makeVectors(){
 		}
 	} 
 }
+
+//GameState::promotePawn(string color){
+	//find if any pawn is in 
+//}
 		
 	
 	
