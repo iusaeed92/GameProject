@@ -10,8 +10,7 @@ bool validMove(GameState currGame, string moveColor, string Name, pair<unsigned,
 void movePiece(GameState &currState, string movingColor, pair <int, int> starting, pair<int, int> ending);
 void searchMovePiece(GameState &currState, string movingColor, pair <int, int> starting, pair<int, int> ending);
 bool isBoardEqual(vector <vector <string> > boardOne, vector <vector <string> > boardTwo);
-vector <pair <unsigned, unsigned> > removeCheckMoves(vector <pair <unsigned, unsigned> > withCheckMoves, GameState currState, string color, pair <int, int> starting);
-
+vector <pair <unsigned, unsigned> > removeCheckMoves(vector <pair <unsigned, unsigned> > withCheckMoves, GameState currState, string color, pair <int, int> start, string name);
 
 /* 
 vector < vector <string >> (gameState &currentGameState, double moveTime) {
@@ -95,7 +94,7 @@ vector <GameState> makeBoards(GameState currBoard, string color){
 
 		for(unsigned i = 0; i < currBoard.getWhite().size(); i++){
 			possibleMovesForI = currBoard.getWhite()[i]->generatePossibleMoves(currBoard);
-			possibleMovesForI2 = removeCheckMoves(possibleMovesForI, currBoard, color, currBoard.getWhite()[i]->getPieceCoordinates());
+			possibleMovesForI2 = removeCheckMoves(possibleMovesForI, currBoard, color, currBoard.getWhite()[i]->getPieceCoordinates(), currBoard.getWhite()[i]->getPieceName());
 			
 			pair<int, int> thisPieceCoords = newBoard.getWhite()[i]->getPieceCoordinates();
 			
@@ -112,13 +111,13 @@ vector <GameState> makeBoards(GameState currBoard, string color){
     else {
         for(unsigned i = 0; i < currBoard.getBlack().size(); i++){
 			possibleMovesForI = currBoard.getBlack()[i]->generatePossibleMoves(currBoard);
-			possibleMovesForI2 = removeCheckMoves(possibleMovesForI, currBoard, color, currBoard.getBlack()[i]->getPieceCoordinates());
+			possibleMovesForI2 = removeCheckMoves(possibleMovesForI, currBoard, color, currBoard.getBlack()[i]->getPieceCoordinates(), currBoard.getBlack()[i]->getPieceName());
 			
             pair<int, int> thisPieceCoords = newBoard.getBlack()[i]->getPieceCoordinates();
 			
-            for(unsigned j = 0; j < possibleMovesForI.size(); j++){
+            for(unsigned j = 0; j < possibleMovesForI2.size(); j++){
                 newBoard.setBoardConfig(currBoard.getBoardConfig());
-                searchMovePiece(newBoard, "black", thisPieceCoords, possibleMovesForI[j]);
+                searchMovePiece(newBoard, "black", thisPieceCoords, possibleMovesForI2[j]);
                 gameStates.push_back(newBoard);
             }
      	}
@@ -260,7 +259,7 @@ bool isBoardEqual(vector <vector <string> > boardOne, vector <vector <string> > 
     return true; 
 }
 
-vector <pair <unsigned, unsigned> > removeCheckMoves(vector <pair <unsigned, unsigned> > withCheckMoves, GameState currState, string color, pair <int, int> starting){
+vector <pair <unsigned, unsigned> > removeCheckMoves(vector <pair <unsigned, unsigned> > withCheckMoves, GameState currState, string color, pair <int, int> start, string name){
 	GameState temp;
 	temp.setBoardConfig(currState.getBoardConfig());
 	temp.makeVectors();
@@ -269,14 +268,18 @@ vector <pair <unsigned, unsigned> > removeCheckMoves(vector <pair <unsigned, uns
 	
 	
 	for(unsigned i = 0; i < withCheckMoves.size(); i++){
-		movePiece(temp, color, starting, withCheckMoves[i]);
+		if(validMove(temp, color, name, start, withCheckMoves[i], "notNeeded")){
+			removed.push_back(withCheckMoves[i]);
+		}
+	}
+		/*(temp, color, starting, withCheckMoves[i]);
 		if(temp.kingInCheck(color)){
 			//don't push these coordinates on
 		}
 		else{
 			removed.push_back(withCheckMoves[i]);
 		}
-	}
+	}*/
 	
 	return removed;
 	

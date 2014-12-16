@@ -221,15 +221,15 @@ int main()
 	////
 	////Automatic Standard Configuration Setup
     ////
-	char answer;
+	string answer;
 	cout << "Would you like to have the customary starting configuration? (y/n)" << endl;
 	cin >> answer;
-	while(answer != 'y' && answer != 'n'){
+	while(answer != "y" && answer != "n"){
 		cout << "Please enter (y/n): " << endl;
 		cin >> answer;
 	}
 	
-	if(answer == 'y'){
+	if(answer == "y"){
 		rowWP1 = 5;
 		columnWP1 = 1;
 		whitePawn1->setPieceCoordinates(rowWP1, columnWP1);
@@ -356,81 +356,119 @@ int main()
 ////Input of coordinates for all pieces
 ////
 	else{
-		cout << "Input the position of white pawn (1). First enter the row (1-6). Then the column(a-e):" << endl;
-		cin >> rowWP1;
-		cin >> letterWP1;
-		columnWP1 = letterWP1 - 96;
-		whitePawn1->setPieceCoordinates(rowWP1, columnWP1);
-		whitePieces.push_back(whitePawn1);
-		initialBoard[rowWP1][columnWP1] = "WP";
+		int numOfWhitePawns;
+		cout << "How many white pawns are on the board? (0-5)" << endl;
+		cin >> numOfWhitePawns;
 		
-		cout << "Input the position of white pawn (2). First enter the row (1-6). Then the column(a-e):" << endl;
-		cin >> rowWP2;
-		cin >> letterWP2;
-		columnWP2 = letterWP2 - 96;
-		whitePawn2->setPieceCoordinates(rowWP2, columnWP2);
-		whitePieces.push_back(whitePawn2);
-		initialBoard[rowWP2][columnWP2] = "WP";
+		if(numOfWhitePawns > 0){
+			cout << "Input the position of white pawn (1). First enter the column (a-e). Then the row(1-6):" << endl;
+			cin >> letterWP1;
+			cin >> rowWP1;
+			columnWP1 = letterWP1 - 96;
+			whitePawn1->setPieceCoordinates(rowWP1, columnWP1);
+			whitePieces.push_back(whitePawn1);
+			initialBoard[rowWP1][columnWP1] = "WP";
+		}
 		
-		cout << "Input the position of white pawn (3). First enter the row (1-6). Then the column(a-e):" << endl;
-		cin >> rowWP3;
-		cin >> letterWP3;
-		columnWP3 = letterWP3 - 96;
-		whitePawn3->setPieceCoordinates(rowWP3, columnWP3);
-		whitePieces.push_back(whitePawn3);
-		initialBoard[rowWP3][columnWP3] = "WP";
+		if(numOfWhitePawns > 1){
+			cout << "Input the position of white pawn (2). First enter the column (a-e). Then the row(1-6):" << endl;
+			cin >> letterWP2;
+			cin >> rowWP2;
+			columnWP2 = letterWP2 - 96;
+			whitePawn2->setPieceCoordinates(rowWP2, columnWP2);
+			whitePieces.push_back(whitePawn2);
+			initialBoard[rowWP2][columnWP2] = "WP";
+		}
 		
-		cout << "Input the position of white pawn (4). First enter the row (1-6). Then the column(a-e):" << endl;
-		cin >> rowWP4;
-		cin >> letterWP4;
-		columnWP4 = letterWP4 - 96;
-		whitePawn4->setPieceCoordinates(rowWP4, columnWP4);
-		whitePieces.push_back(whitePawn4);
-		initialBoard[rowWP4][columnWP4] = "WP";
+		if(numOfWhitePawns > 2){
+			cout << "Input the position of white pawn (3). First enter the column (a-e). Then the row(1-6):" << endl;
+			cin >> letterWP3;
+			cin >> rowWP3;
+			columnWP3 = letterWP3 - 96;
+			whitePawn3->setPieceCoordinates(rowWP3, columnWP3);
+			whitePieces.push_back(whitePawn3);
+			initialBoard[rowWP3][columnWP3] = "WP";
+		}
 		
-		cout << "Input the position of white pawn (5). First enter the row (1-6). Then the column(a-e):" << endl;
-		cin >> rowWP5;
-		cin >> letterWP5;
-		columnWP5 = letterWP5 - 96;
-		whitePawn5->setPieceCoordinates(rowWP5, columnWP5);
-		whitePieces.push_back(whitePawn5);
-		initialBoard[rowWP5][columnWP5] = "WP";
+		if(numOfWhitePawns > 3){
+			cout << "Input the position of white pawn (4). First enter the column (a-e). Then the row(1-6):" << endl;
+			cin >> letterWP4;
+			cin >> rowWP4;
+			columnWP4 = letterWP4 - 96;
+			whitePawn4->setPieceCoordinates(rowWP4, columnWP4);
+			whitePieces.push_back(whitePawn4);
+			initialBoard[rowWP4][columnWP4] = "WP";
+		}
 		
-		cout << "Input the position of white rook. First enter the row (1-6). Then the column(a-e):" << endl;
-		cin >> rowWR;
-		cin >> letterWR;
-		columnWR = letterWR - 96;
-		whiteRook->setPieceCoordinates(rowWR, columnWR);
-		whitePieces.push_back(whiteRook);
-		initialBoard[rowWR][columnWR] = "WR";
+		if(numOfWhitePawns > 4){
+			cout << "Input the position of white pawn (5). First enter the column (a-e). Then the row(1-6):" << endl;
+			cin >> letterWP5;
+			cin >> rowWP5;
+			columnWP5 = letterWP5 - 96;
+			whitePawn5->setPieceCoordinates(rowWP5, columnWP5);
+			whitePieces.push_back(whitePawn5);
+			initialBoard[rowWP5][columnWP5] = "WP";
+		}
 		
-		cout << "Input the position of white knight. First enter the row (1-6). Then the column(a-e):" << endl;
-		cin >> rowWN;
-		cin >> letterWN;
-		columnWN = letterWN - 96;
-		whiteKnight->setPieceCoordinates(rowWN, columnWN);
-		whitePieces.push_back(whiteKnight);
-		initialBoard[rowWN][columnWN] = "WN";
+		char WROnBoard;
+		cout << "Is there a white rook on the board? (y/n)" << endl;
+		cin >> WROnBoard;
 		
-		cout << "Input the position of white bishop. First enter the row (1-6). Then the column(a-e):" << endl;
-		cin >> rowWB;
-		cin >> letterWB;
-		columnWB = letterWB - 96;
-		whiteBishop->setPieceCoordinates(rowWB, columnWB);
-		whitePieces.push_back(whiteBishop);
-		initialBoard[rowWB][columnWB] = "WB";
+		if(WROnBoard == 'y'){
+			cout << "Input the position of white rook. First enter the column (a-e). Then the row(1-6):" << endl;
+			cin >> letterWR;
+			cin >> rowWR;
+			columnWR = letterWR - 96;
+			whiteRook->setPieceCoordinates(rowWR, columnWR);
+			whitePieces.push_back(whiteRook);
+			initialBoard[rowWR][columnWR] = "WR";
+		}
 		
-		cout << "Input the position of white queen. First enter the row (1-6). Then the column(a-e):" << endl;
-		cin >> rowWQ;
-		cin >> letterWQ;
-		columnWQ = letterWQ - 96;
-		whiteQueen->setPieceCoordinates(rowWQ, columnWQ);
-		whitePieces.push_back(whiteQueen);
-		initialBoard[rowWQ][columnWQ] = "WQ";
+		char WNOnBoard;
+		cout << "Is there a white knight on the board? (y/n)" << endl;
+		cin >> WNOnBoard;
 		
-		cout << "Input the position of white king. First enter the row (1-6). Then the column(a-e):" << endl;
-		cin >> rowWK;
+		if(WNOnBoard == 'y'){
+			cout << "Input the position of white knight. First enter the column (a-e). Then the row(1-6):" << endl;
+			cin >> letterWN;
+			cin >> rowWN;
+			columnWN = letterWN - 96;
+			whiteKnight->setPieceCoordinates(rowWN, columnWN);
+			whitePieces.push_back(whiteKnight);
+			initialBoard[rowWN][columnWN] = "WN";
+		}
+		
+		char WBOnBoard;
+		cout << "Is there a white bishop on the board? (y/n)" << endl;
+		cin >> WBOnBoard;
+		
+		if(WBOnBoard == 'y'){
+			cout << "Input the position of white bishop. First enter the column (a-e). Then the row(1-6):" << endl;
+			cin >> letterWB;
+			cin >> rowWB;
+			columnWB = letterWB - 96;
+			whiteBishop->setPieceCoordinates(rowWB, columnWB);
+			whitePieces.push_back(whiteBishop);
+			initialBoard[rowWB][columnWB] = "WB";
+		}
+		
+		char WQOnBoard;
+		cout << "Is there a white queen on the board? (y/n)" << endl;
+		cin >> WQOnBoard;
+		
+		if(WQOnBoard == 'y'){
+			cout << "Input the position of white queen. First enter the column (a-e). Then the row(1-6):" << endl;
+			cin >> letterWQ;
+			cin >> rowWQ;
+			columnWQ = letterWQ - 96;
+			whiteQueen->setPieceCoordinates(rowWQ, columnWQ);
+			whitePieces.push_back(whiteQueen);
+			initialBoard[rowWQ][columnWQ] = "WQ";
+		}
+		
+		cout << "Input the position of white king. First enter the column (a-e). Then the row(1-6):" << endl;
 		cin >> letterWK;
+		cin >> rowWK;
 		columnWK = letterWK - 96;
 		whiteKing->setPieceCoordinates(rowWK, columnWK);
 		whitePieces.push_back(whiteKing);
@@ -439,90 +477,129 @@ int main()
 		////
 		////Black Pieces
 		////
-		cout << "Input the position of black pawn (1). First enter the row (1-6). Then the column(a-e):" << endl;
-		cin >> rowBP1;
-		cin >> letterBP1;
-		columnBP1 = letterBP1 - 96;
-		blackPawn1->setPieceCoordinates(rowBP1, columnBP1);
-		blackPawn1->setPieceColor("Black");
-		blackPieces.push_back(blackPawn1);
-		initialBoard[rowBP1][columnBP1] = "BP";
 		
-		cout << "Input the position of black pawn (2). First enter the row (1-6). Then the column(a-e):" << endl;
-		cin >> rowBP2;
-		cin >> letterBP2;
-		columnBP2 = letterBP2 - 96;
-		blackPawn2->setPieceCoordinates(rowBP2, columnBP2);
-		blackPawn2->setPieceColor("Black");
-		blackPieces.push_back(blackPawn2);
-		initialBoard[rowBP2][columnBP2] = "BP";
+		int numOfBlackPawns;
+		cout << "How many black pawns are on the board? (0-5)" << endl;
+		cin >> numOfBlackPawns;
 		
-		cout << "Input the position of black pawn (3). First enter the row (1-6). Then the column(a-e):" << endl;
-		cin >> rowBP3;
-		cin >> letterBP3;
-		columnBP3 = letterBP3 - 96;
-		blackPawn3->setPieceCoordinates(rowBP3, columnBP3);
-		blackPawn3->setPieceColor("Black");
-		blackPieces.push_back(blackPawn3);
-		initialBoard[rowBP3][columnBP3] = "BP";
+		if(numOfBlackPawns > 0){
+			cout << "Input the position of black pawn (1). First enter the column (a-e). Then the row(1-6):" << endl;
+			cin >> letterBP1;
+			cin >> rowBP1;
+			columnBP1 = letterBP1 - 96;
+			blackPawn1->setPieceCoordinates(rowBP1, columnBP1);
+			blackPawn1->setPieceColor("Black");
+			blackPieces.push_back(blackPawn1);
+			initialBoard[rowBP1][columnBP1] = "BP";
+		}
 		
-		cout << "Input the position of black pawn (4). First enter the row (1-6). Then the column(a-e):" << endl;
-		cin >> rowBP4;
-		cin >> letterBP4;
-		columnBP4 = letterBP4 - 96;
-		blackPawn4->setPieceCoordinates(rowBP4, columnBP4);
-		blackPawn4->setPieceColor("Black");
-		blackPieces.push_back(blackPawn4);
-		initialBoard[rowBP4][columnBP4] = "BP";
+		if(numOfBlackPawns > 1){
+			cout << "Input the position of black pawn (2). First enter the column (a-e). Then the row(1-6):" << endl;
+			cin >> letterBP2;
+			cin >> rowBP2;
+			columnBP2 = letterBP2 - 96;
+			blackPawn2->setPieceCoordinates(rowBP2, columnBP2);
+			blackPawn2->setPieceColor("Black");
+			blackPieces.push_back(blackPawn2);
+			initialBoard[rowBP2][columnBP2] = "BP";
+		}
 		
-		cout << "Input the position of black pawn (5). First enter the row (1-6). Then the column(a-e):" << endl;
-		cin >> rowBP5;
-		cin >> letterBP5;
-		columnBP5 = letterBP5 - 96;
-		blackPawn5->setPieceCoordinates(rowBP5, columnBP5);
-		blackPawn5->setPieceColor("Black");
-		blackPieces.push_back(blackPawn5);
-		initialBoard[rowBP5][columnBP5] = "BP";
+		if(numOfBlackPawns > 2){
+			cout << "Input the position of black pawn (3). First enter the column (a-e). Then the row(1-6):" << endl;
+			cin >> letterBP3;
+			cin >> rowBP3;
+			columnBP3 = letterBP3 - 96;
+			blackPawn3->setPieceCoordinates(rowBP3, columnBP3);
+			blackPawn3->setPieceColor("Black");
+			blackPieces.push_back(blackPawn3);
+			initialBoard[rowBP3][columnBP3] = "BP";
+		}
 		
-		cout << "Input the position of black rook. First enter the row (1-6). Then the column(a-e):" << endl;
-		cin >> rowBR;
-		cin >> letterBR;
-		columnBR = letterBR - 96;
-		blackRook->setPieceCoordinates(rowBR, columnBR);
-		blackRook->setPieceColor("Black");
-		blackPieces.push_back(blackRook);
-		initialBoard[rowBR][columnBR] = "BR";
+		if(numOfBlackPawns > 3){
+			cout << "Input the position of black pawn (4). First enter the column (a-e). Then the row(1-6):" << endl;
+			cin >> letterBP4;
+			cin >> rowBP4;
+			columnBP4 = letterBP4 - 96;
+			blackPawn4->setPieceCoordinates(rowBP4, columnBP4);
+			blackPawn4->setPieceColor("Black");
+			blackPieces.push_back(blackPawn4);
+			initialBoard[rowBP4][columnBP4] = "BP";
+		}
 		
-		cout << "Input the position of black knight. First enter the row (1-6). Then the column(a-e):" << endl;
-		cin >> rowBN;
-		cin >> letterBN;
-		columnBN = letterBN - 96;
-		blackKnight->setPieceCoordinates(rowBN, columnBN);
-		blackKnight->setPieceColor("Black");
-		blackPieces.push_back(blackKnight);
-		initialBoard[rowBN][columnBN] = "BN";
+		if(numOfBlackPawns > 4){
+			cout << "Input the position of black pawn (5). First enter the column (a-e). Then the row(1-6):" << endl;
+			cin >> letterBP5;
+			cin >> rowBP5;
+			columnBP5 = letterBP5 - 96;
+			blackPawn5->setPieceCoordinates(rowBP5, columnBP5);
+			blackPawn5->setPieceColor("Black");
+			blackPieces.push_back(blackPawn5);
+			initialBoard[rowBP5][columnBP5] = "BP";
+		}
 		
-		cout << "Input the position of black bishop. First enter the row (1-6). Then the column(a-e):" << endl;
-		cin >> rowBB;
-		cin >> letterBB;
-		columnBB = letterBB - 96;
-		blackBishop->setPieceCoordinates(rowBB, columnBB);
-		blackBishop->setPieceColor("Black");
-		blackPieces.push_back(blackBishop);
-		initialBoard[rowBB][columnBB] = "BB";
+		char BRonBoard;
+		cout << "Is there a black rook on the board? (y/n)" << endl;
+		cin >> BRonBoard;
 		
-		cout << "Input the position of black queen. First enter the row (1-6). Then the column(a-e):" << endl;
-		cin >> rowBQ;
-		cin >> letterBQ;
-		columnBQ = letterBQ - 96;
-		blackQueen->setPieceCoordinates(rowBQ, columnBQ);
-		blackQueen->setPieceColor("Black");
-		blackPieces.push_back(blackQueen);
-		initialBoard[rowBQ][columnBQ] = "BQ";
+		if(BRonBoard == 'y'){
+			cout << "Input the position of black rook. First enter the column (a-e). Then the row(1-6):" << endl;
+			cin >> letterBR;
+			cin >> rowBR;
+			columnBR = letterBR - 96;
+			blackRook->setPieceCoordinates(rowBR, columnBR);
+			blackRook->setPieceColor("Black");
+			blackPieces.push_back(blackRook);
+			initialBoard[rowBR][columnBR] = "BR";
+		}
 		
-		cout << "Input the position of black king. First enter the row (1-6). Then the column(a-e):" << endl;
-		cin >> rowBK;
+		char BNonBoard;
+		cout << "Is there a black knight on the board? (y/n)" << endl;
+		cin >> BNonBoard;
+		
+		if(BNonBoard == 'y'){
+			cout << "Input the position of black knight. First enter the column (a-e). Then the row(1-6):" << endl;
+			cin >> letterBN;
+			cin >> rowBN;
+			columnBN = letterBN - 96;
+			blackKnight->setPieceCoordinates(rowBN, columnBN);
+			blackKnight->setPieceColor("Black");
+			blackPieces.push_back(blackKnight);
+			initialBoard[rowBN][columnBN] = "BN";
+		}
+		
+		char BBonBoard;
+		cout << "Is there a black bishop on the board? (y/n)" << endl;
+		cin >> BBonBoard;
+		
+		if(BBonBoard == 'y'){
+			cout << "Input the position of black bishop. First enter the column (a-e). Then the row(1-6):" << endl;
+			cin >> letterBB;
+			cin >> rowBB;
+			columnBB = letterBB - 96;
+			blackBishop->setPieceCoordinates(rowBB, columnBB);
+			blackBishop->setPieceColor("Black");
+			blackPieces.push_back(blackBishop);
+			initialBoard[rowBB][columnBB] = "BB";
+		}
+		
+		char BQonBoard;
+		cout << "Is there a black queen on the board? (y/n)" << endl;
+		cin >> BQonBoard;
+		
+		if(BQonBoard == 'y'){
+			cout << "Input the position of black queen. First enter the column (a-e). Then the row(1-6):" << endl;
+			cin >> letterBQ;
+			cin >> rowBQ;
+			columnBQ = letterBQ - 96;
+			blackQueen->setPieceCoordinates(rowBQ, columnBQ);
+			blackQueen->setPieceColor("Black");
+			blackPieces.push_back(blackQueen);
+			initialBoard[rowBQ][columnBQ] = "BQ";
+		}
+		
+		cout << "Input the position of black king. First enter the column (a-e). Then the row(1-6):" << endl;
 		cin >> letterBK;
+		cin >> rowBK;
 		columnBK = letterBK - 96;
 		blackKing->setPieceCoordinates(rowBK, columnBK);
 		blackKing->setPieceColor("Black");
@@ -564,13 +641,14 @@ int main()
 		cin >> firstMoveColor;
 	}
 	
+	string invalidInput;
 	int drawMoves;
 	cout << "How many previous moves have been made without there being either a capture, a rescue, or a promotion?" << endl;
 	cin >> drawMoves;
 	
 	while(cin.fail()){
 		cin.clear();
-		cin.ignore();
+		getline(cin, invalidInput);
 		cout << "Please enter an integer number of moves: " << endl;
 		cin >> drawMoves;
 	}
@@ -581,7 +659,7 @@ int main()
 	
 	while(cin.fail()){
 		cin.clear();
-		cin.ignore();
+		getline(cin, invalidInput);
 		cout << "Please enter a time t in the range (0.0 < t <= 240.0): " << endl;
 		cin >> moveTime;
 	}
@@ -595,6 +673,8 @@ int main()
 	
 	cout << "Starting configuration: " << endl;
 	initialGame.print();
+	
+	
 	
 
 ////
@@ -612,7 +692,7 @@ int main()
 	
 	int moveNumber = 1;
 	
-	if(answer == 'y'){
+	if(answer == "y"){
 		while(moveNumber <= 4){
 			
 			//Program has the current move
@@ -960,11 +1040,13 @@ int main()
 			vector <GameState> checkingStalemateWhite;
 			vector <GameState> checkingStalemateBlack;
 			checkingStalemateWhite = makeBoards(initialGame, "white");
+			cout << "Possible white moves" << checkingStalemateWhite.size() << endl;
 			if(checkingStalemateWhite.size() == 0){
 				stalematedOpponent = "black";
 			}
 			
 			checkingStalemateBlack = makeBoards(initialGame, "black");
+			cout << "Possible black moves" << checkingStalemateBlack.size() << endl;
 			if(checkingStalemateBlack.size() == 0){
 				stalematedOpponent = "white";
 			}
