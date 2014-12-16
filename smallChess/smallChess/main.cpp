@@ -54,127 +54,167 @@ int main()
     ////
     ////Variables for the white pieces
     ////
-    int rowWP1;
-    char letterWP1;
-    int columnWP1;
-    Pawn* whitePawn1 = new Pawn;
-    whitePawn1->setPieceName("P");
+	int rowWP1;
+	char letterWP1;
+	int columnWP1;
+	Pawn* whitePawn1 = new Pawn;
+	whitePawn1->setPieceColor("White");
+	whitePawn1->setPieceWeight(1);
+	whitePawn1->setPieceName("P");
     
-    int rowWP2;
-    char letterWP2;
-    int columnWP2;
-    Pawn* whitePawn2 = new Pawn;
+	int rowWP2;
+	char letterWP2;
+	int columnWP2;
+	Pawn* whitePawn2 = new Pawn;
+	whitePawn2->setPieceColor("White");
+	whitePawn2->setPieceWeight(1);
 	whitePawn2->setPieceName("P");
     
-    int rowWP3;
-    char letterWP3;
-    int columnWP3;
-    Pawn* whitePawn3 = new Pawn;
+	int rowWP3;
+	char letterWP3;
+	int columnWP3;
+	Pawn* whitePawn3 = new Pawn;
+	whitePawn3->setPieceColor("White");
+	whitePawn3->setPieceWeight(1);
 	whitePawn3->setPieceName("P");
     
-    int rowWP4;
-    char letterWP4;
-    int columnWP4;
-    Pawn* whitePawn4 = new Pawn;
-    whitePawn4->setPieceName("P");
+	int rowWP4;
+	char letterWP4;
+	int columnWP4;
+	Pawn* whitePawn4 = new Pawn;
+	whitePawn4->setPieceColor("White");
+	whitePawn4->setPieceWeight(1);
+	whitePawn4->setPieceName("P");
     
-    int rowWP5;
-    char letterWP5;
-    int columnWP5;
-    Pawn* whitePawn5 = new Pawn;
+	int rowWP5;
+	char letterWP5;
+	int columnWP5;
+	Pawn* whitePawn5 = new Pawn;
+	whitePawn1->setPieceColor("White");
+	whitePawn1->setPieceWeight(1);
 	whitePawn5->setPieceName("P");
     
-    int rowWN;
-    char letterWN;
-    int columnWN;
-    Knight* whiteKnight = new Knight;
+	int rowWN;
+	char letterWN;
+	int columnWN;
+	Knight* whiteKnight = new Knight;
+	whiteKnight->setPieceColor("White");
+	whiteKnight->setPieceWeight(3);
 	whiteKnight->setPieceName("N");
     
-    int rowWB;
-    char letterWB;
-    int columnWB;
-    Bishop* whiteBishop = new Bishop;
+	int rowWB;
+	char letterWB;
+	int columnWB;
+	Bishop* whiteBishop = new Bishop;
+	whiteBishop->setPieceColor("White");
+	whiteBishop->setPieceWeight(3);
 	whiteBishop->setPieceName("B");
     
-    int rowWR;
-    char letterWR;
-    int columnWR;
-    Rook* whiteRook = new Rook;
+	int rowWR;
+	char letterWR;
+	int columnWR;
+	Rook* whiteRook = new Rook;
+	whiteRook->setPieceColor("White");
+	whiteRook->setPieceWeight(5);
 	whiteRook->setPieceName("R");
     
-    int rowWQ;
-    char letterWQ;
-    int columnWQ;
-    Queen* whiteQueen = new Queen;
+	int rowWQ;
+	char letterWQ;
+	int columnWQ;
+	Queen* whiteQueen = new Queen;
+	whiteQueen->setPieceColor("White");
+	whiteQueen->setPieceWeight(9);
 	whiteQueen->setPieceName("Q");
     
-    int rowWK;
-    char letterWK;
-    int columnWK;
-    King* whiteKing = new King;
+	int rowWK;
+	char letterWK;
+	int columnWK;
+	King* whiteKing = new King;
+	whiteKing->setPieceColor("White");
+	whiteKing->setPieceWeight(10);
 	whiteKing->setPieceName("K");
     
     ////
     ////Variables for the black pieces
     ////
-    int rowBP1;
-    char letterBP1;
-    int columnBP1;
-    Pawn* blackPawn1 = new Pawn;
+	int rowBP1;
+	char letterBP1;
+	int columnBP1;
+	Pawn* blackPawn1 = new Pawn;
+	blackPawn1->setPieceColor("Black");
+	blackPawn1->setPieceWeight(1);
 	blackPawn1->setPieceName("P");
     
-    int rowBP2;
-    char letterBP2;
-    int columnBP2;
-    Pawn* blackPawn2 = new Pawn;
+	int rowBP2;
+	char letterBP2;
+	int columnBP2;
+	Pawn* blackPawn2 = new Pawn;
+	blackPawn2->setPieceColor("Black");
+	blackPawn2->setPieceWeight(1);
 	blackPawn2->setPieceName("P");
     
-    int rowBP3;
-    char letterBP3;
-    int columnBP3;
-    Pawn* blackPawn3 = new Pawn;
+	int rowBP3;
+	char letterBP3;
+	int columnBP3;
+	Pawn* blackPawn3 = new Pawn;
+	blackPawn3->setPieceColor("Black");
+	blackPawn3->setPieceWeight(1);
 	blackPawn3->setPieceName("P");
     
-    int rowBP4;
-    char letterBP4;
-    int columnBP4;
-    Pawn* blackPawn4 = new Pawn;
+	int rowBP4;
+	char letterBP4;
+	int columnBP4;
+	Pawn* blackPawn4 = new Pawn;
+	blackPawn4->setPieceColor("Black");
+	blackPawn4->setPieceWeight(1);
 	blackPawn4->setPieceName("P");
     
-    int rowBP5;
-    char letterBP5;
-    int columnBP5;
-    Pawn* blackPawn5 = new Pawn;
+	int rowBP5;
+	char letterBP5;
+	int columnBP5;
+	Pawn* blackPawn5 = new Pawn;
+	blackPawn5->setPieceColor("Black");
+	blackPawn5->setPieceWeight(1);
 	blackPawn5->setPieceName("P");
     
-    int rowBN;
-    char letterBN;
-    int columnBN;
-    Knight* blackKnight = new Knight;
+	int rowBN;
+	char letterBN;
+	int columnBN;
+	Knight* blackKnight = new Knight;
+	blackKnight->setPieceColor("Black");
+	blackKnight->setPieceWeight(3);
 	blackKnight->setPieceName("N");
     
-    int rowBB;
-    char letterBB;
-    int columnBB;
-    Bishop* blackBishop = new Bishop;
+	int rowBB;
+	char letterBB;
+	int columnBB;
+	Bishop* blackBishop = new Bishop;
+	blackBishop->setPieceColor("Black");
+	blackBishop->setPieceWeight(3);
 	blackBishop->setPieceName("B");
     
-    int rowBR;
-    char letterBR;
-    int columnBR;
-    Rook* blackRook = new Rook;
+	int rowBR;
+	char letterBR;
+	int columnBR;
+	Rook* blackRook = new Rook;
+	blackRook->setPieceColor("Black");
+	blackRook->setPieceWeight(5);
 	blackRook->setPieceName("R");
     
-    int rowBQ;
-    char letterBQ;
-    int columnBQ;
-    Queen* blackQueen = new Queen;
+	int rowBQ;
+	char letterBQ;
+	int columnBQ;
+	Queen* blackQueen = new Queen;
+	blackQueen->setPieceColor("Black");
+	blackQueen->setPieceWeight(9);
 	blackQueen->setPieceName("Q");
     
-    int rowBK;
-    char letterBK;
-    int columnBK;
-    King* blackKing = new King;
+	int rowBK;
+	char letterBK;
+	int columnBK;
+	King* blackKing = new King;
+	blackKing->setPieceColor("Black");
+	blackKing->setPieceWeight(10);
 	blackKing->setPieceName("K");
 	
 	
@@ -184,165 +224,129 @@ int main()
 	char answer;
 	cout << "Would you like to have the customary starting configuration? (y/n)" << endl;
 	cin >> answer;
+	while(answer != 'y' && answer != 'n'){
+		cout << "Please enter (y/n): " << endl;
+		cin >> answer;
+	}
 	
 	if(answer == 'y'){
 		rowWP1 = 5;
 		columnWP1 = 1;
 		whitePawn1->setPieceCoordinates(rowWP1, columnWP1);
-		whitePawn1->setPieceColor("White");
-		whitePawn1->setPieceWeight(1);
 		whitePieces.push_back(whitePawn1);
 		initialBoard[rowWP1][columnWP1] = "WP";
 		
 		rowWP2 = 5;
 		columnWP2 = 2;
 		whitePawn2->setPieceCoordinates(rowWP2, columnWP2);
-		whitePawn2->setPieceColor("White");
-		whitePawn2->setPieceWeight(1);
 		whitePieces.push_back(whitePawn2);
 		initialBoard[rowWP2][columnWP2] = "WP";
 		
 		rowWP3 = 5;
 		columnWP3 = 3;
 		whitePawn3->setPieceCoordinates(rowWP3, columnWP3);
-		whitePawn3->setPieceColor("White");
-		whitePawn3->setPieceWeight(1);
 		whitePieces.push_back(whitePawn3);
 		initialBoard[rowWP3][columnWP3] = "WP";
 		
 		rowWP4 = 5;
 		columnWP4 = 4;
 		whitePawn4->setPieceCoordinates(rowWP4, columnWP4);
-		whitePawn4->setPieceColor("White");
-		whitePawn4->setPieceWeight(1);
 		whitePieces.push_back(whitePawn4);
 		initialBoard[rowWP4][columnWP4] = "WP";
 		
 		rowWP5 = 5;
 		columnWP5 = 5;
 		whitePawn5->setPieceCoordinates(rowWP5, columnWP5);
-		whitePawn5->setPieceColor("White");
-		whitePawn5->setPieceWeight(1);
 		whitePieces.push_back(whitePawn5);
 		initialBoard[rowWP5][columnWP5] = "WP";
 		
 		rowWR = 6;
 		columnWR = 1;
 		whiteRook->setPieceCoordinates(rowWR, columnWR);
-		whiteRook->setPieceColor("White");
-		whiteRook->setPieceWeight(5);
 		whitePieces.push_back(whiteRook);
 		initialBoard[rowWR][columnWR] = "WR";
 		
 		rowWB = 6;
 		columnWB = 2;
 		whiteBishop->setPieceCoordinates(rowWB, columnWB);
-		whiteBishop->setPieceColor("White");
-		whiteBishop->setPieceWeight(3);
 		whitePieces.push_back(whiteBishop);
 		initialBoard[rowWB][columnWB] = "WB";
 		
 		rowWK = 6;
 		columnWK = 3;
 		whiteKing->setPieceCoordinates(rowWK, columnWK);
-		whiteKing->setPieceColor("White");
-		whiteKing->setPieceWeight(10);
 		whitePieces.push_back(whiteKing);
 		initialBoard[rowWK][columnWK] = "WK";
 		
 		rowWQ = 6;
 		columnWQ = 4;
 		whiteQueen->setPieceCoordinates(rowWQ, columnWQ);
-		whiteQueen->setPieceColor("White");
-		whiteQueen->setPieceWeight(9);
 		whitePieces.push_back(whiteQueen);
 		initialBoard[rowWQ][columnWQ] = "WQ";
 		
 		rowWN = 6;
 		columnWN = 5;
 		whiteKnight->setPieceCoordinates(rowWN, columnWN);
-		whiteKnight->setPieceColor("White");
-		whiteKnight->setPieceWeight(3);
 		whitePieces.push_back(whiteKnight);
 		initialBoard[rowWN][columnWN] = "WN";
 		
 		rowBP1 = 2;
 		columnBP1 = 1;
 		blackPawn1->setPieceCoordinates(rowBP1, columnBP1);
-		blackPawn1->setPieceColor("Black");
-		blackPawn1->setPieceWeight(1);
 		blackPieces.push_back(blackPawn1);
 		initialBoard[rowBP1][columnBP1] = "BP";
 		
 		rowBP2 = 2;
 		columnBP2 = 2;
 		blackPawn2->setPieceCoordinates(rowBP2, columnBP2);
-		blackPawn2->setPieceColor("Black");
-		blackPawn2->setPieceWeight(1);
 		blackPieces.push_back(blackPawn2);
 		initialBoard[rowBP2][columnBP2] = "BP";
 		
 		rowBP3 = 2;
 		columnBP3 = 3;
 		blackPawn3->setPieceCoordinates(rowBP3, columnBP3);
-		blackPawn3->setPieceColor("Black");
-		blackPawn3->setPieceWeight(1);
 		blackPieces.push_back(blackPawn3);
 		initialBoard[rowBP3][columnBP3] = "BP";
 		
 		rowBP4 = 2;
 		columnBP4 = 4;
 		blackPawn4->setPieceCoordinates(rowBP4, columnBP4);
-		blackPawn4->setPieceColor("Black");
-		blackPawn4->setPieceWeight(1);
 		blackPieces.push_back(blackPawn4);
 		initialBoard[rowBP4][columnBP4] = "BP";
 		
 		rowBP5 = 2;
 		columnBP5 = 5;
 		blackPawn5->setPieceCoordinates(rowBP5, columnBP5);
-		blackPawn5->setPieceColor("Black");
-		blackPawn5->setPieceWeight(1);
 		blackPieces.push_back(blackPawn5);
 		initialBoard[rowBP5][columnBP5] = "BP";
 		
 		rowBR = 1;
 		columnBR = 1;
 		blackRook->setPieceCoordinates(rowBR, columnBR);
-		blackRook->setPieceColor("Black");
-		blackRook->setPieceWeight(5);
 		blackPieces.push_back(blackRook);
 		initialBoard[rowBR][columnBR] = "BR";
 		
 		rowBB = 1;
 		columnBB = 2;
 		blackBishop->setPieceCoordinates(rowBB, columnBB);
-		blackBishop->setPieceColor("Black");
-		blackBishop->setPieceWeight(3);
 		blackPieces.push_back(blackBishop);
 		initialBoard[rowBB][columnBB] = "BB";
 		
 		rowBK = 1;
 		columnBK = 3;
 		blackKing->setPieceCoordinates(rowBK, columnBK);
-		blackKing->setPieceColor("Black");
-		blackKing->setPieceWeight(10);
 		blackPieces.push_back(blackKing);
 		initialBoard[rowBK][columnBK] = "BK";
 		
 		rowBQ = 1;
 		columnBQ = 4;
 		blackQueen->setPieceCoordinates(rowBQ, columnBQ);
-		blackQueen->setPieceColor("Black");
-		blackQueen->setPieceWeight(9);
 		blackPieces.push_back(blackQueen);
 		initialBoard[rowBQ][columnBQ] = "BQ";
 		
 		rowBN = 1;
 		columnBN = 5;
 		blackKnight->setPieceCoordinates(rowBN, columnBN);
-		blackKnight->setPieceColor("Black");
-		blackKnight->setPieceWeight(3);
 		blackPieces.push_back(blackKnight);
 		initialBoard[rowBN][columnBN] = "BN";
 	}
@@ -538,6 +542,11 @@ int main()
 	string userColor;
 	cout << "Which color will you be playing as? (white/black)" << endl;
 	cin >> userColor;
+	while(userColor != "white" && userColor != "black"){
+		cout << "Please enter (white/black): " << endl;
+		cin >> userColor;
+	}
+	
 	if(userColor == "white"){
 		programColor = "black";
 	}
@@ -550,13 +559,32 @@ int main()
 	cout << "Which color has the first move? (white/black)" << endl;
 	cin >> firstMoveColor;
 	
-	int stalemateMoves;
+	while(firstMoveColor != "white" && firstMoveColor != "black"){
+		cout << "Please enter (white/black): " << endl;
+		cin >> firstMoveColor;
+	}
+	
+	int drawMoves;
 	cout << "How many previous moves have been made without there being either a capture, a rescue, or a promotion?" << endl;
-	cin >> stalemateMoves;
+	cin >> drawMoves;
+	
+	while(cin.fail()){
+		cin.clear();
+		cin.ignore();
+		cout << "Please enter an integer number of moves: " << endl;
+		cin >> drawMoves;
+	}
 	
 	double moveTime;
 	cout << "How much time is allowed for a program move? (0.0 < t <= 240.0)" << endl;
 	cin >> moveTime;
+	
+	while(cin.fail()){
+		cin.clear();
+		cin.ignore();
+		cout << "Please enter a time t in the range (0.0 < t <= 240.0): " << endl;
+		cin >> moveTime;
+	}
 
 ////
 //// setting the members of initialGame
@@ -565,75 +593,10 @@ int main()
 	initialGame.setBlack(blackPieces);
 	initialGame.setWhite(whitePieces);
 	
-	
-/*	for(unsigned r = 0; r < test.getWhite().size(); r++){
-		if(test.getWhite()[r]->getPieceName() == "P"){
-			test.getWhite()[r] = new Pawn;
-			test.getWhite()[r]->setPieceCoordinates(initialGame.getWhite()[r]->getPieceCoordinates().first, initialGame.getWhite()[r]->getPieceCoordinates().second);
-		}
-		if(test.getWhite()[r]->getPieceName() == "B"){
-			test.getWhite()[r] = new Bishop;
-		}
-		if(test.getWhite()[r]->getPieceName() == "N"){
-			test.getWhite()[r] = new Knight;
-		}
-		if(test.getWhite()[r]->getPieceName() == "R"){
-			test.getWhite()[r] = new Rook;
-		}
-		if(test.getWhite()[r]->getPieceName() == "Q"){
-			test.getWhite()[r] = new Queen;
-		}
-		if(test.getWhite()[r]->getPieceName() == "K"){
-			test.getWhite()[r] = new King;
-		}
-	}
-	
-	for(unsigned k = 0; k < test.getWhite().size(); k++){
-		cout << "row: " << test.getWhite()[k]->getPieceCoordinates().first << endl;
-		cout << "row: " << initialGame.getWhite()[k]->getPieceCoordinates().first << endl << endl;
-		test.getWhite()[k]->setPieceCoordinates(initialGame.getWhite()[k]->getPieceCoordinates().first, initialGame.getWhite()[k]->getPieceCoordinates().second);
-	}*/
-	
-	
-////
-////Testing code for "generatePossibleMoves" functions
-////
-/*	vector<pair<unsigned,unsigned> > availableMoves;
-	availableMoves = whiteKnight->generatePossibleMoves(initialGame);
-	
-	for(unsigned i=0; i<availableMoves.size(); i++){
-		cout << "Row: " << availableMoves[i].first << " Column: " << availableMoves[i].second << endl;
-	}
-
-	cout << "Number of Moves for x piece: " << availableMoves.size() << endl;
-	
-*/	
-//	cout << "Weight heuristic: " << initialGame.heuristicValue() << endl;
-
 	cout << "Starting configuration: " << endl;
 	initialGame.print();
 	
-//	GameState possibleBoards;
 
-/*		for(unsigned j = 0; j < initialGame.getWhite().size(); j++){
-			cout << "Row: " << initialGame.getWhite()[j]->getPieceCoordinates().first;
-			cout << "Column: " << initialGame.getWhite()[j]->getPieceCoordinates().second << endl;
-		}*/
-
-/*	for(unsigned i = 0; i < possibleBoards.size(); i++){
-		cout << "Board " << i << ":" << endl;
-//		possibleBoards[i].print();
-//		for(unsigned r = 0; r < possibleBoards[i].getWhite().size(); r++){
-//			*possibleBoards[i].getWhite()[r] = *whitePieces[r];
-//		}
-		possibleBoards[i].setWhite(whitePieces);
-		for(unsigned j = 0; j < possibleBoards[i].getWhite().size(); j++){
-			cout << "Row: " << possibleBoards[i].getWhite()[j]->getPieceCoordinates().first;
-			cout << "Column: " << possibleBoards[i].getWhite()[j]->getPieceCoordinates().second << endl;
-		}
-		cout << endl << endl;
-	}
-*/	
 ////
 ////Negamax Search and game simulation
 ////On the programs turn: the negamax function runs and a move is choosen.
@@ -644,50 +607,12 @@ int main()
 //// Otherwise, the program will ask for a legal move (the illegal move is discarded).
 ////
 
-// priority queue for worklist/closed node list
-//
-//
-/*	cout << "Priority queue test code: " << endl;
-	vector <vector <string> > example;
-	vector <vector <string> > example2;
-	vector <vector <string> > example3;
-	priority_queue <pair <int, vector <vector <string> > > > worklist;
-	worklist.push(make_pair(3, example));
-	worklist.push(make_pair(4, example2));
-	worklist.push(make_pair(2, example3));
-	
-	cout << worklist.top().first << endl;
-	worklist.pop();
-	cout << worklist.top().first << endl;
-	worklist.pop();
-	cout << worklist.top().first << endl << endl;
-
-	
-	vector <GameState> pqTest;
-	pqTest = makeBoards(initialGame, "white");
-	cout << "num boards: " << pqTest.size() << endl;
-	worklist = makeHeuristicPairs(pqTest);
-	cout << "num boards in pairs: " << worklist.size() << endl;
-	
-	unsigned pls = worklist.size();
-	for(int i = 0; i < pls; i++){
-			cout << "Worklist value: " << worklist.top().first << endl;
-			possibleBoards.setBoardConfig(worklist.top().second);
-			possibleBoards.makeVectors();
-			possibleBoards.print();
-			worklist.pop();
-			cout << "curr num of boards in pairs: " << worklist.size() << endl;
-			cout << "value of i: " << i << endl;
-		}
-*/	
-
+	string stalematedOpponent = "draw";
 	string currentMoveColor = firstMoveColor;
 	
-	bool gameOver = false;
 	int moveNumber = 1;
 	
-
-		
+	if(answer == 'y'){
 		while(moveNumber <= 4){
 			
 			//Program has the current move
@@ -697,14 +622,16 @@ int main()
 					movePiece(initialGame, currentMoveColor, make_pair(2, 3), make_pair(3, 3));
 					initialGame.makeVectors();
 					cout << "Program's move: " << endl << endl;
-					cout << "Piece name: (P) startColumn(c) startRow(2) endColumn(c) endRow(2) result(move)" << endl << endl ;
+					cout << "Piece name: (P) startColumn(c) startRow(2) endColumn(c) endRow(3) result(moves)" << endl << endl ;
+					drawMoves++;
 				}
 				
 				else{
 					movePiece(initialGame, currentMoveColor, make_pair(5, 3), make_pair(4, 3));
 					initialGame.makeVectors();
 					cout << "Program's move: " << endl;
-                    cout << "Piece name: (P) startColumn(c) startRow(5) endColumn(c) endRow(4) result(move)" << endl << endl ;
+					cout << "Piece name: (P) startColumn(c) startRow(5) endColumn(c) endRow(4) result(moves)" << endl << endl ;
+					drawMoves++;
 				}
 				
 			initialGame.print();
@@ -713,20 +640,41 @@ int main()
 			else if(currentMoveColor==programColor and moveNumber > 2){
 				//Make the appriopriate move.
 				if(programColor=="black"){
-					movePiece(initialGame, currentMoveColor, make_pair(1, 2), make_pair(2, 3));
-					initialGame.makeVectors();
-					cout << "Program's move: " << endl << endl;
-					cout << "Piece name: (B) startColumn(b) startRow(1) endColumn(c) endRow(2) result(move)" << endl << endl ;
+					if(initialGame.getBoardConfig()[2][5] == "WN"){
+						movePiece(initialGame, currentMoveColor, make_pair(1, 4), make_pair(2, 5));
+						initialGame.makeVectors();
+						cout << "Program's move: " << endl << endl;
+						cout << "Piece name: (Q) startColumn(d) startRow(1) endColumn(e) endRow(2) result(captures N)" << endl << endl ;
+						drawMoves = 0;
+					}
+					else{
+						movePiece(initialGame, currentMoveColor, make_pair(1, 2), make_pair(2, 3));
+						initialGame.makeVectors();
+						cout << "Program's move: " << endl << endl;
+						cout << "Piece name: (B) startColumn(b) startRow(1) endColumn(c) endRow(2) result(moves)" << endl << endl ;
+						drawMoves++;
+					}
 				}
 				
 				else{
-					movePiece(initialGame, currentMoveColor, make_pair(6, 2), make_pair(5, 3));
-					initialGame.makeVectors();
-					cout << "Program's move: " << endl;
-					cout << "Piece name: (B) startColumn(b) startRow(6) endColumn(c) endRow(5) result(move)" << endl << endl ;
+					if(initialGame.getBoardConfig()[5][5] == "BN"){
+						movePiece(initialGame, currentMoveColor, make_pair(6, 4), make_pair(5, 5));
+						initialGame.makeVectors();
+						cout << "Program's move: " << endl << endl;
+						cout << "Piece name: (Q) startColumn(d) startRow(6) endColumn(e) endRow(2) result(captures N)" << endl << endl ;
+						drawMoves = 0;
+					}
+					else{
+						movePiece(initialGame, currentMoveColor, make_pair(6, 2), make_pair(5, 3));
+						initialGame.makeVectors();
+						cout << "Program's move: " << endl;
+						cout << "Piece name: (B) startColumn(b) startRow(6) endColumn(c) endRow(5) result(moves)" << endl << endl ;
+						drawMoves++;
+					}
 				}
 				
 			initialGame.print();
+			
 			}
 			
 			//Human has the current move.
@@ -735,7 +683,7 @@ int main()
 				if(initialGame.kingInCheck(userColor) == true){
 					cout << "Your king is in check!" << endl;
 				}
-								
+				
 				string humanMoveName;
 				char humanMoveStartColumn;
 				char humanMoveEndColumn;
@@ -744,48 +692,104 @@ int main()
 				int humanMoveStartRow;
 				int humanMoveEndRow;
 				string result;
+				string resultPiece;
 				cout << "Enter your move in the format and hit enter after each parameter:" << endl 
-				<< "Piece name(P, B, N, R, Q, K) startColumn(a-e) startRow(1-6) endColumn(a-e) endRow(1-6): " << endl;
+				<< "Piece name(P, B, N, R, Q, K) startColumn(a-e) startRow(1-6) endColumn(a-e) endRow(1-6) result: " << endl;
 				cin >> humanMoveName;
 				cin >> humanMoveStartColumn;
 				cin >> humanMoveStartRow;
+				while(cin.fail()){
+					cin.clear();
+					cin.ignore();
+					cout << "Invalid row number. Enter (1-6): " << endl;
+					cin >> humanMoveStartRow;
+				}
 				cin >> humanMoveEndColumn;
 				cin >> humanMoveEndRow;
+				while(cin.fail()){
+					cin.clear();
+					cin.ignore();
+					cout << "Invalid row number. Enter (1-6): " << endl;
+					cin >> humanMoveEndRow;
+				}
+				cin >> result;
+				if(result == "captures" || result == "rescues"){
+					cin >> resultPiece;
+					result.append(" ");
+					result.append(resultPiece);
+				}
 				numHumanMoveStartColumn = humanMoveStartColumn - 96;
 				numHumanMoveEndColumn = humanMoveEndColumn - 96;
 				pair <int, int> startCoords = make_pair(humanMoveStartRow, numHumanMoveStartColumn);
-				cout << "first: " << startCoords.first << "second: " << startCoords.second << endl;
 				pair <int, int> endCoords = make_pair(humanMoveEndRow, numHumanMoveEndColumn);
 				
 				
 				while(validMove(initialGame, currentMoveColor, humanMoveName, startCoords, endCoords, result) == false){
 					cout << "Invalid move." << endl;
-					cout << "Enter your move in the format and hit enter after each parameter:" << endl << "startColumn(a-e) startRow(1-6) endColumn(a-e) endRow(1-6): " << endl;
+					cout << "Enter your move in the format and hit enter after each parameter:" << endl << "startColumn(a-e) startRow(1-6) endColumn(a-e) endRow(1-6) result: " << endl;
 					cin >> humanMoveName;
 					cin >> humanMoveStartColumn;
-					cin >> humanMoveStartRow;
+					while(cin.fail()){
+						cin.clear();
+						cin.ignore();
+						cout << "Invalid row number. Enter (1-6): " << endl;
+						cin >> humanMoveStartRow;
+					}
 					cin >> humanMoveEndColumn;
 					cin >> humanMoveEndRow;
+					while(cin.fail()){
+						cin.clear();
+						cin.ignore();
+						cout << "Invalid row number. Enter (1-6): " << endl;
+						cin >> humanMoveEndRow;
+					}
+					cin >> result;
+					if(result == "captures" || result == "rescues"){
+						cin >> resultPiece;
+						result.append(" ");
+						result.append(resultPiece);
+					}
 					numHumanMoveStartColumn = humanMoveStartColumn - 96;
 					numHumanMoveEndColumn = humanMoveEndColumn - 96;
 					startCoords = make_pair(humanMoveStartRow, numHumanMoveStartColumn);
 					endCoords = make_pair(humanMoveEndRow, numHumanMoveEndColumn);
 				}
 				
-//					for(unsigned i = 0; i < initialGame.getWhite().size(); i++){
-//						cout << initialGame.getWhite()[i]->getPieceCoordinates().first << ", " << initialGame.getWhite()[i]->getPieceCoordinates().second << endl;
-//					}
-					
-					cout << endl;
+				//Save the state of the board before the move, so the result can be checked
+				GameState savedGame;
+				savedGame.setBoardConfig(initialGame.getBoardConfig());
 				
-					movePiece(initialGame, currentMoveColor, startCoords, endCoords);
-					initialGame.makeVectors();
-					
-//					for(unsigned i = 0; i < initialGame.getWhite().size(); i++){
-//						cout << initialGame.getWhite()[i]->getPieceCoordinates().first << ", " << initialGame.getWhite()[i]->getPieceCoordinates().second << endl;
-//					}
+				movePiece(initialGame, currentMoveColor, startCoords, endCoords);
+				initialGame.makeVectors();
 				
+				
+				if(initialGame.findResult(savedGame) != result){
+					cout << "You gave an incorrect result for your move. Actual result: " << initialGame.findResult(savedGame) << endl;
+				}
+				
+				if(initialGame.findResult(savedGame).substr(0, 8) == "captures"
+					|| initialGame.findResult(savedGame) == "promoted"
+					|| initialGame.findResult(savedGame) == "rescues"){
+					drawMoves = 0;
+				}
+				else{
+					drawMoves++;
+				}
+				
+				cout << endl;
+
 				initialGame.print();
+				
+				bool promotionMade = initialGame.promotePawn(userColor);
+				if(promotionMade == true){
+					initialGame.makeVectors();
+				}
+				
+				
+				if(initialGame.kingInCheck(programColor) == true){
+					cout << "You put the enemy king in check!" << endl;
+				}
+				
 			}
 			
 			
@@ -799,72 +803,53 @@ int main()
 			moveNumber++;
 			cout << "Move number:  " << moveNumber << endl;
 		}
+	}
 		
 ////
 ////Negamax search for program moves
 ////
-	while(initialGame.checkmate(userColor) == false && initialGame.checkmate(programColor) == false){	
+	while(initialGame.checkmate(userColor) == false && initialGame.checkmate(programColor) == false && stalematedOpponent == "draw" && drawMoves < 20){	
+		
+		
 		priority_queue <pair <int, vector <vector <string> > > > currWorklist;
 		priority_queue <pair <int, vector <vector <string> > > > currCopy;
 		vector <GameState> movesForCurrBoard;
-		GameState tempo;
 		
 		if(currentMoveColor == programColor){
 			//search for programMove using Negamax
-			cout << "We made it to the program move using negamax!" << endl;
 			
 			movesForCurrBoard = makeBoards(initialGame, programColor);
-			currWorklist = makeHeuristicPairs(movesForCurrBoard);
-			currCopy = currWorklist;
 			
-//			pair <int, vector <vector <string> > > bestPairInList;
-//			vector <vector <string> > bestBoard;
-			int boardNum;
-			int bestMoveHeuristic = negaMax(initialGame.getBoardConfig(), 0, programColor, boardNum);
+			pair <int, int> bestPair = negaMax(initialGame.getBoardConfig(), 0, programColor);
 			
-//			cout << "best pair heuristic value: " << bestPairInList.first << endl;
-//			GameState pairState;
+			GameState savedGame;
+			savedGame.setBoardConfig(initialGame.getBoardConfig());
+			
 			cout << "Program's move: " << endl << endl;
-			initialGame.setBoardConfig(movesForCurrBoard[boardNum].getBoardConfig());
+			initialGame.setBoardConfig(movesForCurrBoard[bestPair.second].getBoardConfig());
 			initialGame.makeVectors();
+			
+			string moveResult;
+			moveResult = initialGame.getGameDifference(savedGame);
 			initialGame.print();
 			
-			//remembering the board
-			tempo.setBoardConfig(initialGame.getBoardConfig());
-			tempo.makeVectors();
-			
-			
-			
-		
-			
-	//		cout << "Negamax best heuristic: " << bestMoveHeuristic << endl;
-			
-/*			int listSize = currWorklist.size();
-			for(int i = 0; i < listSize; i++){
-				cout << "Worklist value: " << currWorklist.top().first << endl;
-				tempo.setBoardConfig(currWorklist.top().second);
-				tempo.makeVectors();
-				tempo.print();
-				currWorklist.pop();
+			bool promotionMade = initialGame.progPromotePawn(programColor);
+			if(promotionMade == true){
+				initialGame.makeVectors();
 			}
 			
-			listSize = currCopy.size();
-			for(int i = 0; i < listSize; i++){
-				bool boardEq = isBoardEqual(currCopy.top().second, bestPairInList.second);
-				if(currCopy.top().first == bestPairInList.first && boardEq){
-					i = listSize;
-				}
-				else{
-					currCopy.pop();
-				}
+			if(moveResult != "moves"){
+				drawMoves = 0;
 			}
-			
-			cout << "size of list: " << currCopy.size() << endl;
-			initialGame.setBoardConfig(currCopy.top().second);
-			initialGame.makeVectors();
-			initialGame.print();
-*/		}
+			else{
+				drawMoves++;
+			}
+		}
 		
+		
+/////
+/////Human move inside negamax
+/////
 		else{
 			if(initialGame.kingInCheck(userColor) == true){
 				cout << "Your king is in check!" << endl;
@@ -877,38 +862,115 @@ int main()
 			int humanMoveStartRow;
 			int humanMoveEndRow;
 			string result;
+			string resultPiece;
 			cout << "Enter your move in the format and hit enter after each parameter:" << endl 
-			<< "Piece name(P, B, N, R, Q, K) startColumn(a-e) startRow(1-6) endColumn(a-e) endRow(1-6): " << endl;
+			<< "Piece name(P, B, N, R, Q, K) startColumn(a-e) startRow(1-6) endColumn(a-e) endRow(1-6) result: " << endl;
 			cin >> humanMoveName;
 			cin >> humanMoveStartColumn;
 			cin >> humanMoveStartRow;
+			while(cin.fail()){
+				cin.clear();
+				cin.ignore();
+				cout << "Invalid row number. Enter (1-6): " << endl;
+				cin >> humanMoveStartRow;
+			}
 			cin >> humanMoveEndColumn;
 			cin >> humanMoveEndRow;
+			while(cin.fail()){
+				cin.clear();
+				cin.ignore();
+				cout << "Invalid row number. Enter (1-6): " << endl;
+				cin >> humanMoveEndRow;
+			}
+			cin >> result;
+			if(result == "captures" || result == "rescues"){
+				cin >> resultPiece;
+				result.append(" ");
+				result.append(resultPiece);
+			}
 			numHumanMoveStartColumn = humanMoveStartColumn - 96;
 			numHumanMoveEndColumn = humanMoveEndColumn - 96;
 			pair <int, int> startCoords = make_pair(humanMoveStartRow, numHumanMoveStartColumn);
-			cout << "first: " << startCoords.first << "second: " << startCoords.second << endl;
 			pair <int, int> endCoords = make_pair(humanMoveEndRow, numHumanMoveEndColumn);
 			
 			while(validMove(initialGame, currentMoveColor, humanMoveName, startCoords, endCoords, result) == false){
 				cout << "Invalid move." << endl;
 				cout << "Enter your move in the format and hit enter after each parameter:" << endl 
-				<< "Piece name(P, B, N, R, Q, K) startColumn(a-e) startRow(1-6) endColumn(a-e) endRow(1-6): " << endl;
+				<< "Piece name(P, B, N, R, Q, K) startColumn(a-e) startRow(1-6) endColumn(a-e) endRow(1-6) result: " << endl;
 				cin >> humanMoveName;
 				cin >> humanMoveStartColumn;
 				cin >> humanMoveStartRow;
+				while(cin.fail()){
+					cin.clear();
+					cin.ignore();
+					cout << "Invalid row number. Enter (1-6): " << endl;
+					cin >> humanMoveStartRow;
+				}
 				cin >> humanMoveEndColumn;
 				cin >> humanMoveEndRow;
+				while(cin.fail()){
+					cin.clear();
+					cin.ignore();
+					cout << "Invalid row number. Enter (1-6): " << endl;
+					cin >> humanMoveEndRow;
+				}
+				cin >> result;
+				if(result == "captures" || result == "rescues"){
+					cin >> resultPiece;
+					result.append(" ");
+					result.append(resultPiece);
+				}
 				numHumanMoveStartColumn = humanMoveStartColumn - 96;
 				numHumanMoveEndColumn = humanMoveEndColumn - 96;
 				startCoords = make_pair(humanMoveStartRow, numHumanMoveStartColumn);
 				endCoords = make_pair(humanMoveEndRow, numHumanMoveEndColumn);
 			}
 			
-				movePiece(initialGame, currentMoveColor, startCoords, endCoords);
-				initialGame.makeVectors();
+			//Save the state of the board before the move, so the result can be checked
+			GameState savedGame;
+			savedGame.setBoardConfig(initialGame.getBoardConfig());
 			
+			movePiece(initialGame, currentMoveColor, startCoords, endCoords);
+			initialGame.makeVectors();
+			
+			
+			if(result.compare(initialGame.findResult(savedGame)) != 0){
+				cout << "You gave an incorrect result for your move. Actual result: " << initialGame.findResult(savedGame) << endl;
+			}
+			
+			if(initialGame.findResult(savedGame).substr(0,8) == "captures"
+				|| initialGame.findResult(savedGame) == "promoted"
+				|| initialGame.findResult(savedGame) == "rescues"){
+				drawMoves = 0;
+			}
+			else{
+				drawMoves++;
+			}
+			
+			cout << endl;
+
 			initialGame.print();
+			
+			bool promotionMade = initialGame.promotePawn(userColor);
+			if(promotionMade == true){
+				initialGame.makeVectors();
+			}
+			
+			
+			vector <GameState> checkingStalemateWhite;
+			vector <GameState> checkingStalemateBlack;
+			checkingStalemateWhite = makeBoards(initialGame, "white");
+			if(checkingStalemateWhite.size() == 0){
+				stalematedOpponent = "black";
+			}
+			
+			checkingStalemateBlack = makeBoards(initialGame, "black");
+			if(checkingStalemateBlack.size() == 0){
+				stalematedOpponent = "white";
+			}
+			
+			
+			
 			if(initialGame.kingInCheck(programColor) == true){
 				cout << "You put the enemy king in check!" << endl;
 			}
@@ -926,14 +988,27 @@ int main()
 		//increase moveNumber
 		moveNumber++;
 		cout << "Move number:  " << moveNumber << endl;
+		
 	}
 	
 	if(initialGame.checkmate(userColor) == true){
 		cout << "YOU LOSE!" << endl;
 	}
 		
-	if(initialGame.checkmate(programColor) == true){
+	else if(initialGame.checkmate(programColor) == true){
 		cout << "YOU WIN!" << endl;
+	}
+	
+	else if(drawMoves > 19){
+		if(initialGame.drawWinner(stalematedOpponent) > 0){
+			cout << "WHITE WINS!" << endl;
+		}
+		else if(initialGame.drawWinner(stalematedOpponent) < 0){
+			cout << "BLACK WINS!" << endl;
+		}
+		else{
+			cout << "The game is a DRAW!" << endl;
+		}
 	}
 	
     

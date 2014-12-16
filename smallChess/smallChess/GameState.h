@@ -38,17 +38,23 @@ public:
 	void setBlack(vector <Piece*> y);
 	void setBoardConfig(vector<vector<string> > board);
 	
+	vector <Piece*> getWhite();
+	vector <Piece*> getBlack();
+	vector<vector<string> > getBoardConfig();
+	
+	void print();
+	int heuristicValue();
+	
 	bool kingInCheck(string color);
 	bool isThreatened(pair<unsigned,unsigned> squareToCheck, string color);
 	bool checkmate(string color);
 
-	vector <Piece*> getWhite();
-	vector <Piece*> getBlack();
-	vector<vector<string> > getBoardConfig();
-	void print();
-	int heuristicValue();
 	void makeVectors();
-	string findStalemateWinner(string colorStalematedOpponent);
+	string findResult(GameState temp);
+	string getGameDifference(GameState temp);
+	int drawWinner(string stalematingColor);
+	bool promotePawn(string color);
+	bool progPromotePawn(string color);
 };
 
 #endif

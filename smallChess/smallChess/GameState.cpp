@@ -221,6 +221,12 @@ int GameState::heuristicValue(){
 			if(boardConfig[i][j] == "BQ"){
 				heuristicValue = heuristicValue - 9;
 			}
+			if(boardConfig[i][j] == "WK"){
+				heuristicValue = heuristicValue + 15;
+			}
+			if(boardConfig[i][j] == "BK"){
+				heuristicValue = heuristicValue - 15;
+			}
 		}
 	}
 	
@@ -864,9 +870,504 @@ void GameState::makeVectors(){
 	} 
 }
 
-//GameState::promotePawn(string color){
-	//find if any pawn is in 
-//}
-		
+
+////
+////Determines if the move from "GameState" to temp was a move/capture/promoted
+////
+string GameState::findResult(GameState temp){
+
+    int endColumnInt= 0;
+    int endRow = 0;
+
+	for (int i = 1; i < 7; i++) {
+		for (int j = 1; j < 6; j++) {
+			if(boardConfig[i][j] != temp.getBoardConfig()[i][j]){
+
+				if (boardConfig[i][j] == "empty") {
+				}
+				else {
+					endColumnInt = j;
+					endRow = i;
+				}
+			}
+		}
+	}
+
+
+	if (temp.getBoardConfig()[endRow][endColumnInt] == "empty") {
+		return "moves";
+	}
+	else {
+		if(temp.getBoardConfig()[endRow][endColumnInt].substr(1,1) == "P"){
+			return "captures P";
+		}
+		if(temp.getBoardConfig()[endRow][endColumnInt].substr(1,1) == "N"){
+			return "captures N";
+		}
+		if(temp.getBoardConfig()[endRow][endColumnInt].substr(1,1) == "B"){
+			return "captures B";
+		}
+		if(temp.getBoardConfig()[endRow][endColumnInt].substr(1,1) == "R"){
+			return "captures R";
+		}
+		if(temp.getBoardConfig()[endRow][endColumnInt].substr(1,1) == "Q"){
+			return "captures Q";
+		}
+		if(temp.getBoardConfig()[endRow][endColumnInt].substr(1,1) == "K"){
+			return "captures K";
+		}
+	}
+}
+
+
+
+
+string GameState::getGameDifference(GameState temp){
+
+    string result;
+	
+    int startColumnInt= 0;
+    string startColumn;
+    int startRow = 0;
+	
+    int endColumnInt= 0;
+    string endColumn;
+    int endRow = 0;
+	
+    string pieceName;
+
+
+	for (int i = 1; i < 7; i++) {
+		for (int j = 1; j < 6; j++) {
+			if(boardConfig[i][j] != temp.getBoardConfig()[i][j]){
+
+				if (boardConfig[i][j] == "empty") {
+					startColumnInt = j;
+					//cout << "Start column : " << j << " start row : " << i;
+					startRow = i;
+				}
+				else {
+					// cout << "end column : " << j << " end row : " << i;
+					endColumnInt = j;
+					endRow = i;
+					pieceName = boardConfig[i][j].substr(1,1);
+				}
+			}
+		}
+	}
+
+	if (temp.getBoardConfig()[endRow][endColumnInt] == "empty") {
+		result = "move";
+	}
+	else {
+		if(temp.getBoardConfig()[endRow][endColumnInt].substr(1,1) == "P"){
+			result = "captures P";
+		}
+		if(temp.getBoardConfig()[endRow][endColumnInt].substr(1,1) == "N"){
+			result = "captures N";
+		}
+		if(temp.getBoardConfig()[endRow][endColumnInt].substr(1,1) == "B"){
+			result = "captures B";
+		}
+		if(temp.getBoardConfig()[endRow][endColumnInt].substr(1,1) == "R"){
+			result = "captures R";
+		}
+		if(temp.getBoardConfig()[endRow][endColumnInt].substr(1,1) == "Q"){
+			result = "captures Q";
+		}
+		if(temp.getBoardConfig()[endRow][endColumnInt].substr(1,1) == "K"){
+			result = "captures K";
+		}
+	}
+
+
+    if (startColumnInt == 1) {
+        startColumn = "a";
+    }
+    if (startColumnInt == 2) {
+        startColumn = "b";
+    }
+    if (startColumnInt == 3) {
+        startColumn = "c";
+    }
+    if (startColumnInt == 4) {
+        startColumn = "d";
+    }
+    if (startColumnInt == 5) {
+        startColumn = "e";
+    }
+    if (endColumnInt == 1) {
+        endColumn = "a";
+    }
+    if (endColumnInt == 2) {
+        endColumn = "b";
+    }
+    if (endColumnInt == 3) {
+        endColumn = "c";
+    }
+    if (endColumnInt == 4) {
+        endColumn = "d";
+    }
+    if (endColumnInt == 5) {
+		endColumn = "e";
+    }
+   
+    cout << "Piece name (" << pieceName << ") startColumn(" << startColumn << ") startRow(" << startRow << ") endColumn(" <<
+    endColumn << ") endRow(" << endRow << ") result(" << result << ")" << endl << endl;
+	
+	return result;
+}
+
+
+
+int GameState::drawWinner(string stalematingColor){
+	int totalPoints = 0;
+	
+    for (int i = 1; i < 7; i++) {
+        for (int j = 1; j < 6; j++) {
+			if(boardConfig[i][j] == "WP"){
+				totalPoints++;
+			}
+			
+			if(boardConfig[i][j] == "BP"){
+				totalPoints--;
+			}
+			
+			if(boardConfig[i][j] == "WB"){
+				totalPoints = totalPoints + 3;
+			}
+			
+			if(boardConfig[i][j] == "BB"){
+				totalPoints = totalPoints - 3;
+			}
+			if(boardConfig[i][j] == "WN"){
+				totalPoints = totalPoints + 3;
+			}
+			if(boardConfig[i][j] == "BN"){
+				totalPoints = totalPoints - 3;
+			}
+			if(boardConfig[i][j] == "WR"){
+				totalPoints = totalPoints + 5;
+			}
+			if(boardConfig[i][j] == "BR"){
+				totalPoints = totalPoints - 5;
+			}
+			if(boardConfig[i][j] == "WQ"){
+				totalPoints = totalPoints + 9;
+			}
+			if(boardConfig[i][j] == "BQ"){
+				totalPoints = totalPoints - 9;
+			}
+		}
+	}
+	
+	if(stalematingColor == "white"){
+		totalPoints = totalPoints + 14;
+	}
+	
+	else if(stalematingColor == "black"){
+		totalPoints = totalPoints - 14;
+	}
+	
+	else{
+		//do nothing, it was a draw
+	}
 	
 	
+	return totalPoints;
+}
+
+
+
+
+//member function "promotePawn"
+//this function is for the human promotion
+//Pre: Parameter is the human's color playing the game. Check to see if a user color Pawn
+//     is in the row suitable for promotion then asks the user what piece they want if there are 
+//     dead pieces
+//Post: returns a boolean, true if a promotion has been made, false if a promotion was not made
+bool GameState::promotePawn(string color){
+	GameState dummyGameState;
+	dummyGameState.setWhite(white);
+	dummyGameState.setBlack(black);
+	dummyGameState.setBoardConfig(boardConfig);
+	bool rookDead = false;
+	bool bishopDead = false;
+	bool knightDead = false;
+	bool queenDead = false;
+	bool promotionMade = false;
+	bool pawnFound = false;
+	
+	int column = 0;
+	string choice;
+	if(color == "white"){
+	//find if any pawn is in column a-e row 1
+		for(int i=1; i < 6; i++){
+			if(dummyGameState.getBoardConfig()[1][i]== "WP"){
+				column = i;
+				pawnFound = true;
+			}
+		}
+				//promote piece to a dead piece
+				for(unsigned j=0; j<white.size(); j++){
+					if(white[j]->getPieceName() == "R"){
+						rookDead = false;
+					}
+					if(white[j]->getPieceName() == "N"){
+						knightDead = false;
+					}
+					if(white[j]->getPieceName() == "B"){
+						bishopDead = false;
+					}
+				}
+				
+			if(pawnFound){
+				if(rookDead == false && knightDead == false && bishopDead == false && queenDead == false){
+					boardConfig[1][column] = "WQ";
+					cout << endl;
+					cout << "No valid captured pieces to draw from." << endl;
+					cout << "Your Pawn has been promoted to a Queen!" << endl;
+					promotionMade = true;
+				}
+				else{
+					//Choose what piece you get to promote
+					cout << "What piece would you like to promote your Pawn to?" << endl;
+					cout << "Enter the first letter capitalized of the piece you choose: ";
+					
+					if(rookDead == true){
+						cout << "Rook (R)" << endl;
+					}
+					if(knightDead == true){
+						cout << "Knight (N)" << endl;
+					}
+					if(bishopDead ==  true){
+						cout << "Bishop (B)" << endl;
+					}
+					
+					cin >> choice;
+					while(choice != "R" && choice != "N" && choice != "B" && choice != "Q"){
+						cout << "Invalid input. Try again." << endl;
+						cin.clear();
+						cin.ignore();
+						cin >> choice;
+					}
+					if(choice == "R"){
+						boardConfig[1][column] = "WR";
+						 promotionMade = true;
+						cout << "You have chosen to promote your Pawn to a Rook!" << endl;
+					}
+					if(choice == "N"){
+						boardConfig[1][column] = "WN";
+						 promotionMade = true;
+						cout << "You have chosen to promote your Pawn to a Knight!" << endl;
+					}
+					if(choice == "B"){
+						boardConfig[1][column] = "WB";
+						promotionMade = true;
+						cout << "You have chosen to promote your Pawn to a knight!" << endl;
+					}
+					if(choice == "Q"){
+						boardConfig[1][column] = "WQ";
+						promotionMade = true;
+						cout << "You have chosen to promote your Pawn to a Queen!" << endl;
+					}
+				}
+			}
+				return promotionMade;
+    }
+	else{
+			for(int i=1; i < 6; i++){
+			if(dummyGameState.getBoardConfig()[6][i]== "BP"){
+				column = i;
+				pawnFound = true;
+			}
+			}
+				//promote piece to a dead piece
+				for(unsigned j=0; j<black.size(); j++){
+					if(black[j]->getPieceName() == "R"){
+						rookDead = false;
+						
+					}
+					if(black[j]->getPieceName() == "N"){
+						knightDead = false;
+					}
+					if(black[j]->getPieceName() == "B"){
+						bishopDead = false;
+					}
+				}
+			if(pawnFound){
+				if(rookDead == false && knightDead == false && bishopDead == false && queenDead == false){
+					boardConfig[6][column] = "BQ";
+					cout << endl;
+					cout << "No valid captured pieces to draw from." << endl;
+					cout << "Your Pawn has been promoted to a Queen!" << endl;
+					promotionMade = true;
+				}
+				else{
+					//Choose what piece you get to promote
+					cout << "What piece would you like to promote your Pawn to?" << endl;
+					cout << "Enter the first letter capitalized of the piece you choose: ";
+					
+					if(rookDead == true){
+						cout << "Rook (R)" << endl;
+					}
+					if(knightDead == true){
+						cout << "Knight (N)" << endl;
+					}
+					if(bishopDead ==  true){
+						cout << "Bishop (B)" << endl;
+					}
+					
+					cin >> choice;
+					while(choice != "R" && choice != "N" && choice != "B" && choice != "Q"){
+						cout << "Invalid input. Try again." << endl;
+						cin.clear();
+						cin.ignore();
+						cin >> choice;
+					}
+					if(choice == "R"){
+						boardConfig[6][column] = "BR";
+						promotionMade = true;
+						cout << "You have chosen to promote your Pawn to a Rook!" << endl;
+					}
+					if(choice == "N"){
+						boardConfig[6][column] = "BN";
+						promotionMade = true;
+						cout << "You have chosen to promote your Pawn to a Knight!" << endl;
+					}
+					if(choice == "B"){
+						boardConfig[6][column] = "BB";
+						promotionMade = true;
+						cout << "You have chosen to promote your Pawn to a Bishop!" << endl;
+					}
+					if(choice == "Q"){
+						boardConfig[6][column] = "BQ";
+						promotionMade = true;
+						cout << "You have chosen to promote your Pawn to a Queen!" << endl;
+					}
+				}
+			}
+				
+				return promotionMade;
+	}
+}
+//member function "progPromotePawn"
+//this is for program Pawn promotion
+//Pre: Parameter is the program's color. checks in the same way as the human promote pawn function.
+//     It will always choose pieces in this order. 1. Queen 2. Rook 3. Knight 4. Bishop
+//Post:Returns a bool if a promotion has been made
+bool GameState::progPromotePawn(string color){
+	GameState dummyGameState;
+	dummyGameState.setWhite(white);
+	dummyGameState.setBlack(black);
+	dummyGameState.setBoardConfig(boardConfig);
+	bool rookDead = false;
+	bool bishopDead = false;
+	bool knightDead = false;
+	bool queenDead = false;
+	bool promotionMade = false;
+	bool pawnFound = false;
+	int column = 0;
+	
+	if(color == "white"){
+		for(int i=1; i < 6; i++){
+				if(dummyGameState.getBoardConfig()[1][i]== "WP"){
+					column = i;
+					pawnFound = true;
+				}
+		}
+					//promote piece to a dead piece
+					for(unsigned j=0; j<white.size(); j++){
+						if(white[j]->getPieceName() == "R"){
+							rookDead = false;
+						}
+						if(white[j]->getPieceName() == "N"){
+							knightDead = false;
+						}
+						if(white[j]->getPieceName() == "B"){
+							bishopDead = false;
+						}
+					}
+					
+		if(pawnFound){
+		if(rookDead == false && knightDead == false && bishopDead == false && queenDead == false){
+					boardConfig[6][column] = "WQ";
+					cout << endl;
+					cout << "No valid captured pieces to draw from." << endl;
+					cout << "The progam's Pawn has been promoted to a Queen!" << endl;
+					promotionMade = true;
+				}
+		if(queenDead == true){
+			boardConfig[1][column] = "WQ";
+			cout << "The program chose to promote it's Pawn to a Queen" << endl;
+			promotionMade =  true;
+		}
+		else if(rookDead == true){
+			boardConfig[1][column] = "WR";
+			cout << "The program chose to promote it's Pawn to a Rook" << endl;
+			promotionMade =  true;
+		}
+		else if(knightDead == true){
+			boardConfig[1][column] = "WN";
+			cout << "The program chose to promote it's Pawn to a Knight" << endl;
+			promotionMade =  true;
+		}
+		else if(bishopDead == true){
+			boardConfig[1][column] = "WB";
+			cout << "The program chose to promote it's Pawn to a Bishop" << endl;
+			promotionMade =  true;
+		}
+		}
+		return promotionMade;
+	}
+	else{
+		for(int i=1; i < 6; i++){
+				if(dummyGameState.getBoardConfig()[1][i]== "BP"){
+					column = i;
+					pawnFound = true;
+				}
+		}
+					//promote piece to a dead piece
+					for(unsigned j=0; j<white.size(); j++){
+						if(black[j]->getPieceName() == "R"){
+							rookDead = false;
+						}
+						if(black[j]->getPieceName() == "N"){
+							knightDead = false;
+						}
+						if(black[j]->getPieceName() == "B"){
+							bishopDead = false;
+						}
+					}
+		if(pawnFound){
+		if(rookDead == false && knightDead == false && bishopDead == false && queenDead == false){
+					boardConfig[6][column] = "BQ";
+					cout << endl;
+					cout << "No valid captured pieces to draw from." << endl;
+					cout << "The progam's Pawn has been promoted to a Queen!" << endl;
+					promotionMade = true;
+				}
+		if(queenDead == true){
+			boardConfig[1][column] = "BQ";
+			cout << "The program chose to promote it's Pawn to a Queen" << endl;
+			promotionMade =  true;
+		}
+		else if(rookDead == true){
+			boardConfig[1][column] = "BR";
+			cout << "The program chose to promote it's Pawn to a Rook" << endl;
+			promotionMade =  true;
+		}
+		else if(knightDead == true){
+			boardConfig[1][column] = "BN";
+			cout << "The program chose to promote it's Pawn to a Knight" << endl;
+			promotionMade =  true;
+		}
+		else if(bishopDead == true){
+			boardConfig[1][column] = "BB";
+			cout << "The program chose to promote it's Pawn to a Bishop" << endl;
+			promotionMade =  true;
+		}
+		}
+	 return promotionMade;
+	}
+}

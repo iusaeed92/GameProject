@@ -16,19 +16,6 @@ using namespace std;
 
 
 
-
-
-
-//constructors
-//Piece::Piece(){};
-
-/*Piece::Piece(string n, string c, int w, pair<int,int> coords){
-	name = n;
-	color = c;
-	weight = w;
-	pieceCoordinates = coords;
-}*/
-
 vector<pair<unsigned,unsigned> >  Piece::generatePossibleMoves (GameState currentGameState){
 
 	vector<pair<unsigned, unsigned> > possiblePawnMoves;
@@ -293,16 +280,24 @@ vector<pair<unsigned,unsigned> >  Pawn::generatePossibleMoves (GameState current
 	
 	vector<pair<unsigned, unsigned> > possiblePawnMoves;
 	pair<int, int> localCoord = pieceCoordinates;
-//	Pawn thisPawn(name, color, weight, pieceCoordinates);
 	string newColor = this->color;
 		//check if space ahead is empty if it is then place that spaces coordinate on vector
 	if(newColor == "White"){
 	
 	if(currentGameState.getBoardConfig()[localCoord.first-1][localCoord.second] == "empty"){
-		pair <int, int> test;
-		test = make_pair(localCoord.first-1, localCoord.second);
-		
-		possiblePawnMoves.push_back(test);
+/*		vector< vector< string > > temp = currentGameState.getBoardConfig();
+		temp[localCoord.first-1][localCoord.second]=currentGameState.getBoardConfig()[localCoord.first][localCoord.second];
+		temp[localCoord.first][localCoord.second] = "empty";
+		GameState tempState;
+		tempState.setBoardConfig(temp);
+		tempState.makeVectors();
+		if(tempState.kingInCheck("white")){
+			//don't add these coordinates. Invalid move because king would be in check.
+		}
+		else{
+*/			pair <int, int> test;
+			test = make_pair(localCoord.first-1, localCoord.second);
+			possiblePawnMoves.push_back(test);
 		}
 	
 		//check the diagonal one space ahead, if it is opposing piece push on the vector
@@ -366,7 +361,6 @@ else{
 vector<pair<unsigned,unsigned> >  Bishop::generatePossibleMoves (GameState currentGameState){
 	vector<pair<unsigned, unsigned> > possibleBishopMoves;
 	pair<int, int> localCoord = pieceCoordinates;
-//	Piece thisBishop(name, color, weight, pieceCoordinates);
 	
 	int movesDiagUpRight = diagonalMoves(currentGameState, this, 1);
 	int movesDiagUpLeft = diagonalMoves(currentGameState, this, 2);
