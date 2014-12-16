@@ -536,7 +536,7 @@ bool GameState::checkmate(string color){
 		vector< pair<unsigned, unsigned> > kingMoves = tempKing.generatePossibleMoves(dummyGameState);
 		bool movement = true;
 		pair<unsigned, unsigned> moveCoord;
-		for(int i = 0; i < kingMoves.size(); i++){
+		for(unsigned i = 0; i < kingMoves.size(); i++){
 			moveCoord = kingMoves[i];
 			if(dummyGameState.isThreatened(moveCoord, "black") == true){
 				canMove = false;
@@ -732,7 +732,7 @@ bool GameState::checkmate(string color){
 	vector< pair<unsigned, unsigned> > kingMoves = tempKing.generatePossibleMoves(dummyGameState);
 	bool movement = true;
 	pair<unsigned, unsigned> moveCoord;
-	for(int i = 0; i < kingMoves.size(); i++){
+	for(unsigned i = 0; i < kingMoves.size(); i++){
 		moveCoord = kingMoves[i];
 			if(dummyGameState.isThreatened(moveCoord, "black") == true){
 				canMove = false;

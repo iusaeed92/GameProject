@@ -847,15 +847,6 @@ int main()
 					cout << "You gave an incorrect result for your move. Actual result: " << initialGame.findResult(savedGame) << endl;
 				}
 				
-				if(initialGame.findResult(savedGame).substr(0, 8) == "captures"
-					|| initialGame.findResult(savedGame) == "promoted"
-					|| initialGame.findResult(savedGame) == "rescues"){
-					drawMoves = 0;
-				}
-				else{
-					drawMoves++;
-				}
-				
 				cout << endl;
 
 				initialGame.print();
@@ -863,6 +854,15 @@ int main()
 				bool promotionMade = initialGame.promotePawn(userColor);
 				if(promotionMade == true){
 					initialGame.makeVectors();
+				}
+				
+				
+				if(initialGame.findResult(savedGame).substr(0, 8) == "captures"
+					|| promotionMade){
+					drawMoves = 0;
+				}
+				else{
+					drawMoves++;
 				}
 				
 				
@@ -918,11 +918,26 @@ int main()
 				initialGame.makeVectors();
 			}
 			
-			if(moveResult != "moves"){
+			if(initialGame.findResult(savedGame).substr(0,8) == "captures"
+				|| promotionMade){
 				drawMoves = 0;
 			}
 			else{
 				drawMoves++;
+			}
+			
+			vector <GameState> checkingStalemateWhite;
+			vector <GameState> checkingStalemateBlack;
+			checkingStalemateWhite = makeBoards(initialGame, "white");
+			cout << "Possible white moves" << checkingStalemateWhite.size() << endl;
+			if(checkingStalemateWhite.size() == 0){
+				stalematedOpponent = "black";
+			}
+			
+			checkingStalemateBlack = makeBoards(initialGame, "black");
+			cout << "Possible black moves" << checkingStalemateBlack.size() << endl;
+			if(checkingStalemateBlack.size() == 0){
+				stalematedOpponent = "white";
 			}
 		}
 		
@@ -1018,15 +1033,6 @@ int main()
 				cout << "You gave an incorrect result for your move. Actual result: " << initialGame.findResult(savedGame) << endl;
 			}
 			
-			if(initialGame.findResult(savedGame).substr(0,8) == "captures"
-				|| initialGame.findResult(savedGame) == "promoted"
-				|| initialGame.findResult(savedGame) == "rescues"){
-				drawMoves = 0;
-			}
-			else{
-				drawMoves++;
-			}
-			
 			cout << endl;
 
 			initialGame.print();
@@ -1034,6 +1040,14 @@ int main()
 			bool promotionMade = initialGame.promotePawn(userColor);
 			if(promotionMade == true){
 				initialGame.makeVectors();
+			}
+			
+			if(initialGame.findResult(savedGame).substr(0,8) == "captures"
+				|| promotionMade){
+				drawMoves = 0;
+			}
+			else{
+				drawMoves++;
 			}
 			
 			
