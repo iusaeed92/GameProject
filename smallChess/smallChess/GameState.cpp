@@ -1091,10 +1091,10 @@ bool GameState::promotePawn(string color){
 	dummyGameState.setWhite(white);
 	dummyGameState.setBlack(black);
 	dummyGameState.setBoardConfig(boardConfig);
-	bool rookDead = false;
-	bool bishopDead = false;
-	bool knightDead = false;
-	bool queenDead = false;
+	bool rookDead = true;
+	bool bishopDead = true;
+	bool knightDead = true;
+	bool queenDead = true;
 	bool promotionMade = false;
 	bool pawnFound = false;
 	
@@ -1119,6 +1119,9 @@ bool GameState::promotePawn(string color){
 					if(white[j]->getPieceName() == "B"){
 						bishopDead = false;
 					}
+					if(white[j]->getPieceName() == "Q"){
+						queenDead = false;
+					}
 				}
 				
 			if(pawnFound){
@@ -1133,7 +1136,9 @@ bool GameState::promotePawn(string color){
 					//Choose what piece you get to promote
 					cout << "What piece would you like to promote your Pawn to?" << endl;
 					cout << "Enter the first letter capitalized of the piece you choose: ";
-					
+					if(queenDead == true){
+						cout << "Queen (Q)" << endl;
+					}
 					if(rookDead == true){
 						cout << "Rook (R)" << endl;
 					}
@@ -1186,13 +1191,15 @@ bool GameState::promotePawn(string color){
 				for(unsigned j=0; j<black.size(); j++){
 					if(black[j]->getPieceName() == "R"){
 						rookDead = false;
-						
 					}
 					if(black[j]->getPieceName() == "N"){
 						knightDead = false;
 					}
 					if(black[j]->getPieceName() == "B"){
 						bishopDead = false;
+					}
+					if(black[j]->getPieceName() == "Q"){
+						queenDead = false;
 					}
 				}
 			if(pawnFound){
@@ -1261,10 +1268,10 @@ bool GameState::progPromotePawn(string color){
 	dummyGameState.setWhite(white);
 	dummyGameState.setBlack(black);
 	dummyGameState.setBoardConfig(boardConfig);
-	bool rookDead = false;
-	bool bishopDead = false;
-	bool knightDead = false;
-	bool queenDead = false;
+	bool rookDead = true;
+	bool bishopDead = true;
+	bool knightDead = true;
+	bool queenDead = true;
 	bool promotionMade = false;
 	bool pawnFound = false;
 	int column = 0;
@@ -1276,7 +1283,7 @@ bool GameState::progPromotePawn(string color){
 					pawnFound = true;
 				}
 		}
-					//promote piece to a dead piece
+					//find dead pieces: if no
 					for(unsigned j=0; j<white.size(); j++){
 						if(white[j]->getPieceName() == "R"){
 							rookDead = false;
@@ -1287,11 +1294,13 @@ bool GameState::progPromotePawn(string color){
 						if(white[j]->getPieceName() == "B"){
 							bishopDead = false;
 						}
+						if(white[j]->getPieceName() == "Q")
+							queenDead = false;
 					}
 					
 		if(pawnFound){
 		if(rookDead == false && knightDead == false && bishopDead == false && queenDead == false){
-					boardConfig[6][column] = "WQ";
+					boardConfig[1][column] = "WQ";
 					cout << endl;
 					cout << "No valid captured pieces to draw from." << endl;
 					cout << "The progam's Pawn has been promoted to a Queen!" << endl;
@@ -1338,6 +1347,10 @@ bool GameState::progPromotePawn(string color){
 						if(black[j]->getPieceName() == "B"){
 							bishopDead = false;
 						}
+						if(black[j]->getPieceName() ==  "Q"){
+							queenDead = false;
+						}
+							
 					}
 		if(pawnFound){
 		if(rookDead == false && knightDead == false && bishopDead == false && queenDead == false){
@@ -1348,22 +1361,22 @@ bool GameState::progPromotePawn(string color){
 					promotionMade = true;
 				}
 		if(queenDead == true){
-			boardConfig[1][column] = "BQ";
+			boardConfig[6][column] = "BQ";
 			cout << "The program chose to promote it's Pawn to a Queen" << endl;
 			promotionMade =  true;
 		}
 		else if(rookDead == true){
-			boardConfig[1][column] = "BR";
+			boardConfig[6][column] = "BR";
 			cout << "The program chose to promote it's Pawn to a Rook" << endl;
 			promotionMade =  true;
 		}
 		else if(knightDead == true){
-			boardConfig[1][column] = "BN";
+			boardConfig[6][column] = "BN";
 			cout << "The program chose to promote it's Pawn to a Knight" << endl;
 			promotionMade =  true;
 		}
 		else if(bishopDead == true){
-			boardConfig[1][column] = "BB";
+			boardConfig[6][column] = "BB";
 			cout << "The program chose to promote it's Pawn to a Bishop" << endl;
 			promotionMade =  true;
 		}
