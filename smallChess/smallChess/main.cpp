@@ -1,7 +1,6 @@
 #include <iostream>
 #include <vector>
 #include <string>
-#include <queue>
 #include <utility>
 #include "Piece.h"
 #include "GameState.h"
@@ -13,31 +12,33 @@ using namespace std;
 int main()
 {
 
-    GameState initialGame;
-    vector< vector <string> > initialBoard;
-    vector< Piece* > whitePieces;
-    vector< Piece*> blackPieces;
-	priority_queue <pair <int, vector <vector <string > > > > worklist;
-    
-    ////
-    ////Initialization and sizing of the 2D vector
-	////
-    
-    initialBoard.resize(8);
-    for(int i = 0; i<8; i++){
-        initialBoard[i].resize(7);
-    }
+////
+////Initialization of the gamestate
+////This gamestate will hold the current state of the game
+////
+	GameState initialGame;
+	vector< vector <string> > initialBoard;
+	vector< Piece* > whitePieces;
+	vector< Piece* > blackPieces;
+   
+////
+////Initialization and sizing of the 2D vector
+////
+	initialBoard.resize(8);
+	for(int i = 0; i<8; i++){
+		initialBoard[i].resize(7);
+	}
 	
 	
-    //setting all relevant areas empty. Essentially all the
-    //working spaces in the board.
+////setting all relevant areas empty.
+////Essentially all the working spaces in the board.
     for (int i = 1; i < 7; i++) {
         for (int j = 1; j < 6; j++) {
             initialBoard[i][j] = "empty";
         }
     }
     
-    //settings for out of bounds.
+	////settings for out of bounds.
         for(int i = 0; i < 8; i++){
             for (int j = 0; j< 7; j++) {
                 if (i == 0 || i ==7) {
@@ -49,11 +50,13 @@ int main()
             }
         }
     
-    ////
-    ////Initial configuration
-    ////
-    ////Variables for the white pieces
-    ////
+////
+////Initial configuration of the pieces
+////
+
+////
+////Variables for the white pieces
+////
 	int rowWP1;
 	char letterWP1;
 	int columnWP1;
@@ -90,8 +93,8 @@ int main()
 	char letterWP5;
 	int columnWP5;
 	Pawn* whitePawn5 = new Pawn;
-	whitePawn1->setPieceColor("White");
-	whitePawn1->setPieceWeight(1);
+	whitePawn5->setPieceColor("White");
+	whitePawn5->setPieceWeight(1);
 	whitePawn5->setPieceName("P");
     
 	int rowWN;
@@ -134,9 +137,9 @@ int main()
 	whiteKing->setPieceWeight(10);
 	whiteKing->setPieceName("K");
     
-    ////
-    ////Variables for the black pieces
-    ////
+////
+////Variables for the black pieces
+////
 	int rowBP1;
 	char letterBP1;
 	int columnBP1;
@@ -218,9 +221,11 @@ int main()
 	blackKing->setPieceName("K");
 	
 	
-	////
-	////Automatic Standard Configuration Setup
-    ////
+////
+////Automatic Standard Configuration Setup
+////
+
+	string invalidInput;
 	string answer;
 	cout << "Would you like to have the customary starting configuration? (y/n)" << endl;
 	cin >> answer;
@@ -353,12 +358,20 @@ int main()
 	
 	
 ////
-////Input of coordinates for all pieces
+////Custom configuration:
+////	input of coordinates for all remaining pieces
 ////
 	else{
 		int numOfWhitePawns;
 		cout << "How many white pawns are on the board? (0-5)" << endl;
 		cin >> numOfWhitePawns;
+		
+		while(cin.fail()){
+			cin.clear();
+			getline(cin, invalidInput);
+			cout << "Please enter an integer number of pawns: " << endl;
+			cin >> numOfWhitePawns;
+		}
 		
 		if(numOfWhitePawns > 0){
 			cout << "Input the position of white pawn (1). First enter the column (a-e). Then the row(1-6):" << endl;
@@ -410,11 +423,16 @@ int main()
 			initialBoard[rowWP5][columnWP5] = "WP";
 		}
 		
-		char WROnBoard;
+		string WROnBoard;
 		cout << "Is there a white rook on the board? (y/n)" << endl;
 		cin >> WROnBoard;
 		
-		if(WROnBoard == 'y'){
+		while(WROnBoard != "y" && WROnBoard != "n"){
+			cout << "Please enter (y/n): " << endl;
+			cin >> WROnBoard;
+		}
+		
+		if(WROnBoard == "y"){
 			cout << "Input the position of white rook. First enter the column (a-e). Then the row(1-6):" << endl;
 			cin >> letterWR;
 			cin >> rowWR;
@@ -424,11 +442,16 @@ int main()
 			initialBoard[rowWR][columnWR] = "WR";
 		}
 		
-		char WNOnBoard;
+		string WNOnBoard;
 		cout << "Is there a white knight on the board? (y/n)" << endl;
 		cin >> WNOnBoard;
 		
-		if(WNOnBoard == 'y'){
+		while(WNOnBoard != "y" && WNOnBoard != "n"){
+			cout << "Please enter (y/n): " << endl;
+			cin >> WNOnBoard;
+		}
+		
+		if(WNOnBoard == "y"){
 			cout << "Input the position of white knight. First enter the column (a-e). Then the row(1-6):" << endl;
 			cin >> letterWN;
 			cin >> rowWN;
@@ -438,11 +461,16 @@ int main()
 			initialBoard[rowWN][columnWN] = "WN";
 		}
 		
-		char WBOnBoard;
+		string WBOnBoard;
 		cout << "Is there a white bishop on the board? (y/n)" << endl;
 		cin >> WBOnBoard;
 		
-		if(WBOnBoard == 'y'){
+		while(WBOnBoard != "y" && WBOnBoard != "n"){
+			cout << "Please enter (y/n): " << endl;
+			cin >> WBOnBoard;
+		}
+		
+		if(WBOnBoard == "y"){
 			cout << "Input the position of white bishop. First enter the column (a-e). Then the row(1-6):" << endl;
 			cin >> letterWB;
 			cin >> rowWB;
@@ -452,11 +480,16 @@ int main()
 			initialBoard[rowWB][columnWB] = "WB";
 		}
 		
-		char WQOnBoard;
+		string WQOnBoard;
 		cout << "Is there a white queen on the board? (y/n)" << endl;
 		cin >> WQOnBoard;
 		
-		if(WQOnBoard == 'y'){
+		while(WQOnBoard != "y" && WQOnBoard != "n"){
+			cout << "Please enter (y/n): " << endl;
+			cin >> WQOnBoard;
+		}
+		
+		if(WQOnBoard == "y"){
 			cout << "Input the position of white queen. First enter the column (a-e). Then the row(1-6):" << endl;
 			cin >> letterWQ;
 			cin >> rowWQ;
@@ -481,6 +514,13 @@ int main()
 		int numOfBlackPawns;
 		cout << "How many black pawns are on the board? (0-5)" << endl;
 		cin >> numOfBlackPawns;
+		
+		while(cin.fail()){
+			cin.clear();
+			getline(cin, invalidInput);
+			cout << "Please enter an integer number of pawns: " << endl;
+			cin >> numOfBlackPawns;
+		}
 		
 		if(numOfBlackPawns > 0){
 			cout << "Input the position of black pawn (1). First enter the column (a-e). Then the row(1-6):" << endl;
@@ -537,11 +577,16 @@ int main()
 			initialBoard[rowBP5][columnBP5] = "BP";
 		}
 		
-		char BRonBoard;
+		string BRonBoard;
 		cout << "Is there a black rook on the board? (y/n)" << endl;
 		cin >> BRonBoard;
 		
-		if(BRonBoard == 'y'){
+		while(BRonBoard != "y" && BRonBoard != "n"){
+			cout << "Please enter (y/n): " << endl;
+			cin >> BRonBoard;
+		}
+		
+		if(BRonBoard == "y"){
 			cout << "Input the position of black rook. First enter the column (a-e). Then the row(1-6):" << endl;
 			cin >> letterBR;
 			cin >> rowBR;
@@ -552,11 +597,16 @@ int main()
 			initialBoard[rowBR][columnBR] = "BR";
 		}
 		
-		char BNonBoard;
+		string BNonBoard;
 		cout << "Is there a black knight on the board? (y/n)" << endl;
 		cin >> BNonBoard;
 		
-		if(BNonBoard == 'y'){
+		while(BNonBoard != "y" && BNonBoard != "n"){
+			cout << "Please enter (y/n): " << endl;
+			cin >> BNonBoard;
+		}
+		
+		if(BNonBoard == "y"){
 			cout << "Input the position of black knight. First enter the column (a-e). Then the row(1-6):" << endl;
 			cin >> letterBN;
 			cin >> rowBN;
@@ -567,11 +617,16 @@ int main()
 			initialBoard[rowBN][columnBN] = "BN";
 		}
 		
-		char BBonBoard;
+		string BBonBoard;
 		cout << "Is there a black bishop on the board? (y/n)" << endl;
 		cin >> BBonBoard;
 		
-		if(BBonBoard == 'y'){
+		while(BBonBoard != "y" && BBonBoard != "n"){
+			cout << "Please enter (y/n): " << endl;
+			cin >> BBonBoard;
+		}
+		
+		if(BBonBoard == "y"){
 			cout << "Input the position of black bishop. First enter the column (a-e). Then the row(1-6):" << endl;
 			cin >> letterBB;
 			cin >> rowBB;
@@ -582,11 +637,16 @@ int main()
 			initialBoard[rowBB][columnBB] = "BB";
 		}
 		
-		char BQonBoard;
+		string BQonBoard;
 		cout << "Is there a black queen on the board? (y/n)" << endl;
 		cin >> BQonBoard;
 		
-		if(BQonBoard == 'y'){
+		while(BQonBoard != "y" && BQonBoard != "n"){
+			cout << "Please enter (y/n): " << endl;
+			cin >> BQonBoard;
+		}
+		
+		if(BQonBoard == "y"){
 			cout << "Input the position of black queen. First enter the column (a-e). Then the row(1-6):" << endl;
 			cin >> letterBQ;
 			cin >> rowBQ;
@@ -612,9 +672,6 @@ int main()
 ////
 ////Initial Questions and variable declarations
 ////
-
-
-
 	string programColor;
 	string userColor;
 	cout << "Which color will you be playing as? (white/black)" << endl;
@@ -641,7 +698,6 @@ int main()
 		cin >> firstMoveColor;
 	}
 	
-	string invalidInput;
 	int drawMoves;
 	cout << "How many previous moves have been made without there being either a capture, a rescue, or a promotion?" << endl;
 	cin >> drawMoves;
@@ -671,6 +727,7 @@ int main()
 	initialGame.setBlack(blackPieces);
 	initialGame.setWhite(whitePieces);
 	
+	
 	cout << "Starting configuration: " << endl;
 	initialGame.print();
 	
@@ -678,24 +735,29 @@ int main()
 	
 
 ////
-////Negamax Search and game simulation
-////On the programs turn: the negamax function runs and a move is choosen.
-//// This move is then made and the board is updated.
+////Game simulation:
+////The program and operator take turns making moves
 ////
-////On the programs turn: the operator inputs the move.
-//// If the move is legal, it is made and the board is updated.
-//// Otherwise, the program will ask for a legal move (the illegal move is discarded).
-////
+
 
 	string stalematedOpponent = "draw";
 	string currentMoveColor = firstMoveColor;
 	
 	int moveNumber = 1;
+	cout << "Move number: " << moveNumber << endl;
 	
+////Only use the opening book if the customary starting config was used
 	if(answer == "y"){
+		
+////
+////The opening book runs for the first 4 moves of the game.
+////These moves are predetermined and are picked based on
+//// the current move number.
+////
 		while(moveNumber <= 4){
 			
 			//Program has the current move
+			//It is the program's first move of the game
 			if(currentMoveColor==programColor and moveNumber < 3){
 				//Make the appriopriate move.
 				if(programColor=="black"){
@@ -717,6 +779,7 @@ int main()
 			initialGame.print();
 			}
 			
+			//It is the program's second move of the game
 			else if(currentMoveColor==programColor and moveNumber > 2){
 				//Make the appriopriate move.
 				if(programColor=="black"){
@@ -736,6 +799,7 @@ int main()
 					}
 				}
 				
+				//The opponent put the program in check in two moves, take the knight with queen
 				else{
 					if(initialGame.getBoardConfig()[5][5] == "BN"){
 						movePiece(initialGame, currentMoveColor, make_pair(6, 4), make_pair(5, 5));
@@ -803,12 +867,13 @@ int main()
 				pair <int, int> startCoords = make_pair(humanMoveStartRow, numHumanMoveStartColumn);
 				pair <int, int> endCoords = make_pair(humanMoveEndRow, numHumanMoveEndColumn);
 				
-				
+				////Check if the move is valid. If not, ask for a valid move.				
 				while(validMove(initialGame, currentMoveColor, humanMoveName, startCoords, endCoords, result) == false){
 					cout << "Invalid move." << endl;
 					cout << "Enter your move in the format and hit enter after each parameter:" << endl << "startColumn(a-e) startRow(1-6) endColumn(a-e) endRow(1-6) result: " << endl;
 					cin >> humanMoveName;
 					cin >> humanMoveStartColumn;
+					cin >> humanMoveStartRow;
 					while(cin.fail()){
 						cin.clear();
 						cin.ignore();
@@ -842,21 +907,23 @@ int main()
 				movePiece(initialGame, currentMoveColor, startCoords, endCoords);
 				initialGame.makeVectors();
 				
-				
+				//If the move is valid except the operator gave an invalid result,
+				// output what the correct result for the move is.
 				if(initialGame.findResult(savedGame) != result){
 					cout << "You gave an incorrect result for your move. Actual result: " << initialGame.findResult(savedGame) << endl;
 				}
 				
 				cout << endl;
 
-				initialGame.print();
-				
+				//Check to see if a promotion/rescue needs to be made
 				bool promotionMade = initialGame.promotePawn(userColor);
 				if(promotionMade == true){
 					initialGame.makeVectors();
 				}
+
+				initialGame.print();
 				
-				
+				//Update "drawMoves" - the number of moves since the last capture/rescue/promotion
 				if(initialGame.findResult(savedGame).substr(0, 8) == "captures"
 					|| promotionMade){
 					drawMoves = 0;
@@ -888,11 +955,9 @@ int main()
 ////
 ////Negamax search for program moves
 ////
+
 	while(initialGame.checkmate(userColor) == false && initialGame.checkmate(programColor) == false && stalematedOpponent == "draw" && drawMoves < 20){	
 		
-		
-		priority_queue <pair <int, vector <vector <string> > > > currWorklist;
-		priority_queue <pair <int, vector <vector <string> > > > currCopy;
 		vector <GameState> movesForCurrBoard;
 		
 		if(currentMoveColor == programColor){
@@ -913,11 +978,14 @@ int main()
 			moveResult = initialGame.getGameDifference(savedGame);
 			initialGame.print();
 			
+			
+			//Check if a promotion has been made
 			bool promotionMade = initialGame.progPromotePawn(programColor);
 			if(promotionMade == true){
 				initialGame.makeVectors();
 			}
 			
+			//Update "drawMoves" - the number of moves since the last capture/rescue/promotion
 			if(initialGame.findResult(savedGame).substr(0,8) == "captures"
 				|| promotionMade){
 				drawMoves = 0;
@@ -926,16 +994,16 @@ int main()
 				drawMoves++;
 			}
 			
+			//Check if either color has no possible moves
+			//If a color has no moves, that color has been stalemated
 			vector <GameState> checkingStalemateWhite;
 			vector <GameState> checkingStalemateBlack;
 			checkingStalemateWhite = makeBoards(initialGame, "white");
-			cout << "Possible white moves" << checkingStalemateWhite.size() << endl;
 			if(checkingStalemateWhite.size() == 0){
 				stalematedOpponent = "black";
 			}
 			
 			checkingStalemateBlack = makeBoards(initialGame, "black");
-			cout << "Possible black moves" << checkingStalemateBlack.size() << endl;
 			if(checkingStalemateBlack.size() == 0){
 				stalematedOpponent = "white";
 			}
@@ -1034,14 +1102,16 @@ int main()
 			}
 			
 			cout << endl;
-
-			initialGame.print();
 			
+			//Check if a rescue/promotion has been made
 			bool promotionMade = initialGame.promotePawn(userColor);
 			if(promotionMade == true){
 				initialGame.makeVectors();
 			}
 			
+			initialGame.print();
+			
+			//Update "drawMoves" - the number of moves since the last capture/rescue/promotion
 			if(initialGame.findResult(savedGame).substr(0,8) == "captures"
 				|| promotionMade){
 				drawMoves = 0;
@@ -1050,17 +1120,17 @@ int main()
 				drawMoves++;
 			}
 			
-			
+
+			//Check if either color has no possible moves
+			//If a color has no moves, that color has been stalemated
 			vector <GameState> checkingStalemateWhite;
 			vector <GameState> checkingStalemateBlack;
 			checkingStalemateWhite = makeBoards(initialGame, "white");
-			cout << "Possible white moves" << checkingStalemateWhite.size() << endl;
 			if(checkingStalemateWhite.size() == 0){
 				stalematedOpponent = "black";
 			}
 			
 			checkingStalemateBlack = makeBoards(initialGame, "black");
-			cout << "Possible black moves" << checkingStalemateBlack.size() << endl;
 			if(checkingStalemateBlack.size() == 0){
 				stalematedOpponent = "white";
 			}
@@ -1087,6 +1157,9 @@ int main()
 		
 	}
 	
+	
+//Determine the winner based on how the game ended
+
 	if(initialGame.checkmate(userColor) == true){
 		cout << "YOU LOSE!" << endl;
 	}

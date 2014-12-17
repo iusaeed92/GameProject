@@ -759,7 +759,9 @@ bool GameState::checkmate(string color){
 	}
 }
 
-//make vectors
+//member function "makeVector"
+//Pre cond: GameState has an initialized boardConfig and possibly incorrect white/black vectors
+//Post Cond: white/black vectors are cleared and then reconstructed using the boardConfig
 void GameState::makeVectors(){
 	
 	white.clear();
@@ -871,9 +873,11 @@ void GameState::makeVectors(){
 }
 
 
-////
-////Determines if the move from "GameState" to temp was a move/capture/promoted
-////
+//member function "findResult"
+//Pre-cond:	GameState is the current state of the game
+//				temp is the state of the game one move before GameState
+//Post-cond:	returns a string (moves/captures) with the correct result
+//				of the move from temp to GameState
 string GameState::findResult(GameState temp){
 
     int endColumnInt= 0;
@@ -921,7 +925,13 @@ string GameState::findResult(GameState temp){
 
 
 
-
+//member function "getGameDifference"
+//Pre-cond:	GameState is the current state of the game
+//				temp is the state of the game one move before GameState
+//Post-cond:	string contains the correct result of the move from
+//				temp to GameState
+//				The move from temp to GameState is output in the form
+//				Piece startColumn startRow endColumn endRow result
 string GameState::getGameDifference(GameState temp){
 
     string result;
@@ -1019,7 +1029,10 @@ string GameState::getGameDifference(GameState temp){
 }
 
 
-
+//member function "drawWinner"
+//Pre-cond:	GameState is a state of the game after and endgame condition was met
+//				stalematingColor is the color that has put the other color in stalemate
+//Post-cond:	returns the score (score of white - score of black) based on the guidelines
 int GameState::drawWinner(string stalematingColor){
 	int totalPoints = 0;
 	

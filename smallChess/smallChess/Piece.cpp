@@ -285,17 +285,7 @@ vector<pair<unsigned,unsigned> >  Pawn::generatePossibleMoves (GameState current
 	if(newColor == "White"){
 	
 	if(currentGameState.getBoardConfig()[localCoord.first-1][localCoord.second] == "empty"){
-/*		vector< vector< string > > temp = currentGameState.getBoardConfig();
-		temp[localCoord.first-1][localCoord.second]=currentGameState.getBoardConfig()[localCoord.first][localCoord.second];
-		temp[localCoord.first][localCoord.second] = "empty";
-		GameState tempState;
-		tempState.setBoardConfig(temp);
-		tempState.makeVectors();
-		if(tempState.kingInCheck("white")){
-			//don't add these coordinates. Invalid move because king would be in check.
-		}
-		else{
-*/			pair <int, int> test;
+			pair <int, int> test;
 			test = make_pair(localCoord.first-1, localCoord.second);
 			possiblePawnMoves.push_back(test);
 		}

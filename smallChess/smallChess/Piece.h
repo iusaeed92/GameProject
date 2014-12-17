@@ -28,9 +28,6 @@ public:
     pair<int, int> pieceCoordinates;
     
 	bool isSameColor(GameState instance, pair<int, int> coordinates);
-	
-	//Piece();
-	//Piece(string n, string c, int w, pair<int,int> coords);
 
 	//mutators:
     void setPieceName(string s);
@@ -45,11 +42,6 @@ public:
 	pair<int, int> getPieceCoordinates();
 	virtual vector<pair<unsigned, unsigned> > generatePossibleMoves(GameState currentGameState);
 	
-    //move
-    //virtual void movePiece(
-    
-    
-    
 };
 
 
