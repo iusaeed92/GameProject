@@ -534,24 +534,16 @@ bool GameState::checkmate(string color){
 	if(capThreat == false && canBlock == false){
 	//now test all spaces around king to see if it can move to any without remaining in check
 		vector< pair<unsigned, unsigned> > kingMoves = tempKing.generatePossibleMoves(dummyGameState);
-		bool movement = true;
 		pair<unsigned, unsigned> moveCoord;
-		for(unsigned i = 0; i < kingMoves.size(); i++){
+		canMove = false;
+		for(unsigned i = 0; i < kingMoves.size() && canMove = false; i++){
 			moveCoord = kingMoves[i];
-			if(dummyGameState.isThreatened(moveCoord, "black") == true){
+			if(dummyGameState.isThreatened(moveCoord, "white") == true){
 				canMove = false;
-				movement = false; 
 			}
 			else{
 				canMove = true;
 			}
-		}
-	
-		if(movement == false){
-			canMove = false;
-		}
-		else{
-			canMove = true;
 		}
 	}
 		if(capThreat == false && canBlock == false && canMove == false){
@@ -730,24 +722,16 @@ bool GameState::checkmate(string color){
 	if(capThreat == false && canBlock == false){	
 	//now test all spaces around king to see if it can move to any without remaining in check
 	vector< pair<unsigned, unsigned> > kingMoves = tempKing.generatePossibleMoves(dummyGameState);
-	bool movement = true;
 	pair<unsigned, unsigned> moveCoord;
-	for(unsigned i = 0; i < kingMoves.size(); i++){
+	canMove = false
+	for(unsigned i = 0; i < kingMoves.size() && canMove = false; i++){
 		moveCoord = kingMoves[i];
 			if(dummyGameState.isThreatened(moveCoord, "black") == true){
 				canMove = false;
-				movement = false; 
 			}
 			else{
 				canMove = true;
 			}
-		}
-	
-		if(movement == false){
-			canMove = false;
-		}
-		else{
-			canMove = true;
 		}
 	}
 		if(capThreat == false && canBlock == false && canMove == false){
