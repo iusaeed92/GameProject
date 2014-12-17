@@ -965,7 +965,15 @@ int main()
 			
 			movesForCurrBoard = makeBoards(initialGame, programColor);
 			
+			clock_t start;
+
+			double duration;
+			start = clock();
+			
 			pair <int, int> bestPair = negaMax(initialGame.getBoardConfig(), 0, programColor);
+
+			duration = (clock() - start) / (double) CLOCKS_PER_SEC;
+			cout << "this took " << duration << " seconds" << endl;
 			
 			GameState savedGame;
 			savedGame.setBoardConfig(initialGame.getBoardConfig());
